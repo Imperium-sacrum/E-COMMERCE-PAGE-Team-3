@@ -27,6 +27,8 @@ require_once  "db_connect.php";
     <?php include 'components/navbar.php';
     ?>
     <!-- Hero goes here -->
+    <?php include 'components/hero.php';
+    ?>
 
 
     <!-- Index File goes here -->
