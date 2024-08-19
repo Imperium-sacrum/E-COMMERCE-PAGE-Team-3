@@ -124,7 +124,7 @@ if (isset($_POST['btn-signup'])) {
 
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="POST" class="mx-auto">
                 <h2 class="mb-3">Hello</h2>
-                <div class="mb-3 input-box">
+                <div class="mb-3 input-box d-flex">
                     <button type="submit" class="btn btn-trans " name="btn-signup">SIGN UP</button>
                     <button type="button" class="btn btn-trans ">
                         <a class="text-decoration-none text-dark" href="login.php">LOG IN</a>
