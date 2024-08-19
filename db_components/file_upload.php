@@ -1,5 +1,6 @@
 <?php
 require_once "db_connect.php";
+$pictureName + $message = "";
 
 function fileUpload($picture, $source = "user")
 {
