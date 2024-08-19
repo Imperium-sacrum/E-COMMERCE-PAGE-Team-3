@@ -13,7 +13,6 @@
 
 /* Footer */
 footer {
-  background-color: var(--beige);
   align-content: center;
   display: flex;
   flex-direction: column;
