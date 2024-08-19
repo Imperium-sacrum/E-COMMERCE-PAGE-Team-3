@@ -43,4 +43,4 @@
             </div>
 
             <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top"></div>
-            <p>&copy; 2024 Company, Inc. All rights reserved.</p>
+                 <p>&copy; 2024 Company, Inc. All rights reserved.</p>
