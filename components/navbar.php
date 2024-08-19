@@ -1,36 +1,58 @@
-<nav class="navbar navbar-expand-lg" style="background-color: var(--beige)">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Brand</a>
-        <ul class="navbar-nav d-flex flex-row me-1">
-        <a class="link-secondary" href="#" aria-label="Search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24">
-                        <title>Search</title>
-                        <circle cx="10.5" cy="10.5" r="7.5" />
-                        <path d="M21 21l-5.2-5.2" />
-                    </svg>
-                </a>
-            <li class="nav-item me-3 me-lg-0">
-            <div class="col-4 pt-1">
-                <a class="link-secondary" href="#">Register</a>
-            </div>
-            </li>
-            <li class="nav-item me-3 me-lg-0">
-            <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a data-mdb-dropdown-init class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                   data-mdb-toggle="dropdown" aria-expanded="false">
-                   <i class="fa-solid fa-user"></i> Profile 
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li>
-                        <a class="dropdown-item" href="#">My account</a>
+<nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="images/team3icon.jpg" alt="Brand Logo" style="height: 50px;">
+                The Debugged Deli
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Meat</a>
                     </li>
-                    <li>
-                        <a class="dropdown-item" href="#">Log out</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Vegetables</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Beverages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Snacks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Desserts</a>
                     </li>
                 </ul>
-            </li>
-        </ul>
-    </div>
-</nav>
+                <div class="d-flex align-items-center ms-auto">
+                    <div class="search-bar me-3">
+                        <input type="text" placeholder="Search">
+                        <button type="button">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                    <a class="btn btn-primary me-3" href="login.php" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">
+                        Login
+                    </a>
+
+                    <li class="nav-item dropdown" style="list-style-type: none;">
+                        <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-expanded="false" style="display: flex; align-items: center;">
+                            <i class="fa-solid fa-user" style="color: var(--russet); font-size: 1.2rem;"></i> 
+                            <span style="color: var(--russet); margin-left: 0.5rem;">Profile</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="padding: 10px; border-radius: 5px; background-color: var(--beige);">
+                            <?php if (isset($_SESSION['user']) || isset($_SESSION['admin'])): ?>
+                                <li><a class="dropdown-item" href="profile.php">My account</a></li>
+                                <li><a class="dropdown-item" href="logout.php?logout">Log out</a></li>
+                            <?php else: ?>
+                                <li><a class="dropdown-item" href="registration.php" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">Register</a></li>
+                            <?php endif; ?>
+                        </ul>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
