@@ -12,5 +12,30 @@
 /* Hero */
 
 /* Footer */
+footer {
+  background-color: var(--beige);
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1920px;
+  padding: 40px 0 0;
+  width: 100%;
+}
 
+.container-fluid {
+  padding: 0;
+}
 
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+footer .container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
