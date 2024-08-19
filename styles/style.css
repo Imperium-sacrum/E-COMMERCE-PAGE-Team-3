@@ -7,6 +7,9 @@
     --beige: #FAEDCD;
     --brown: #D4A373;
   }
+  body {
+    /* background: var(--beige); */
+  }
   /* Fonts */
 
 /* Navbar */

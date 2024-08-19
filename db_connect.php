@@ -5,7 +5,7 @@ ini_set('error_reporting', E_ALL);
 $hostname = "127.0.0.1";
 $username = "root";
 $password = "";
-$dbname = "";
+$dbname = "e_commerce_team3";
 
 
 
