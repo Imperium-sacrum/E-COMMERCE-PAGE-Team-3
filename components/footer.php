@@ -15,7 +15,7 @@
 </svg>
 
 
-<div class="container">
+<div class="px-2">
     <footer class="py-5">
         <div class="row">
             <div class="col-6 col-md-2 mb-3">

@@ -7,10 +7,48 @@
     --beige: #FAEDCD;
     --brown: #D4A373;
   }
+  /* Fonts */
+
 /* Navbar */
 
-/* Hero */
+.blog-header-logo {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+  font-size: 2.25rem;
+}
 
+.blog-header-logo:hover {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+}
+
+.flex-auto {
+  flex: 0 0 auto;
+}
+
+/* Hero */
+.pic1 {
+  background-image: url('../images/building.jpg');
+object-position: center;
+object-fit: contain;
+
+
+}
+.pic2 {
+  background-image: url('../images/building.jpg');
+object-position: center;
+object-fit: contain;
+
+
+}.pic3 {
+  background-image: url('../images/building.jpg');
+object-position: center;
+object-fit: contain;
+
+
+}
 /* Footer */
 
 
