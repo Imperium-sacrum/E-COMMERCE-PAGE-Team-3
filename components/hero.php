@@ -1,7 +1,6 @@
 <div class="hero">
         <div class="container-fluid py-5">
-            <h1 class="display-5 fw-bold">Welcome to The Debugged Deli</h1>
-            <p>Your favorite tech-inspired deli!</p>
+            <h1 class="display-5 fw-bold"> SomethingSomethingFood</h1>
             <button class="btn btn-outline-light" type="button">Explore Now</button>
         </div>
 

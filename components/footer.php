@@ -41,7 +41,7 @@
 
         <!-- Bottom Footer Links -->
         <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <p>&copy; 2024 Your Food Store Name. All rights reserved.</p>
+            <p>&copy; 2024 Team3. All rights reserved.</p>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
                 <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
