@@ -28,4 +28,3 @@ function fileUpload($picture, $source = "user")
 
     return [$pictureName, $message]; // returning an array with two values, the name of the picture and the message
 }
-[$pictureName, $message]; // returning an array with two values, the name of the picture and the message

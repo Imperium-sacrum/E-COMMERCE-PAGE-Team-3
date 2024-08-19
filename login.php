@@ -90,24 +90,24 @@ if (isset($_POST["login-btn"])) {
         <div class="reglog_content">
 
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" autocomplete="off" enctype="multipart/form-data" method="POST" class="mx-auto">
-                <h1 class="mb-3">Log in</h1>
+                <h1 class="mb-3">Hello</h1>
 
-                <div class="mb-3 input-box">
+                <div class="mb-3 input-box d-flex">
 
-                    <a class="btn btn-rounded-pill" href="login.php">Log in</a>
+                    <a class="btn btn-trans" href="login.php">Log in</a>
+
+
+                    <a class="btn btn-trans" href="registration.php">Sign up</a>
                 </div>
-                <div class="mb-3 input-box">
-                    <a class="btn btn-rounded-pill" href="register.php">Sign up</a>
-                </div>
 
                 <div class="mb-3 input-box">
-                    <label for="Email">Email</label>
+                    <!-- <label for="Email">Email</label> -->
                     <input type="email" class="form-control" name="email" placeholder="example@example.com" value="<?= $email ?>">
                     <p class="text-danger"><?= $emailError ?></p>
                 </div>
 
                 <div class="mb-3 input-box">
-                    <label for="myInput">Password</label>
+                    <!-- <label for="myInput">Password</label> -->
                     <input type="password" class="form-control" id="myInput" name="password" placeholder="Password">
                     <p class="text-danger"><?= $passError ?></p>
                 </div>
@@ -117,7 +117,7 @@ if (isset($_POST["login-btn"])) {
                 </div>
 
                 <div class="mb-3 input-box">
-                    <input type="submit" class="btn btn-rounded-pill" value="Login" name="login-btn"></input>
+                    <input type="submit" class="btn btn-signup" value=" Login" name="login-btn"></input>
                 </div>
             </form>
         </div>

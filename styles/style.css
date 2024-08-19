@@ -44,17 +44,15 @@ footer .container {
   padding: 15px 0;
   border-radius: 0;
   border: 1px solid black;
+  a:hover {
+    
+    
+    border: 1px solid rgb(55, 54, 54);
+
+  }
 
 }
-.btn-trans:hover {
-  display: block;
-  width: 50%;
-  margin-bottom: 10px;
-  padding: 15px 0;
-  border-radius: 0;
-  border: 1px solid rgb(78, 78, 78);
 
-}
 
 body {
   justify-content: center;
@@ -121,7 +119,7 @@ a.btn-signup {
 }
 
 a.tn-signup:hover {
-  background-color: #3f3f3f;
+  background-color: #ffffff;
 }
 
 label {
