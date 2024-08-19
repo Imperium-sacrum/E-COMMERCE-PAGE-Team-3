@@ -1,6 +1,6 @@
 <?php
-require_once "db_connect.php";
-require_once "file_upload.php";
+require_once "db_components/db_connect.php";
+require_once "db_components/file_upload.php";
 
 $error = false;
 
@@ -125,43 +125,43 @@ if (isset($_POST['btn-signup'])) {
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="POST" class="mx-auto">
                 <h2 class="mb-3">Hello</h2>
                 <div class="mb-3 input-box">
-                    <button type="submit" class="btn btn-rounded-pill " name="btn-signup">Sign up</button>
-                    <button type="button" class="btn btn-rounded-pill ">
-                        <a class="text-decoration-none text-dark" href="login.php">Log in</a>
+                    <button type="submit" class="btn btn-trans " name="btn-signup">SIGN UP</button>
+                    <button type="button" class="btn btn-trans ">
+                        <a class="text-decoration-none text-dark" href="login.php">LOG IN</a>
                     </button>
                 </div>
                 <div class="mb-3 input-box">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" value="<?= $uname ?>">
+                    <!-- <label for="username">Username</label> -->
+                    <input type="text" placeholder="Username" class="form-control" id="username" name="username" value="<?= $uname ?>">
                     <p class="text-danger"><?= $unameError ?></p>
                 </div>
 
                 <div class="mb-3 input-box">
-                    <label for="name">First name</label>
-                    <input type="text" class="form-control" id="name" name="first_name" value="<?= $fname ?>">
+                    <!-- <label for="name">First name</label> -->
+                    <input type="text" placeholder="First Name" class="form-control" id="name" name="first_name" value="<?= $fname ?>">
                     <p class="text-danger"><?= $fnameError ?></p>
                 </div>
 
                 <div class="mb-3 input-box">
-                    <label for="lastName">Last name</label>
-                    <input type="text" class="form-control" id="lastName" name="last_name" value="<?= $lname ?>">
+                    <!-- <label for="lastName">Last name</label> -->
+                    <input type="text" placeholder="Last Name" class="form-control" id="lastName" name="last_name" value="<?= $lname ?>">
                     <p class="text-danger"><?= $lnameError ?></p>
                 </div>
 
                 <div class="mb-3 input-box">
-                    <label for="image">Image</label>
+                    <!-- <label for="image">Image</label> -->
                     <input type="file" class="form-control" id="image" name="image">
                 </div>
 
                 <div class="mb-3 input-box">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="<?= $email ?>">
+                    <!-- <label for="email">Email</label> -->
+                    <input type="email" placeholder="Email addresse" class="form-control" id="email" name="email" value="<?= $email ?>">
                     <p class="text-danger"><?= $emailError ?></p>
                 </div>
 
                 <div class="mb-3 input-box">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password">
+                    <!-- <label for="password">Password</label> -->
+                    <input type="password" placeholder="Password" class="form-control" id="password" name="password">
                     <p class="text-danger"><?= $passError ?></p>
                 </div>
 
@@ -169,7 +169,7 @@ if (isset($_POST['btn-signup'])) {
                     <input type="checkbox" onclick="myFunction()"> Show Password
                 </div>
                 <div class="mb-3 input-box">
-                    <button type="submit" class="btn btn-rounded-pill " name="btn-signup">Sign up</button>
+                    <button type="submit" class="btn btn-signup " name="btn-signup">SIGN UP</button>
 
                 </div>
 
