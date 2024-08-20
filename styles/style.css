@@ -36,6 +36,9 @@ footer .container {
   max-width: 1920px;
   margin: 0 auto;
 }
+
+
+
 /* Login / Register  start */
 .btn-trans {
   display: block;
@@ -55,22 +58,23 @@ footer .container {
 
 
 body {
-  display: flex;
+
   justify-content: center;
   align-items: center;
   height: 100vh; 
   
 }
 
+/* Whole  form in this div */
 .reglog {
+  margin: 10% auto;
   width: 100%; 
-  max-width: 350px; 
+  max-width: 400px; 
   padding: 20px;
   background-color: white; 
-  
   border-radius: 8px; 
 }
-
+/*  */
 h1 {
   text-align: center;
   margin-bottom: 20px;
@@ -80,7 +84,7 @@ h2 {
   font-size: 50px;
 
 }
-
+ /*  Form inputs */
 .input-box {
   margin-bottom: 15px;
 }
@@ -107,10 +111,21 @@ input[type="submit"] {
   border: none;
 }
 
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+}
+.form-control {
+  border: none;
+  border-bottom: rgb(107, 106, 106) 1px solid;
+  border-radius: 0;
+} 
+/* Btns input form */
+
 input[type="submit"]:hover {
   background-color: black;
-}
-
+} 
 a.btn-signup {
   text-align: center;
   color: white;
@@ -119,16 +134,63 @@ a.btn-signup {
   border: none;
 }
 
-a.tn-signup:hover {
-  background-color: #ffffff;
+.btn-signup:hover {
+  background-color: #717070;
+  color: white;
 }
 
-label {
-  font-size: 14px;
-  font-weight: bold;
-}
-.form-control {
-  border: none;
-  border-bottom: black 1px solid;
-  border-radius: 0;
-} 
+
+
+
+/* Contact us */
+
+
+.fa {
+  color: black;
+ }
+
+.full{ 
+  margin: 10% auto;
+  width: 50%; 
+  border-radius: 5px; 
+ 
+
+  } 
+  .full h3{ 
+  text-align: center; 
+  font-size: 2rem; 
+  display:block; 
+  margin: 2%; 
+  margin-bottom: 0; 
+  } 
+
+  .rt{ 
+  padding: 2%; 
+  margin: 2%; 
+
+  } 
+  .lt textarea{ 
+  width: 94%; 
+  margin-left: 2.8%; 
+  } 
+  button{ 
+  margin-top: 2%; 
+  } 
+  .list-item{ 
+  margin-bottom: 2%; 
+  list-style-type: none; 
+  } 
+  .list-item span{ 
+  margin-left: 10px; 
+  font-size: 1.4rem; 
+  } 
+  .list-item a{ 
+  color: rgb(0, 0, 0); 
+  display: inline-block; 
+  } 
+  .list-item a:hover{ 
+  text-decoration: underline; 
+  } 
+
+    
+ 
