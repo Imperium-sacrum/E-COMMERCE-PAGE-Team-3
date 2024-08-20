@@ -86,8 +86,12 @@ if (isset($_POST["login-btn"])) {
 </head>
 
 <body>
+    <?php include 'components/navbar.php';
+    ?>
     <div class="reglog">
         <div class="reglog_content">
+
+
 
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" autocomplete="off" enctype="multipart/form-data" method="POST" class="mx-auto">
                 <h1 class="mb-3">Hello</h1>
@@ -123,6 +127,7 @@ if (isset($_POST["login-btn"])) {
         </div>
     </div>
 
+
     <script>
         function myFunction() {
             var x = document.getElementById("myInput");
@@ -133,6 +138,8 @@ if (isset($_POST["login-btn"])) {
             }
         }
     </script>
+    <?php include 'components/footer.php';
+    ?>
 
 </body>
 
