@@ -10,7 +10,7 @@
 //     exit();
 // }
 
-require_once "../db_components/db_connect.php";
+require_once "../../db_components/db_connect.php";
 $id = $_GET["id"];
 $sql = "SELECT * FROM `products` WHERE product_id = {$id}";
 $result = mysqli_query($connect, $sql);
