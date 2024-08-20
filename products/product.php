@@ -3,11 +3,11 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 ob_start();
-// session_start();
-// if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
-//     header("Location: login.php");
-//     exit();
-// }
+session_start();
+if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
+    header("Location: login.php");
+    exit();
+}
 
 require_once "../db_components/db_connect.php";
 
