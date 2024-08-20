@@ -41,10 +41,10 @@ if (mysqli_num_rows($result) == 0) {
   <div class='description'>
     <h2>{$row["product_name"]}</h2>
     <h4></h4>
-    <h1>{$row["price"]}</h1>
+    <h1>€ {$row["price"]}</h1>
     <p>{$row["description"]}</p>
-    <button>Add to Cart</button>
-    <button>Details</button>
+    <button><a href='order.php?index={$row["product_id"]}'>Add to Cart</a></button>
+    <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
   </div>
 </div>
 </div>
