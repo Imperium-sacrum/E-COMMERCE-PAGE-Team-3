@@ -4,10 +4,11 @@
 }
 
 #cards-body {
-  background: #A9B388;
+  background: #fefae0c7;
   font-family: "Raleway";
 }
 .card {
+  border-radius: 0;
   width: 650px;
   height: 400px;
   background: white;
@@ -19,7 +20,7 @@
   transition: all 0.3s;
 }
 .card:hover {
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.503), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.316), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 660px;
   height: 410px;
 }
