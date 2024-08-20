@@ -15,7 +15,7 @@ body {
   min-height: 100vh;
   background-color: var(--cornsilk);
   color: var(--dark-olive-green);
-  font-family: Arial, sans-serif;
+  
 }
 
 .hero {
@@ -391,8 +391,9 @@ footer .btn-primary:hover {
 h1 {
   text-align: center;
   margin-bottom: 20px;
+  font-size: 50px
 }
-h2 {
+#h2-big {
   text-align: center;
   font-size: 50px;
 }
@@ -500,4 +501,6 @@ a.btn-signup {
   text-decoration: underline; 
   } 
 
-    
+
+
+  

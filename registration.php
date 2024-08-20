@@ -123,7 +123,7 @@ if (isset($_POST['btn-signup'])) {
         <div class="reglog_content">
 
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="POST" class="mx-auto">
-                <h2 class="mb-3">Hello</h2>
+                <h1 class="mb-3">Hello</h1>
                 <div class="mb-3 input-box d-flex">
                     <button type="submit" class="btn btn-trans " name="btn-signup">SIGN UP</button>
                     <button type="button" class="btn btn-trans ">
