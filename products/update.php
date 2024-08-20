@@ -19,7 +19,7 @@ $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
 
 // post method
-if (isset($_POST["create"])) {
+if (isset($_POST["update"])) {
     $name = cleanInput($_POST["name"]);
     $description = cleanInput($_POST["description"]);
     $price = cleanInput($_POST["price"]);
