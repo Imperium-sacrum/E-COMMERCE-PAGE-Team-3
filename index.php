@@ -33,8 +33,6 @@ require_once  "db_components/db_connect.php";
 
     <!-- Index File goes here -->
 
-
-
     <!-- Footer start -->
     <?php include 'components/footer.php';
     ?>
