@@ -24,6 +24,35 @@ body {
   padding: 50px 0;
   text-align: center;
 }
+
+p{
+  font-size: 12px;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.carousel-caption h5, .carousel-caption{
+  margin: 0;
+  padding: 0;
+  color: var(--cornsilk);
+  font-size: 50px;
+}
+
+.carousel-caption .btn {
+  margin-top: 15px;
+}
+
+.carousel-item img {
+  height: 80vh;
+  object-fit: cover;
+}
+
 /* Navbar */
 .search-bar input {
   width: 200px;
@@ -66,14 +95,14 @@ body {
 
 .btn-outline-secondary:hover {
   background-color: var(--laurel-green);
-  color: white;
+  /* color: white; */
 }
 
 .btn-primary {
   background-color: var(--highlight-green); 
   border-color: var(--highlight-green);
   transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-  color: white; 
+  /* color: white;  */
 }
 
 .btn-primary:hover {
@@ -81,20 +110,13 @@ body {
   border-color: var(--russet);
 }
 
-.content-wrapper {
-  flex-grow: 1;
-  padding-bottom: 120px; 
-}
-
-
-/* Footer */
+/* Footer */ 
 footer {
   background-color: var(--lemon-meringue);
   text-align: center;
   padding: 40px 20px;
   color: var(--dark-olive-green);
   width: 100%;
-  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
@@ -208,21 +230,6 @@ footer .btn-primary:hover {
   font-size: 3rem;
 }
 
-.hero p {
-  font-size: 1.2rem;
-}
-
-.hero .btn-outline-light {
-  border-color: var(--cornsilk);
-  color: var(--cornsilk);
-}
-
-.hero .btn-outline-light:hover {
-  background-color: var(--russet);
-  border-color: var(--russet);
-  color: white;
-}
-
 /* Content Sections */
 .content-section {
   padding: 2rem 1rem;
@@ -264,7 +271,6 @@ h1 {
 #h2-big {
   text-align: center;
   font-size: 50px;
-
 }
  /*  Form inputs */
 .input-box {
@@ -321,11 +327,7 @@ a.btn-signup {
   color: white;
 }
 
-
-
-
 /* Contact us */
-
 
 .fa {
   color: black;

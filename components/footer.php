@@ -38,6 +38,13 @@
                 </form>
             </div>
         </div>
+        <i data-star="0.5"></i>
+<i data-star=".5"></i>
+<i data-star="1"></i>
+<i data-star="2"></i>
+<i data-star="2.8"></i>
+<i data-star="3.3"></i>
+<i data-star="4.2"></i>
 
         <!-- Bottom Footer Links -->
         <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
