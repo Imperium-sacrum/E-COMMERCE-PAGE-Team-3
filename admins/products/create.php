@@ -8,8 +8,8 @@
 //     header("Location: ../homepage.php");
 //     exit();
 // }
-require_once "../db_components/db_connect.php";
-require_once "../db_components/file_upload.php";
+require_once "../../db_components/db_connect.php";
+require_once "../../db_components/file_upload.php";
 $error = false;
 
 $name = $image = $description = $price = $category = $discount = $msgError = "";
@@ -36,7 +36,7 @@ if (isset($_POST["create"])) {
 
 
         // query
-        $sql = "INSERT INTO `products`( `product_name`, `description`, `price`, `category_id`, `discount_id`,`image`) VALUES ('{$name}','{$description}','{$price}','{$category}','{$discount}','{$image[0]}')";
+        $sql = "INSERT INTO `products`( `product_name`, `description`, `price`, `category_id`, `discount_id`, `image`) VALUES ('{$name}','{$description}','{$price}','{$category}','{$discount}','{$image[0]}')";
 
         // run the query
         $result = mysqli_query($connect, $sql);
@@ -63,9 +63,7 @@ if (isset($_POST["create"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
 
 </head>
 

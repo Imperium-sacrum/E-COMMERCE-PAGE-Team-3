@@ -8,8 +8,8 @@
 //     header("Location: ../homepage.php");
 //     exit();
 // }
-require_once "../db_components/db_connect.php";
-require_once "../db_components/file_upload.php";
+require_once "../../db_components/db_connect.php";
+require_once "../../db_components/file_upload.php";
 $id = $_GET["id"];
 
 // query
@@ -19,7 +19,7 @@ $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
 
 // post method
-if (isset($_POST["update"])) {
+if (isset($_POST["create"])) {
     $name = cleanInput($_POST["name"]);
     $description = cleanInput($_POST["description"]);
     $price = cleanInput($_POST["price"]);
