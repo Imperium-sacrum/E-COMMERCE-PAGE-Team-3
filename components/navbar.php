@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="" alt="Brand Logo" style="height: 50px;">
+                <img src="/images/bokbok.jpg" alt="Brand Logo" style="height: 50px;">
                 SomethingSomethingFood
             </a>
 
@@ -21,10 +21,7 @@
                         <a class="nav-link" href="#">Beverages</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Snacks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Desserts</a>
+                        <a class="nav-link" href="#">Other</a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center ms-auto">

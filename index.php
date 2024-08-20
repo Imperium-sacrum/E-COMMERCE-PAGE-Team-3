@@ -41,13 +41,6 @@ require_once  "db_components/db_connect.php";
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
-     document.querySelector('a[aria-label="Search"]').addEventListener('click', function (e) {
-            e.preventDefault();
-            let searchTerm = prompt("Enter search term:");
-            if (searchTerm) {
-                alert("Searching for: " + searchTerm);
-
-            }
-        });
+    // Searching code 
 </script>
 </html>

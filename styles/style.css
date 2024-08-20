@@ -66,14 +66,14 @@ body {
 
 .btn-outline-secondary:hover {
   background-color: var(--laurel-green);
-  color: white;
+  /* color: white; */
 }
 
 .btn-primary {
   background-color: var(--highlight-green); 
   border-color: var(--highlight-green);
   transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-  color: white; 
+  /* color: white;  */
 }
 
 .btn-primary:hover {
@@ -81,20 +81,13 @@ body {
   border-color: var(--russet);
 }
 
-.content-wrapper {
-  flex-grow: 1;
-  padding-bottom: 120px; 
-}
-
-
-/* Footer */
+/* Footer */ 
 footer {
   background-color: var(--lemon-meringue);
   text-align: center;
   padding: 40px 20px;
   color: var(--dark-olive-green);
   width: 100%;
-  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
@@ -212,17 +205,6 @@ footer .btn-primary:hover {
   font-size: 1.2rem;
 }
 
-.hero .btn-outline-light {
-  border-color: var(--cornsilk);
-  color: var(--cornsilk);
-}
-
-.hero .btn-outline-light:hover {
-  background-color: var(--russet);
-  border-color: var(--russet);
-  color: white;
-}
-
 /* Content Sections */
 .content-section {
   padding: 2rem 1rem;
@@ -262,7 +244,6 @@ h1 {
 h2 {
   text-align: center;
   font-size: 50px;
-
 }
 
 .input-box {

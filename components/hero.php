@@ -1,28 +1,23 @@
 <div class="hero">
-        <div class="container-fluid py-5">
-            <h1 class="display-5 fw-bold"> SomethingSomethingFood</h1>
-            <button class="btn btn-outline-light" type="button">Explore Now</button>
-        </div>
-
-        <!-- Carousel Section
         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="path/to/product1.jpg" class="d-block w-100" alt="Product 1">
+                    <img src="images/bokbok.jpg" class="d-block w-100" alt="Product 1">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Product 1</h5>
                         <p>Description of Product 1.</p>
+                        <button class="btn btn-outline-light" type="button">Explore Now</button>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="path/to/product2.jpg" class="d-block w-100" alt="Product 2">
+                    <img src="images/bokbok2.jpg" class="d-block w-100" alt="Product 2">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Product 2</h5>
                         <p>Description of Product 2.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="path/to/product3.jpg" class="d-block w-100" alt="Product 3">
+                    <img src="images/bokbok3.jpg" class="d-block w-100" alt="Product 3">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Product 3</h5>
                         <p>Description of Product 3.</p>
