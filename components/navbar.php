@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="/images/logo2.jpg" alt="Brand Logo" style="height: 70px;">
+                <img src="/images/logo2.jpg" alt="Brand Logo" style="height: 60px;">
                 AJYKZJ
             </a>
 
