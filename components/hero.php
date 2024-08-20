@@ -7,7 +7,7 @@
                     <h5>Offers for every taste</h5>
                     <p>Save up to 50% on seleced products. 100% Organic</p>
                     <p>As long as stock is available</p>
-                    <button class="btn btn-outline-light" type="button">Explore now</button>
+                    <a href="../products/product.php" class="btn btn-outline-light" type="button">Explore now</a>>
                 </div>
             </div>
             <div class="carousel-item">
