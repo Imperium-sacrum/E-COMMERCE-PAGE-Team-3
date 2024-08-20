@@ -24,6 +24,35 @@ body {
   padding: 50px 0;
   text-align: center;
 }
+
+p{
+  font-size: 12px;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.carousel-caption h5, .carousel-caption{
+  margin: 0;
+  padding: 0;
+  color: var(--cornsilk);
+  font-size: 50px;
+}
+
+.carousel-caption .btn {
+  margin-top: 15px;
+}
+
+.carousel-item img {
+  height: 80vh;
+  object-fit: cover;
+}
+
 /* Navbar */
 .search-bar input {
   width: 200px;
@@ -201,10 +230,6 @@ footer .btn-primary:hover {
   font-size: 3rem;
 }
 
-.hero p {
-  font-size: 1.2rem;
-}
-
 /* Content Sections */
 .content-section {
   padding: 2rem 1rem;
@@ -301,11 +326,7 @@ a.btn-signup {
   color: white;
 }
 
-
-
-
 /* Contact us */
-
 
 .fa {
   color: black;
@@ -355,4 +376,3 @@ a.btn-signup {
   } 
 
     
- 

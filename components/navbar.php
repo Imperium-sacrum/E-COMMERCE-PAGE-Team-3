@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="/images/bokbok.jpg" alt="Brand Logo" style="height: 50px;">
-                SomethingSomethingFood
+                <img src="/images/logo2.jpg" alt="Brand Logo" style="height: 70px;">
+                AJYKZJ
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +18,7 @@
                         <a class="nav-link" href="#">Vegetables</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Beverages</a>
+                        <a class="nav-link" href="#">Grains</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Other</a>
