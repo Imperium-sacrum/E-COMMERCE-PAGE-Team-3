@@ -43,7 +43,7 @@ if (isset($_POST["update"])) {
         // run the query
         $update_result = mysqli_query($connect, $update_sql);
         if ($update_result) {
-            header("location: index.php");
+            header("location:../dashboard.html");
         }
     }
 }

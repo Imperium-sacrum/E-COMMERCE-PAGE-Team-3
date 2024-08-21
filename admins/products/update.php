@@ -95,7 +95,7 @@ if (isset($_POST["update"])) {
     </div";
         }
         // redirect 
-        header("location:../../cards.php");
+        header("location:../dashboard.html");
     } ?>
 
 

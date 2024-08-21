@@ -20,4 +20,4 @@ $row = mysqli_fetch_assoc($result);
 
 $delete_sql = "DELETE FROM `discounts` WHERE discount_id  = {$id}";
 mysqli_query($connect, $delete_sql);
-header("location:index.php");
+header("location:../dashboard.html");
