@@ -10,6 +10,7 @@
 // }
 require_once "../../db_components/db_connect.php";
 require_once "../../db_components/file_upload.php";
+
 $id = $_GET["id"];
 
 // query
