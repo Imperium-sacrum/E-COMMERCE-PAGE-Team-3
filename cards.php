@@ -88,15 +88,17 @@ if (mysqli_num_rows($resultSearch) == 0) {
        <p class='product-availability'>Status: {$availabilityStatus}</p>
        
       <div class='card-info d-flex'>
-      <button><a href='order.php?index={$row["product_id"]}'>Add to Cart</a></button>
-  <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
+      <button onclick='addToCart({$row["product_id"]})'>Add to Cart</button>
+      <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
     </div>
     </div>
   </div>
     
-</div> ";
-  }
+</div>";
 }
+
+}
+
 // TEST
 //  OR `` LIKE'%$search%
 
@@ -147,43 +149,43 @@ mysqli_close($connect);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="stylesheet" href="styles/cards.css">
   <link rel="stylesheet" href="styles/style.css">
 </head>
-<a href=""></a>
 
-
-<body id=cards-body>
-  <?php include 'components/navbar.php';
-  ?>
+<body id="cards-body">
+  <?php include 'components/navbar.php'; ?>
   <h1 class="mt-5 text-dark">PRODUCTS</h1>
   <form role="search">
     <input class="form-control" type="search" value="<?php echo ($search) ?>" placeholder="Product or Category" aria-label="Search" name="search">
     <button class="btn-create" type="submit">Search</button>
   </form>
 
-
-  <div class="categories ">
-    <ul class="categ-li  d-flex flex-row text-dark justify-content-start">
-      <!-- Loop caterory -->
+  <div class="categories">
+    <ul class="categ-li d-flex flex-row text-dark justify-content-start">
       <li><a href="cards.php?category=">ALL</a></li>
       <?= $category_list ?>
-
-
-
     </ul>
   </div>
-  <div class="container-cards  section-card mt-5">
+
+  <div class="container-cards section-card mt-5">
     <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-1 row-cols-xs-1">
       <?= $cards ?>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
 
-  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- I touched this part to make it work -->
+  <script>
+   function addToCart(productId) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "cart_action.php", true); 
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("product_id=" + productId);
+}
+  </script>
 </body>
 
 </html>
