@@ -22,4 +22,4 @@ if ($row["picture"] != "default.jpg") {
 }
 $delete_sql = "DELETE FROM `products` WHERE product_id = {$id}";
 mysqli_query($connect, $delete_sql);
-header("location:index.php");
+header("location:../dashboard.html");

@@ -4,10 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <meta
-      name="author"
-      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
-    />
     <meta name="generator" content="Hugo 0.122.0" />
     <title>Dashboard Admins</title>
 
@@ -120,8 +116,8 @@
     <link href="./styles/dashboard.css" rel="stylesheet" />
   </head>
   <body>
-    <div
-      class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
+    <!--<div
+     class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
     >
       <button
         class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
@@ -162,7 +158,7 @@
           ></button>
         </li>
       </ul>
-    </div>
+    </div> -->
 
     <header
       class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow"
@@ -266,6 +262,16 @@
                 <li class="nav-item">
                   <a
                     class="nav-link d-flex align-items-center gap-2"
+                    href=""
+                    id="categories"
+                  >
+                    <i class="fa-solid fa-cart-shopping"></i> Products
+                    Categories
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link d-flex align-items-center gap-2"
                     href="#"
                     id="orders"
                   >
@@ -303,47 +309,12 @@
               </ul>
 
               <hr class="my-3" />
+              <div class="d-flex justify-content-center" id="createdBtn"></div>
             </div>
           </div>
         </div>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="main">
-          <!-- <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-          >
-            <h1 class="h2">Dashboard</h1>
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Share
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Export
-                </button>
-              </div>
-              <button
-                type="button"
-                class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1"
-              >
-
-                This week
-              </button>
-            </div>
-          </div>
-
-          <canvas
-            class="my-4 w-100"
-            id="myChart"
-            width="900"
-            height="380"
-          ></canvas>
-
-          <h2>Section title</h2>
-            <div>
-
-            </div>
-          </div> -->
-        </main>
+        <main class="col-md-9 ms-sm-auto col-lg-10" id="main"></main>
       </div>
     </div>
 

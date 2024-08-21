@@ -10,9 +10,30 @@
 // }
 require_once "../../db_components/db_connect.php";
 require_once "../../db_components/file_upload.php";
+
+
+// category table
+$sql_category = "SELECT * FROM `product_categories`";
+$result_category = mysqli_query($connect, $sql_category);
+$categories = mysqli_fetch_all($result_category, MYSQLI_ASSOC);
+$option_category = "";
+foreach ($categories as  $row) {
+    $option_category .= "<option value='{$row["category_id"]}'>{$row["category_name"]}</option>";
+}
+
+// discount table
+$sql_discount = "SELECT * FROM `discounts`";
+$result_discount = mysqli_query($connect, $sql_discount);
+$categories = mysqli_fetch_all($result_discount, MYSQLI_ASSOC);
+$option_discount = "";
+foreach ($categories as  $value) {
+    $option_discount .= "<option value='{$value["discount_id"]}'>{$value["discount_name"]}</option>";
+}
+
+
 $error = false;
 
-$name = $image = $description = $price = $category = $discount = $msgError = "";
+$name = $image = $description = $price = $category = $discount = $msgError = $vailability = "";
 if (isset($_POST["create"])) {
     $name = cleanInput($_POST["name"]);
     $description = cleanInput($_POST["description"]);
@@ -20,6 +41,7 @@ if (isset($_POST["create"])) {
     $image =  fileUpload($_FILES["image"], "product");
     $category = cleanInput($_POST["category"]);
     $discount = cleanInput($_POST["discount"]);
+    $availability = cleanInput($_POST["availability"]);
 
 
 
@@ -28,7 +50,7 @@ if (isset($_POST["create"])) {
     // validation:
 
 
-    if (empty($name) & empty($price) & empty($description) & empty($image) & empty($category) & empty($discount)) {
+    if (empty($name) & empty($price) & empty($description) & empty($image) & empty($category) & empty($discount) & empty($availability)) {
         $error = true;
         $msgError = "Required field";
     }
@@ -36,7 +58,7 @@ if (isset($_POST["create"])) {
 
 
         // query
-        $sql = "INSERT INTO `products`( `product_name`, `description`, `price`, `category_id`, `discount_id`, `image`) VALUES ('{$name}','{$description}','{$price}','{$category}','{$discount}','{$image[0]}')";
+        $sql = "INSERT INTO `products`( `product_name`, `description`, `price`, `category_id`, `discount_id`, `image`,`availability`) VALUES ('{$name}','{$description}','{$price}','{$category}','{$discount}','{$image[0]}','{$availability}')";
 
         // run the query
         $result = mysqli_query($connect, $sql);
@@ -45,14 +67,14 @@ if (isset($_POST["create"])) {
             $alarm =  "<div class='alert alert-success' role='alert'>
                   Product successfully created. 
             </div";
-            $name = $image = $description = $price = $category = $discount = "";
+            $name = $image = $description = $price = $category = $discount = $availability = "";
         } else {
             $alarm = "<div class='alert alert-danger' role='alert'>
                Something went wrong, please try again!  
             /div";
         }
-        // // redirect to index.php
-        // header("refresh: 3; url=index.php");
+        // redirect
+        header("refresh: 3; url=../../cards.php");
     }
 }
 ?>
@@ -97,19 +119,27 @@ if (isset($_POST["create"])) {
                 <div class="mb-3 ">
                     <select class='form-select' name="category">
                         <option value="" selected>---Select Category---</option>
-                        <option value="1">test 1</option>
-                        <option value="2">test 2</option>
+                        <?= $option_category ?>
+
+                    </select>
+                </div>
+                <div class="mb-3 ">
+                    <select class='form-select' name="availability">
+                        <option value="" selected>---Select availability---</option>
+                        <option value="1">Available</option>
+                        <option value="0">Not available</option>
 
                     </select>
                 </div>
                 <div class="mb-3 ">
                     <select class='form-select' name="discount">
                         <option value="" selected>---Select Discount---</option>
-                        <option value="1">sale 1</option>
-                        <option value="2">sale 2</option>
+                        <?= $option_discount ?>
+
 
                     </select>
                 </div>
+
                 <div class="mb-3"> <textarea class="form-control" id="exampleFormControlTextarea1" rows="" name="description" placeholder="Description"></textarea>
                 </div>
 

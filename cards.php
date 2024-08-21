@@ -11,10 +11,25 @@ ini_set('display_errors', 1);
 
 require_once "db_components/db_connect.php";
 
-$categorySql = "SELECT * FROM `product_categories`";
-$categoryResult = mysqli_query($connect, $categorySql);
-$category = "";
-$category = mysqli_fetch_all($categoryResult, MYSQLI_ASSOC);
+
+// $category = "";
+
+// $category = isset($_GET['category']);
+
+// if (!empty($category)) {
+//   $category = "SELECT * FROM `products`";
+// } else {
+//   $categoryResult = mysqli_query($connect, $category);
+//   $category = [];
+//   $category = mysqli_fetch_all($categoryResult, MYSQLI_ASSOC);
+
+//   $category = "SELECT `category_id`, `category_name` FROM `product_categories`";
+// }
+
+
+
+
+
 
 
 $sql = "SELECT * FROM `products`";
@@ -27,27 +42,21 @@ if (mysqli_num_rows($result) == 0) {
   $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
   foreach ($rows as $key => $row) {
     $cards .= "<div>
-       <div class='card my-3'>
-  <nav>
-    <a href='../index.php'><svg class='arrow' version='1.1' viewBox='0 0 512 512' width='512px' xml:space='preserve' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><polygon points='352,115.4 331.3,96 160,256 331.3,416 352,396.7 201.5,256 ' stroke='#727272'/></svg></a>
-    Back to the products
-    <svg class='heart' version='1.1' viewBox='0 0 512 512' width='512px' xml:space='preserve' stroke='#727272' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><path d='M340.8,98.4c50.7,0,91.9,41.3,91.9,92.3c0,26.2-10.9,49.8-28.3,66.6L256,407.1L105,254.6c-15.8-16.6-25.6-39.1-25.6-63.9  c0-51,41.1-92.3,91.9-92.3c38.2,0,70.9,23.4,84.8,56.8C269.8,121.9,302.6,98.4,340.8,98.4 M340.8,83C307,83,276,98.8,256,124.8  c-20-26-51-41.8-84.8-41.8C112.1,83,64,131.3,64,190.7c0,27.9,10.6,54.4,29.9,74.6L245.1,418l10.9,11l10.9-11l148.3-149.8  c21-20.3,32.8-47.9,32.8-77.5C448,131.3,399.9,83,340.8,83L340.8,83z' stroke='#727272'/></svg>
-  </nav>
-  <div class='d-flex'>
-  <div class='photo'>
-    <img src='images/{$row["image"]}'>
-  </div>
-
-  <div class='description'>
-    <h2>{$row["product_name"]}</h2>
-    <h4></h4>
-    <h1>€ {$row["price"]}</h1>
-    <p>{$row["description"]}</p>
-    <button><a href='order.php?index={$row["product_id"]}'>Add to Cart</a></button>
+     <div class='product-card'>
+      <div class='card-image'>
+       <img src='images/{$row["image"]}'>
+      </div>
+      <div class='card-info'>
+        <h2 class='product-name'>{$row["product_name"]}</h2>
+        <p class='product-price'>€ {$row["price"]}</p>
+        <p class='product-colors'>{$row["availability"]}</p>
+        <div class='card-info d-flex'>
+        <button><a href='order.php?index={$row["product_id"]}'>Add to Cart</a></button>
     <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
-  </div>
-</div>
-</div>
+      </div>
+      </div>
+    </div>
+      
 </div>
 
        
@@ -74,16 +83,30 @@ mysqli_close($connect);
 </head>
 <a href=""></a>
 
+
 <body id=cards-body>
   <?php include 'components/navbar.php';
   ?>
+  <h1 class="mt-5 text-dark">PRODUCTS</h1>
+  <div class="categories ">
+    <ul class="categ-li  d-flex flex-row text-dark justify-content-start">
+      <li><a href="cards.php?category=Meat">Meat</a></li>
+      <li><a href="cards.php?category=Vegetables">Vegetables</a></li>
+      <li><a href="cards.php?category=Grains">Grains</a></li>
+      <li><a href="cards.php?category=Other">Other</a></li>
 
-  <div class="section-card container">
-    <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
+
+    </ul>
+  </div>
+  <div class="section-card mt-5">
+    <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-1 row-cols-xs-1">
       <?= $cards ?>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
+
+  </div>
 </body>
 
 </html>
