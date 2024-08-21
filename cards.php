@@ -12,14 +12,24 @@ ini_set('display_errors', 1);
 require_once "db_components/db_connect.php";
 
 
+// $category = "";
+
+// $category = isset($_GET['category']);
+
+// if (!empty($category)) {
+//   $category = "SELECT * FROM `products`";
+// } else {
+//   $categoryResult = mysqli_query($connect, $category);
+//   $category = [];
+//   $category = mysqli_fetch_all($categoryResult, MYSQLI_ASSOC);
+
+//   $category = "SELECT `category_id`, `category_name` FROM `product_categories`";
+// }
 
 
 
-$categorySql = "SELECT `category_id`, `category_name` FROM `product_categories`";
 
-$categoryResult = mysqli_query($connect, $categorySql);
-$category = [];
-$category = mysqli_fetch_all($categoryResult, MYSQLI_ASSOC);
+
 
 
 $sql = "SELECT * FROM `products`";
@@ -80,10 +90,12 @@ mysqli_close($connect);
   <h1 class="mt-5 text-dark">PRODUCTS</h1>
   <div class="categories ">
     <ul class="categ-li  d-flex flex-row text-dark justify-content-start">
-      <li>Meat</li>
-      <li>Vegetables</li>
-      <li>Grains</li>
-      <li>Other</li>
+      <li><a href="cards.php?category=Meat">Meat</a></li>
+      <li><a href="cards.php?category=Vegetables">Vegetables</a></li>
+      <li><a href="cards.php?category=Grains">Grains</a></li>
+      <li><a href="cards.php?category=Other">Other</a></li>
+
+
     </ul>
   </div>
   <div class="section-card mt-5">
