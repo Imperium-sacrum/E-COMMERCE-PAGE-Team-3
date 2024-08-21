@@ -50,8 +50,8 @@ if (isset($_POST["create"])) {
                Something went wrong, please try again!  
             /div";
         }
-        // // redirect to index.php
-        // header("location:index.php");
+        // // redirect 
+        header("refresh: 3; url=../dashboard.html");
     }
 }
 ?>
