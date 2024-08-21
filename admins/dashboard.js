@@ -118,7 +118,7 @@ function fetch(source = "products") {
           let tableElement = document.getElementById("main");
           let createdBtn = document.getElementById("createdBtn");
           tableElement.innerHTML = "";
-
+          createdBtn.innerHTML = "";
           if (tableElement) {
             if (source == "products") {
               createdBtn.innerHTML = `<a class="btn btn-success" href="./products/create.php">Create New Element</a>`;

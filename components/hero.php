@@ -7,7 +7,7 @@
                     <h5>Offers for every taste</h5>
                     <p>Save up to 50% on seleced products. 100% Organic</p>
                     <p>As long as stock is available</p>
-                    <a href="../products/product.php" class="btn btn-outline-light" type="button">Explore now</a>>
+                    <a href="../products/product.php" class="btn btn-outline-light" type="button">Explore now</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -37,6 +37,7 @@
         </button>
     </div>
 </div>
+
     <!-- Bestseller Content Section -->
     <section class="favorites-section">
         <h1>Best Sellers</h1>
@@ -63,6 +64,8 @@
             </div>
         </div>
     </section>
+
+<!-- whatever you wanna name it section -->
     <div class="container py-4 content-section">
         <div class="row align-items-md-stretch">
             <div class="col-md-6">
