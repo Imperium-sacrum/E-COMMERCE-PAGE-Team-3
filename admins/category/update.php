@@ -20,7 +20,7 @@ $error = false;
 $id = $_GET["id"];
 
 // query
-$sql = "SELECT * FROM `discounts` WHERE discount_id = {$id}";
+$sql = "SELECT * FROM `product_categories` WHERE category_id = {$id}";
 // run the query
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
@@ -29,17 +29,15 @@ $row = mysqli_fetch_assoc($result);
 // Handle form submission
 if (isset($_POST["update"])) {
     $name = cleanInput($_POST["name"]);
-    $percentage = cleanInput($_POST["percentage"]);
-    $start = cleanInput($_POST["start"]);
-    $end = cleanInput($_POST["end"]);
+
 
     // Validation
-    if (empty($name) || empty($percentage) || empty($start)) {
+    if (empty($name)) {
         $error = true;
         $msgError = "Required fields cannot be empty";
     } else {
 
-        $update_sql = " UPDATE `discounts` SET `discount_name`='$name',`discount_percentage`='$percentage',`start_date`='$start',`end_date`='$end' WHERE discount_id = {$id}";
+        $update_sql = " UPDATE `product_categories` SET `category_name`='{$name}' WHERE category_id = {$id}";
         // run the query
         $update_result = mysqli_query($connect, $update_sql);
         if ($update_result) {
@@ -76,29 +74,18 @@ if (isset($_POST["update"])) {
     </div";
             }
             // // redirect to index.php
-            // header("location:index.php");
+            header("location:../dashboard.html");
         } ?>
 
         <div class="container min-vh-100">
             <form enctype="multipart/form-data" method="POST" class="mx-auto w-50  my-5 shadow-lg p-3 mb-5 bg-body rounded">
-                <h5 class="my-4 d-flex justify-content-center"> Edit the Discount</h5>
+                <h5 class="my-4 d-flex justify-content-center"> Edit the Category</h5>
 
                 <div class="mb-3">
-                    <label for="discount_name" class="form-label">Discount Name</label>
-                    <input type="text" class="form-control" id="discount_name" name="name" required value="<?= $row["discount_name"] ?>">
+                    <label for="category_name" class="form-label">Category Name</label>
+                    <input type="text" class="form-control" id="category_name" name="name" required value="<?= $row["category_name"] ?>">
                 </div>
-                <div class="mb-3">
-                    <label for="discount_percentage" class="form-label">Discount Percentage</label>
-                    <input type="number" step="0.01" class="form-control" id="discount_percentage" name="percentage" required value="<?= $row["discount_percentage"] ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="start_date" class="form-label">Start Date</label>
-                    <input type="datetime-local" class="form-control" id="start_date" name="start" required value="<?= $row["start_date"] ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="end_date" class="form-label">End Date </label>
-                    <input type="datetime-local" class="form-control" id="end_date" name="end" required value="<?= $row["end_date"] ?>">
-                </div>
+
                 <input type="submit" class="btn btn-dark mb-5" value="Update" name="update">
             </form>
         </div>

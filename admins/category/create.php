@@ -8,18 +8,13 @@
 //     header("Location: ../homepage.php");
 //     exit();
 // }
-require_once "../db_components/db_connect.php";
+require_once "../../db_components/db_connect.php";
 $error = false;
 
 
 $name =  $msgError = "";
 if (isset($_POST["create"])) {
     $name = cleanInput($_POST["name"]);
-
-
-
-
-
 
 
     // validation:
@@ -48,8 +43,8 @@ if (isset($_POST["create"])) {
                Something went wrong, please try again!  
             /div";
         }
-        // // redirect to index.php
-        // header("refresh: 3; url=index.php");
+        // // redirect 
+        header("location:../dashboard.html");
     }
 }
 ?>
@@ -59,7 +54,7 @@ if (isset($_POST["create"])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Create Discount</title>
+    <title>Create Category</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -73,24 +68,13 @@ if (isset($_POST["create"])) {
     ?>
     <div class="container min-vh-100">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" enctype="multipart/form-data" method="POST" class="mx-auto w-50  my-5 shadow-lg p-3 mb-5 bg-body rounded">
-            <h5 class="my-4 d-flex justify-content-center"> Add a new Discount</h5>
+            <h5 class="my-4 d-flex justify-content-center"> Add a new Category</h5>
 
             <div class="mb-3">
-                <label for="discount_name" class="form-label">Discount Name</label>
+                <label for="discount_name" class="form-label">Category Name</label>
                 <input type="text" class="form-control" id="discount_name" name="name" required>
             </div>
-            <div class="mb-3">
-                <label for="discount_percentage" class="form-label">Discount Percentage</label>
-                <input type="number" step="0.01" class="form-control" id="discount_percentage" name="percentage" required>
-            </div>
-            <div class="mb-3">
-                <label for="start_date" class="form-label">Start Date</label>
-                <input type="datetime-local" class="form-control" id="start_date" name="start" required>
-            </div>
-            <div class="mb-3">
-                <label for="end_date" class="form-label">End Date </label>
-                <input type="datetime-local" class="form-control" id="end_date" name="end" required>
-            </div>
+
             <input type="submit" class="btn btn-dark mb-5" value="Create" name="create">
         </form>
     </div>

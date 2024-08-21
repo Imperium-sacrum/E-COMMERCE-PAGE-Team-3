@@ -8,7 +8,7 @@
 //     header("Location: ../homepage.php");
 //     exit();
 // }
-require_once "../db_components/db_connect.php";
+require_once "../../db_components/db_connect.php";
 $error = false;
 
 
@@ -51,7 +51,7 @@ if (isset($_POST["create"])) {
             /div";
         }
         // // redirect to index.php
-        // header("refresh: 3; url=index.php");
+        // header("location:index.php");
     }
 }
 ?>
