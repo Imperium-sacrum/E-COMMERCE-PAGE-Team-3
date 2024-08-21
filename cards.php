@@ -12,28 +12,28 @@ ini_set('display_errors', 1);
 require_once "db_components/db_connect.php";
 
 
-// $category = "";
 
-// $category = isset($_GET['category']);
+$condition = isset($_GET['category']) ? $_GET['category'] : "";
+$sqlCN = "SELECT * FROM product_categories";
+if (!empty($condition)) {
+  $sqlCN .= " WHERE category_name ='{$_GET['category']}'";
+  $resultCN = mysqli_query($connect, $sqlCN);
+  $row = mysqli_fetch_assoc($resultCN);
+}
 
-// if (!empty($category)) {
-//   $category = "SELECT * FROM `products`";
-// } else {
-//   $categoryResult = mysqli_query($connect, $category);
-//   $category = [];
-//   $category = mysqli_fetch_all($categoryResult, MYSQLI_ASSOC);
-
-//   $category = "SELECT `category_id`, `category_name` FROM `product_categories`";
-// }
-
-
-
+if (empty($condition)) {
+  $sqlcategory = "SELECT * FROM `products`";
+} else {
+  $sqlcategory = "SELECT * FROM `products` WHERE category_id= " . $row["category_id"];
+}
 
 
 
 
-$sql = "SELECT * FROM `products`";
-$result = mysqli_query($connect, $sql);
+
+
+
+$result = mysqli_query($connect, $sqlcategory);
 $cards = "";
 
 if (mysqli_num_rows($result) == 0) {
