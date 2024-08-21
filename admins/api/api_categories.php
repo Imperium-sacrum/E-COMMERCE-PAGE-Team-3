@@ -5,7 +5,7 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Method: GET");
 header("Access-Control-Allow-Origin: *");
 
-$sql = "SELECT * FROM `products_categories`";
+$sql = "SELECT * FROM `product_categories`";
 
 if ($result = mysqli_query($connect, $sql)) {
     if (mysqli_num_rows($result) > 0) {
