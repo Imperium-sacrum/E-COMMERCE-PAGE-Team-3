@@ -28,7 +28,7 @@ body {
 p{
   font-size: 12px;
 }
-
+/* Carousel */
 .carousel-caption {
   position: absolute;
   top: 50%;
@@ -53,37 +53,115 @@ p{
   object-fit: cover;
 }
 
-/* Navbar */
-.search-bar input {
-  width: 200px;
-  padding: 5px;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  outline: none;
+/* Navbar  */
+.cart-container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 1200px;
 }
 
-.search-bar button {
-  background-color: var(--russet);
+.cart-items {
+  flex: 2;
+  margin-right: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.item-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.item-details {
+  flex-grow: 1;
+}
+
+.item-details h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.item-details p {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.item-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantity-btn {
+  background-color: #e0e0e0;
   border: none;
-  border-radius: 0 4px 4px 0;
-  color: white;
-  padding: 6px 10px;
+  padding: 5px 10px;
+  margin: 0 5px;
   cursor: pointer;
+  border-radius: 4px;
 }
 
-.navbar-brand{
-  font-weight:  bolder;
+.item-quantity {
+  width: 50px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
-.navbar-nav .nav-link {
-  color: var(--russet);
-  font-weight: bold;
-  padding-left: 15px;
-  padding-right: 15px;
+.remove-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-.navbar-nav .nav-link:hover {
-  color: var(--highlight-green);
+.cart-summary {
+  flex: 1;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-summary h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.cart-summary p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.purchase-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 20px;
+  width: 100%;
 }
 
 /* Buttons */
@@ -423,7 +501,6 @@ input[type="submit"] {
   color: white;
   border: none;
 }
-
 
 label {
   font-size: 14px;
