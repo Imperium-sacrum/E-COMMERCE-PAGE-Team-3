@@ -37,10 +37,12 @@ $result = mysqli_query($connect, $sqlcategory);
 $cards = "";
 
 if (mysqli_num_rows($result) == 0) {
+
   $cards = "<p>No products found</p>";
 } else {
   $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
   foreach ($rows as $key => $row) {
+    $availabilityStatus = $row["availability"] == 1 ? "Available" : "Not Available";
     $cards .= "<div>
      <div class='product-card'>
       <div class='card-image'>
@@ -49,7 +51,7 @@ if (mysqli_num_rows($result) == 0) {
       <div class='card-info'>
         <h2 class='product-name'>{$row["product_name"]}</h2>
         <p class='product-price'>€ {$row["price"]}</p>
-        <p class='product-colors'>{$row["availability"]}</p>
+         <p class='product-availability'>Status: {$availabilityStatus}</p>
         <div class='card-info d-flex'>
         <button><a href='order.php?index={$row["product_id"]}'>Add to Cart</a></button>
     <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
@@ -94,6 +96,7 @@ mysqli_close($connect);
       <li><a href="cards.php?category=Vegetables">Vegetables</a></li>
       <li><a href="cards.php?category=Grains">Grains</a></li>
       <li><a href="cards.php?category=Other">Other</a></li>
+      <li><a href="cards.php?category=">All</a></li>
 
 
     </ul>
