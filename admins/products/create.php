@@ -74,7 +74,7 @@ if (isset($_POST["create"])) {
             /div";
         }
         // redirect
-        header("refresh: 3; url=../../cards.php");
+        header("location:../../cards.php");
     }
 }
 ?>

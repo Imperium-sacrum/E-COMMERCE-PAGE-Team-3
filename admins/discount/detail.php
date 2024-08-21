@@ -9,7 +9,7 @@
 //     exit();
 // }
 
-require_once "../db_components/db_connect.php";
+require_once "../../db_components/db_connect.php";
 
 // Fetch all discounts
 $sql = "SELECT * FROM discounts";

@@ -95,7 +95,7 @@ if (isset($_POST["update"])) {
     </div";
         }
         // redirect 
-        header("refresh: 3; url=../../cards.php");
+        header("location:../../cards.php");
     } ?>
 
 

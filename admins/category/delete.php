@@ -12,12 +12,11 @@
 
 require_once "../../db_components/db_connect.php";
 $id = $_GET["id"];
-$sql = "SELECT * FROM `discounts` WHERE discount_id = {$id}";
+$sql = "SELECT * FROM `product_categories` WHERE category_id = {$id}";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
 
 
-
-$delete_sql = "DELETE FROM `discounts` WHERE discount_id  = {$id}";
+$delete_sql = "DELETE FROM `product_categories` WHERE category_id = {$id}";
 mysqli_query($connect, $delete_sql);
-header("location:index.php");
+header("location:../dashboard.html");
