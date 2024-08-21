@@ -16,7 +16,7 @@ color: #333;
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--cornsilk);
@@ -60,7 +60,7 @@ p{
 }
 
 /* Navbar  */
-.container {
+.container-navbar {
   display: flex;
   justify-content: space-between;
   padding: 40px;
