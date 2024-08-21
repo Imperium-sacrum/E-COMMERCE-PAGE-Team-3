@@ -32,9 +32,15 @@
             <h2>
                 <li> Our Mission</li>
                 <div class="images">
-                    <img src="images/food1.jpg" alt="">
-                    <img src="images/food3.5.jpg" alt="">
-                    <img src="images/food3.jpg" alt="">
+                    <div class="img1">
+
+                    </div>
+                    <div class="img2">
+
+                    </div>
+                    <div class="img3">
+
+                    </div>
                 </div>
             </h2>
             <h2>
