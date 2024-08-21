@@ -64,8 +64,8 @@ if (isset($_POST["create"])) {
         Somthing went wrong, please try again!
     </div";
         }
-        // // redirect to index.php
-        // header("refresh: 3; url=index.php");
+        // redirect to index.php
+        // header("refresh: 3; url=./update.php");
     } ?>
 
     <main>
