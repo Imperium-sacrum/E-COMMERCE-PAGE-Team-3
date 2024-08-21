@@ -1,4 +1,5 @@
 const chartS = () => {
+  createdBtn.innerHTML = "";
   document.getElementById("main").innerHTML = `<div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
@@ -29,10 +30,6 @@ const chartS = () => {
             height="380"
           ></canvas>
 
-          <h2>Section title</h2>
-            <div>
-
-            </div>
           </div>`;
   const ctx = document.getElementById("myChart");
   // eslint-disable-next-line no-unused-vars
@@ -118,10 +115,10 @@ function fetch(source = "products") {
           let tableElement = document.getElementById("main");
           let createdBtn = document.getElementById("createdBtn");
           tableElement.innerHTML = "";
-          createdBtn.innerHTML = "";
+
           if (tableElement) {
             if (source == "products") {
-              createdBtn.innerHTML = `<a class="btn btn-success" href="./products/create.php">Create New Element</a>`;
+              createdBtn.innerHTML = `<a class="btn btn-success" href="./products/create.php">Create New Product</a>`;
               let tableContent = `
               <table class='table table-striped table-hover'>
                 <thead class='table-dark'>
@@ -140,15 +137,25 @@ function fetch(source = "products") {
             `;
 
               for (const val of elements) {
+                let availability =
+                  val.availability == 1
+                    ? `<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>`
+                    : `<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">`;
+
                 tableContent += `
                 <tr>
                   <td class="text-center"><img src='../images/${val.image}' alt='${val.product_name}' class='img-thumbnail' style='width: 50px; height: 50px;'></td>
-                  <td class="text-center">${val.product_id}</td>
+                  <td class="text-center prodClass">${val.product_id}</td>
                   <td class="text-center">${val.product_name}</td>
                   <td class="text-center">€${val.price}</td>
-                  <td class="text-center">${val.category_id}</td>
-                  <td class="text-center">${val.discount_id}</td>
-                  <td class="text-center">${val.availability}</td>
+                  <td class="text-center">${val.category_name}</td>
+                  <td class="text-center">${val.discount_name}</td>
+                  <td class="text-center">
+                    <div class="form-check form-switch">
+                      ${availability}
+                      
+                    </div>
+                  </td>
                   <td class="text-center">
                     <a href='./products/update.php?id=${val.product_id}' class='btn btn-outline-dark btn-sm'>Update</a>
                     <a href='./products/delete.php?id=${val.product_id}' class='btn btn-outline-danger btn-sm'>Delete</a>
@@ -163,7 +170,16 @@ function fetch(source = "products") {
             `;
 
               tableElement.innerHTML = tableContent;
+
+              let checkClass = document.querySelectorAll(".form-check-input");
+              let prodClass = document.querySelectorAll(".prodClass");
+              checkClass.forEach((element, index) => {
+                element.addEventListener("change", function () {
+                  checkAction(prodClass[index].innerHTML, element);
+                });
+              });
             } else if (source == "orders") {
+              createdBtn.innerHTML = `<a class="btn btn-success" href="./orders/create.php">Create New Orders</a>`;
               let tableContent = `
               <table class='table table-striped table-hover'>
                 <thead class='table-dark'>
@@ -206,6 +222,7 @@ function fetch(source = "products") {
 
               tableElement.innerHTML = tableContent;
             } else if (source == "user") {
+              createdBtn.innerHTML = `<a class="btn btn-success" href="./users/create.php">Create New User</a>`;
               let tableContent = `
               <table class='table table-striped table-hover'>
                 <thead class='table-dark'>
@@ -213,7 +230,6 @@ function fetch(source = "products") {
                     <th class="text-center" scope='col'>#</th>
                     <th class="text-center" scope='col'>Username</th>
                     <th class="text-center" scope='col'>Email</th>
-                    <th class="text-center" scope='col'>Password</th>
                     <th class="text-center" scope='col'>First Name</th>
                     <th class="text-center" scope='col'>Last Name</th>
                     <th class="text-center" scope='col'>Image</th>
@@ -231,7 +247,6 @@ function fetch(source = "products") {
                   <td class="text-center">${val.user_id}</td>
                   <td class="text-center">${val.username}</td>
                   <td class="text-center">${val.email}</td>
-                  <td class="text-center">${val.password}</td>
                   <td class="text-center">${val.first_name}</td>
                   <td class="text-center">${val.last_name}</td>
                   <td class="text-center">
@@ -254,6 +269,7 @@ function fetch(source = "products") {
 
               tableElement.innerHTML = tableContent;
             } else if (source == "discount") {
+              createdBtn.innerHTML = `<a class="btn btn-success" href="./discount/create.php">Create New Discount</a>`;
               let tableContent = `
               <table class='table table-striped table-hover'>
                 <thead class='table-dark'>
@@ -280,8 +296,8 @@ function fetch(source = "products") {
                   <td class="text-center">${val.start_date}</td>
                   <td class="text-center">${val.end_date}</td>
                   <td class="text-center">
-                    <a href='discount/update.php?id=${val.discount_id}' class='btn btn-outline-dark btn-sm'>Update</a>
-                    <a href='discount/delete.php?id=${val.discount_id}' class='btn btn-outline-danger btn-sm'>Delete</a>
+                    <a href='./discount/update.php?id=${val.discount_id}' class='btn btn-outline-dark btn-sm'>Update</a>
+                    <a href='./discount/delete.php?id=${val.discount_id}' class='btn btn-outline-danger btn-sm'>Delete</a>
                   </td>
                 </tr>
               `;
@@ -294,6 +310,7 @@ function fetch(source = "products") {
 
               tableElement.innerHTML = tableContent;
             } else if (source == "reviews") {
+              createdBtn.innerHTML = `<a class="btn btn-success" href="./review/create.php">Create New Review</a>`;
               let tableContent = `
     <table class='table table-striped table-hover'>
       <thead class='table-dark'>
@@ -336,6 +353,7 @@ function fetch(source = "products") {
 
               tableElement.innerHTML = tableContent;
             } else {
+              createdBtn.innerHTML = `<a class="btn btn-success" href="./category/create.php">Create New Category</a>`;
               let tableContent = `
               <table class='table table-striped table-hover'>
                 <thead class='table-dark'>
@@ -356,8 +374,8 @@ function fetch(source = "products") {
                   <td class="text-center">${val.category_id}</td>
                   <td class="text-center">${val.category_name}</td>
                   <td class="text-center">
-                    <a href='./categories/update.php?id=${val.category_id}' class='btn btn-outline-dark btn-sm'>Update</a>
-                    <a href='./categories/delete.php?id=${val.category_id}' class='btn btn-outline-danger btn-sm'>Delete</a>
+                    <a href='./category/update.php?id=${val.category_id}' class='btn btn-outline-dark btn-sm'>Update</a>
+                    <a href='./category/delete.php?id=${val.category_id}' class='btn btn-outline-danger btn-sm'>Delete</a>
                   </td>
                 </tr>
               `;
@@ -399,6 +417,19 @@ function fetch(source = "products") {
       console.error("Element with ID 'hi' not found");
     }
   };
+
+  xml.send();
+}
+
+function checkAction(index) {
+  let xml = new XMLHttpRequest();
+
+  xml.onload = function () {
+    if (this.status == 200) {
+      // action
+    }
+  };
+  xml.open("GET", "./api/api_product_status.php?id=" + index);
 
   xml.send();
 }
