@@ -150,7 +150,7 @@ if (isset($_POST["update"])) {
                 <div class="mb-3 ">
                     <div class="mb-3 ">
                         <select class='form-select' name="discount">
-                            <option value='null'>Select a discount</option>
+                            <option value='null'>NO discount</option>
                             <?= $option_discount ?>
                         </select>
                     </div>

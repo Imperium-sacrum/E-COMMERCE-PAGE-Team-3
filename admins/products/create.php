@@ -128,15 +128,12 @@ if (isset($_POST["create"])) {
                         <option value="" selected>---Select availability---</option>
                         <option value="1">Available</option>
                         <option value="0">Not available</option>
-
                     </select>
                 </div>
                 <div class="mb-3 ">
                     <select class='form-select' name="discount">
-                        <option value="" selected>---Select Discount---</option>
+                        <option value="" selected>---No Discount---</option>
                         <?= $option_discount ?>
-
-
                     </select>
                 </div>
 
