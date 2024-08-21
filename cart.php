@@ -162,10 +162,10 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20;
                     <div class="form-group">
                         <label>Card type</label>
                         <div>
-                            <img src="https://i.imgur.com/WU501C3.png" alt="MasterCard">
-                            <img src="https://i.imgur.com/7kzAYkL.png" alt="Visa">
-                            <img src="https://i.imgur.com/OkpO9wb.png" alt="Amex">
-                            <img src="https://i.imgur.com/1iWpYJY.png" alt="PayPal">
+                            <img src="images/mastercard.png" alt="MasterCard">
+                            <img src="images/bokbok3.jpg" alt="Visa">
+                            <img src="images/americanexpress.png" alt="Amex">
+                            <img src="images/paypal.png" alt="PayPal">
                         </div>
                     </div>
                     <div class="form-group">
