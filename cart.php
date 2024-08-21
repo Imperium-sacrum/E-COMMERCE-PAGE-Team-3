@@ -1,26 +1,37 @@
 <?php
 session_start();
+require 'db_components/db_connect.php'; 
 
-// Define product data with FontAwesome icons, names, prices, and discounts
-$products = [
-    1 => ['name' => 'Iphone 11 pro', 'price' => 900, 'discount' => 100, 'icon' => 'fa-mobile-alt', 'description' => '256GB, Navy Blue'],
-    2 => ['name' => 'Samsung galaxy Note 10', 'price' => 900, 'discount' => 50, 'icon' => 'fa-tablet-alt', 'description' => '256GB, Navy Blue'],
-    3 => ['name' => 'Canon EOS M50', 'price' => 1199, 'discount' => 0, 'icon' => 'fa-camera', 'description' => 'Onyx Black'],
-    4 => ['name' => 'MacBook Pro', 'price' => 1799, 'discount' => 200, 'icon' => 'fa-laptop', 'description' => '1TB, Graphite'],
-];
+$sql = "SELECT p.product_id AS id, p.product_name AS name, p.price, d.discount_percentage AS discount, p.image AS icon, p.description
+        FROM products p
+        LEFT JOIN discounts d ON p.discount_id = d.discount_id";
+$result = mysqli_query($connect, $sql);
 
-$taxRate = 0.1; // 10% tax rate
+$products = [];
+if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $products[$row['id']] = [
+            'name' => $row['name'],
+            'price' => $row['price'],
+            'discount' => $row['discount'] ?? 0, // Use discount from the discounts table, default to 0 if null
+            'icon' => $row['icon'], 
+            'description' => $row['description']
+        ];
+    }
+}
+
+$taxRate = 0.1;
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [
-        1 => ['quantity' => 2],
-        2 => ['quantity' => 2],
-        3 => ['quantity' => 1],
-        4 => ['quantity' => 1],
+        3 => ['quantity' => 2],
+        4 => ['quantity' => 2],
+        5 => ['quantity' => 1],
+        6 => ['quantity' => 1],
     ];
 }
 
-// Handle actions: increment, decrement, delete
+// Handle actions: increment, decrement, delete, update
 if (isset($_GET['action'])) {
     $productId = (int)$_GET['product_id'];
 
@@ -40,6 +51,15 @@ if (isset($_GET['action'])) {
         case 'delete':
             unset($_SESSION['cart'][$productId]);
             break;
+
+        case 'update':
+            $newQuantity = (int)$_GET['quantity'];
+            if ($newQuantity > 0) {
+                $_SESSION['cart'][$productId]['quantity'] = $newQuantity;
+            } else {
+                unset($_SESSION['cart'][$productId]);
+            }
+            break;
     }
     
     header('Location: cart.php');
@@ -51,17 +71,19 @@ $discountedTotalPrice = 0;
 $totalDiscount = 0;
 
 foreach ($_SESSION['cart'] as $productId => $details) {
-    $originalPrice = $products[$productId]['price'] * $details['quantity'];
-    $discountAmount = $products[$productId]['discount'] * $details['quantity'];
-    $finalPrice = $originalPrice - $discountAmount;
+    if (isset($products[$productId])) {
+        $originalPrice = $products[$productId]['price'] * $details['quantity'];
+        $discountAmount = $products[$productId]['discount'] * $details['quantity'];
+        $finalPrice = $originalPrice - $discountAmount;
 
-    $totalPrice += $originalPrice;
-    $discountedTotalPrice += $finalPrice;
-    $totalDiscount += $discountAmount;
+        $totalPrice += $originalPrice;
+        $discountedTotalPrice += $finalPrice;
+        $totalDiscount += $discountAmount;
+    }
 }
 
 $totalTax = $discountedTotalPrice * $taxRate;
-$finalTotal = $discountedTotalPrice + $totalTax + 20; // Add shipping (20) to the final total
+$finalTotal = $discountedTotalPrice + $totalTax + 20; 
 ?>
 
 <!DOCTYPE html>
@@ -91,26 +113,26 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20; // Add shipping (20) to th
                                     <th scope="col">Product</th>
                                     <th scope="col" width="120">Quantity</th>
                                     <th scope="col" width="120">Price</th>
-                                    <th scope="col" class="text-right d-none d-md-block" width="200"></th>
+                                    <th scope="col" width="60" class="text-right"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($_SESSION['cart'] as $productId => $details): ?>
+                                <?php if (isset($products[$productId])): ?>
                                 <tr>
                                     <td>
                                         <figure class="itemside align-items-center">
-                                            <div class="aside"><i class="fas <?= $products[$productId]['icon'] ?> icon-sm"></i></div>
-                                            <figcaption class="info"> <a href="#" class="title text-light" data-abc="true"><?= $products[$productId]['name'] ?></a>
+                                            <div class="aside">
+                                                <img src="images/<?= $products[$productId]['icon'] ?>" class="img-sm">
+                                            </div>
+                                            <figcaption class="info">
+                                                <a href="#" class="title text-light" data-abc="true"><?= $products[$productId]['name'] ?></a>
                                                 <p class="text-muted small"><?= $products[$productId]['description'] ?></p>
                                             </figcaption>
                                         </figure>
                                     </td>
                                     <td>
-                                        <select class="form-control" onchange="location = this.value;">
-                                            <?php for ($i = 1; $i <= 10; $i++): ?>
-                                                <option value="cart.php?action=<?= $i > $details['quantity'] ? 'increment' : 'decrement' ?>&product_id=<?= $productId ?>" <?= $i == $details['quantity'] ? 'selected' : '' ?>><?= $i ?></option>
-                                            <?php endfor; ?>
-                                        </select>
+                                        <input type="number" class="form-control select-quantity" value="<?= $details['quantity'] ?>" min="1" onchange="updateQuantity(this, <?= $productId ?>)">
                                     </td>
                                     <td>
                                         <div class="price-wrap">
@@ -121,10 +143,11 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20; // Add shipping (20) to th
                                             <?php endif; ?>
                                         </div>
                                     </td>
-                                    <td class="text-right d-none d-md-block">
+                                    <td class="text-right trash-icon">
                                         <a href="cart.php?action=delete&product_id=<?= $productId ?>" class="btn btn-light btn-round"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
+                                <?php endif; ?>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -139,10 +162,10 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20; // Add shipping (20) to th
                     <div class="form-group">
                         <label>Card type</label>
                         <div>
-                            <img src="images/mastercard.png" alt="MasterCard">
-                            <img src="images/" alt="Visa">
-                            <img src="images/americanexpress.png" alt="Amex">
-                            <img src="images/paypal.png" alt="PayPal">
+                            <img src="https://i.imgur.com/WU501C3.png" alt="MasterCard">
+                            <img src="https://i.imgur.com/7kzAYkL.png" alt="Visa">
+                            <img src="https://i.imgur.com/OkpO9wb.png" alt="Amex">
+                            <img src="https://i.imgur.com/1iWpYJY.png" alt="PayPal">
                         </div>
                     </div>
                     <div class="form-group">
@@ -175,6 +198,19 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20; // Add shipping (20) to th
         </aside>
     </div>
 </div>
+
+<!-- JavaScript to handle quantity changes -->
+<script>
+function updateQuantity(element, productId) {
+    var quantity = element.value;
+    if (quantity < 1) {
+        quantity = 1;
+        element.value = 1;
+    }
+    window.location.href = 'cart.php?action=update&product_id=' + productId + '&quantity=' + quantity;
+}
+</script>
+
 
 </body>
 </html>

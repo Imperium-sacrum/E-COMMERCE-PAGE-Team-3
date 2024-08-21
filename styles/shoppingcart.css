@@ -14,107 +14,135 @@ body {
     color: var(--cornsilk);
     font-family: 'Raleway', sans-serif;
 }
+
 .container-fluid {
     padding: 20px;
+    max-width: 1200px;
+    margin: auto;
 }
+
 .card {
     background-color: var(--laurel-green);
     border: none;
     border-radius: 8px;
     margin-bottom: 20px;
 }
+
 .card-body {
     padding: 20px;
 }
+
 .table-shopping-cart {
     color: var(--cornsilk);
     background-color: var(--laurel-green);
+    width: 100%;
 }
-.table-shopping-cart td {
-    background-color: var(--laurel-green);
-    vertical-align: middle;
-    border-top: none;
-}
-.table-shopping-cart th {
-    border-bottom: 2px solid var(--cornsilk);
-    font-weight: bold;
-}
+
 .table-shopping-cart .price-wrap .price {
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--russet);
 }
-.icon-sm {
-    font-size: 2rem;
-    color: var(--cornsilk);
+
+.table-shopping-cart .img-sm {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
 }
+
+/* Ensure product area has consistent background color */
+.table-shopping-cart .itemside {
+    background-color: var(--laurel-green); /* Use the same background color as the container */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.table-shopping-cart .aside img {
+    border-radius: 8px;
+    background-color: var(--laurel-green); /* Match the image container's background */
+}
+
+.table-shopping-cart .info {
+    background-color: var(--laurel-green);
+}
+
+.table-shopping-cart td {
+    background-color: var(--laurel-green); /* Ensure all table data cells have the same background */
+    border: none;
+    vertical-align: middle;
+}
+
+.table-shopping-cart th {
+    background-color: var(--laurel-green); /* Ensure table header has the same background */
+    border-bottom: 2px solid var(--cornsilk);
+    color: var(--cornsilk);
+    font-weight: bold;
+}
+
+.select-quantity {
+    background-color: var(--cornsilk); /* Keep quantity selector in contrasting color */
+    color: var(--dark-olive-green);
+    border-radius: 5px;
+    border: 1px solid var(--russet);
+}
+
 .text-muted {
     color: var(--lemon-meringue) !important;
 }
+
 .select-quantity {
     background-color: var(--cornsilk);
     color: var(--dark-olive-green);
     border-radius: 5px;
     border: 1px solid var(--russet);
 }
-.btn-primary {
-    background-color: var(--highlight-green);
-    border-color: var(--highlight-green);
-    color: var(--cornsilk);
-}
-.btn-success {
-    background-color: var(--camel);
-    border-color: var(--camel);
-    color: var(--cornsilk);
-}
-.btn-light {
-    background-color: var(--russet);
-    border-color: var(--russet);
-    color: var(--cornsilk);
-}
-.btn-light:hover {
-    background-color: var(--camel);
-}
+
 .price-wrap {
     text-align: right;
 }
+
 .discount-amount {
     color: var(--russet);
     font-weight: bold;
 }
+
 .dlist-align dt {
     width: 60%;
     float: left;
 }
+
 .dlist-align dd {
     width: 40%;
     float: right;
     text-align: right;
 }
-.aside {
-    padding-right: 20px;
-}
+
 .card-details {
     background-color: var(--highlight-green);
     color: var(--cornsilk);
     padding: 20px;
     border-radius: 8px;
 }
+
 .card-details input {
     border-radius: 5px;
     margin-bottom: 15px;
     border: 1px solid var(--camel);
     color: var(--russet);
 }
+
 .card-details img {
     width: 40px;
     margin-right: 10px;
 }
+
 .card-details .total {
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--cornsilk);
 }
+
 .card-details .checkout-btn {
     background-color: var(--camel);
     border-color: var(--camel);
@@ -124,10 +152,47 @@ body {
     padding: 10px;
     border-radius: 5px;
 }
+
 .fa-trash {
     color: var(--russet);
     cursor: pointer;
 }
+
 .fa-trash:hover {
     color: var(--camel);
+}
+
+@media (max-width: 768px) {
+    .table-shopping-cart .price-wrap {
+        text-align: left;
+        margin-top: 10px;
+    }
+
+    .table-shopping-cart .img-sm {
+        width: 40px;
+        height: 40px;
+    }
+
+    .card-details {
+        margin-top: 20px;
+    }
+
+    .btn-light {
+        margin-top: 10px;
+    }
+
+    .table-shopping-cart .text-right {
+        text-align: left !important;
+    }
+
+    /* Ensure the trash icon is always visible */
+    .table-shopping-cart .trash-icon {
+        text-align: left;
+        margin-top: 10px;
+        display: inline-block;
+    }
+    
+    .table-shopping-cart td:last-child {
+        text-align: left !important;
+    }
 }
