@@ -94,7 +94,7 @@ if (isset($_POST["update"])) {
         Somthing went wrong, please try again!
     </div";
         }
-        // redirect to index.php 
+        // redirect 
         header("refresh: 3; url=../../cards.php");
     } ?>
 
