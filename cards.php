@@ -12,10 +12,32 @@ ini_set('display_errors', 1);
 require_once "db_components/db_connect.php";
 
 
+$sqlCN = "SELECT * FROM product_categories";
+$resultCN = mysqli_query($connect, $sqlCN);
+$categories = mysqli_fetch_all($resultCN, MYSQLI_ASSOC);
+$category_list = "";
+
+foreach ($categories as $category) {
+
+  $category_name = ($category['category_name']);
+
+  $category_list .= "<li><a href='cards.php?category=$category_name'>$category_name</a></li>";
+}
+
+
+
 
 $condition = isset($_GET['category']) ? $_GET['category'] : "";
 $sqlCN = "SELECT * FROM product_categories";
 if (!empty($condition)) {
+
+  if (mysqli_num_rows($resultCN) > 0) {
+    while ($row = mysqli_fetch_assoc($resultCN)) {
+      echo  $category_list .= "<li>" . $row['category_name'] . "</li>";
+    }
+  } else {
+    echo "<p>No categories found.</p>";
+  }
   $sqlCN .= " WHERE category_name ='{$_GET['category']}'";
   $resultCN = mysqli_query($connect, $sqlCN);
   $row = mysqli_fetch_assoc($resultCN);
@@ -52,6 +74,7 @@ if (mysqli_num_rows($result) == 0) {
         <h2 class='product-name'>{$row["product_name"]}</h2>
         <p class='product-price'>€ {$row["price"]}</p>
          <p class='product-availability'>Status: {$availabilityStatus}</p>
+         
         <div class='card-info d-flex'>
         <button><a href='order.php?index={$row["product_id"]}'>Add to Cart</a></button>
     <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
@@ -92,11 +115,10 @@ mysqli_close($connect);
   <h1 class="mt-5 text-dark">PRODUCTS</h1>
   <div class="categories ">
     <ul class="categ-li  d-flex flex-row text-dark justify-content-start">
-      <li><a href="cards.php?category=Meat">Meat</a></li>
-      <li><a href="cards.php?category=Vegetables">Vegetables</a></li>
-      <li><a href="cards.php?category=Grains">Grains</a></li>
-      <li><a href="cards.php?category=Other">Other</a></li>
-      <li><a href="cards.php?category=">All</a></li>
+      <!-- Loop caterory -->
+
+      <?= $category_list ?>
+
 
 
     </ul>

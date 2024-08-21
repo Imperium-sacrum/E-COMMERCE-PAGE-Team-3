@@ -201,13 +201,37 @@ body .card .description p {
 .categ-li {
   gap: 30px;
   list-style:none;
+  text-decoration: none;
+  color: black;
+ 
+    a {
+      color:rgba(0, 0, 0, 0.351);
+      text-decoration: none;
+      text-transform:uppercase;
+  }
+  a:hover {
+    color: rgb(90, 90, 90);
+    outline: 0;
+  border: 0;
+  background: none;
+  border: 1px solid #504f4f;
+  padding: 8px 0px;
+  margin-bottom: 30px;
+  color: #515151;
+  text-transform: uppercase;
+  width: 125px;
+  font-family: inherit;
+
+  transition: all 0.3s ease;
+  font-weight: 500;
+  }
 }
 .product-card .card-info button {
   outline: 0;
   border: 0;
   background: none;
   border: 1px solid #d9d9d9;
-  /* padding: 8px 0px; */
+  padding: 8px 0px;
   margin-bottom: 30px;
   color: #515151;
   text-transform: uppercase;

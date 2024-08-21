@@ -20,7 +20,7 @@
                     <a class="nav-link" href="#">Grains</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="about.php">About</a>
                 </li>
             </ul>
             <div class="d-flex align-items-center ms-auto">
@@ -36,7 +36,7 @@
 
                 <li class="nav-item dropdown" style="list-style-type: none;">
                     <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-expanded="false" style="display: flex; align-items: center;">
-                        <i class="fa-solid fa-user" style="color: var(--russet); font-size: 1.2rem;"></i> 
+                        <i class="fa-solid fa-user" style="color: var(--russet); font-size: 1.2rem;"></i>
                         <span style="color: var(--russet); margin-left: 0.5rem;">Profile</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="padding: 10px; border-radius: 5px; background-color: var(--beige);">
@@ -51,7 +51,7 @@
 
                 <div class="cart-icon ms-3">
                     <a href="cart.php">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                             viewBox="0 0 290.627 290.627" xml:space="preserve" style="width: 24px; height: 24px;">
                             <g>
                                 <g>
@@ -77,7 +77,7 @@
                                         c6.061,7.481,9.375,16.702,9.375,26.456c0,4.838-0.862,9.548-2.47,14.063H69.683C68.071,75.164,67.208,70.453,67.208,65.625z
                                          M55.958,89.063h220.664l-34.823,121.875H85.958h-0.984L55.958,89.063z M217.208,243.75c10.341,0,18.75,8.409,18.75,18.75
                                         s-8.409,18.75-18.75,18.75s-18.75-8.409-18.75-18.75S206.867,243.75,217.208,243.75z M95.333,243.75
-                                        c10.341,0,18.75,8.409,18.75,18.75s-8.409,18.75-18.75,18.75s-18.75-8.409-18.75-18.75S84.993,243.75,95.333,243.75z"/>
+                                        c10.341,0,18.75,8.409,18.75,18.75s-8.409,18.75-18.75,18.75s-18.75-8.409-18.75-18.75S84.993,243.75,95.333,243.75z" />
                                 </g>
                             </g>
                         </svg>
