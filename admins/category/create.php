@@ -35,7 +35,7 @@ if (isset($_POST["create"])) {
         // show result 
         if ($result) {
             $alarm =  "<div class='alert alert-success' role='alert'>
-                  Discount has been created. 
+                  Category has been created. 
             </div";
             $name =  "";
         } else {
