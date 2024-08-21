@@ -66,7 +66,7 @@ if (isset($_POST["update"])) {
         if (isset($_POST["update"])) {
             if ($update_result) {
                 echo "<div class='alert alert-success' role='alert'>
-        Discount has been updated! .
+        Category has been updated! .
         </div";
             } else {
                 echo "<div class='alert alert-danger' role='alert'>

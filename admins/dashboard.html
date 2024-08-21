@@ -115,51 +115,8 @@
     <!-- Custom styles for this template -->
     <link href="./styles/dashboard.css" rel="stylesheet" />
   </head>
-  <body>
-    <!--<div
-     class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
-    >
-      <button
-        class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
-        id="bd-theme"
-        type="button"
-        aria-expanded="false"
-        data-bs-toggle="dropdown"
-        aria-label="Toggle theme (auto)"
-      >
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-      </button>
-      <ul
-        class="dropdown-menu dropdown-menu-end shadow"
-        aria-labelledby="bd-theme-text"
-      >
-        <li>
-          <button
-            type="button"
-            class="dropdown-item d-flex align-items-center"
-            data-bs-theme-value="light"
-            aria-pressed="false"
-          ></button>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="dropdown-item d-flex align-items-center"
-            data-bs-theme-value="dark"
-            aria-pressed="false"
-          ></button>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="dropdown-item d-flex align-items-center active"
-            data-bs-theme-value="auto"
-            aria-pressed="true"
-          ></button>
-        </li>
-      </ul>
-    </div> -->
 
+  <body>
     <header
       class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow"
       data-bs-theme="dark"
@@ -179,7 +136,7 @@
         </a>
       </div>
       <ul class="navbar-nav flex-row d-md-none">
-        <li class="nav-item text-nowrap">
+        <li class="nav-item list-group-item list-group-item-action text-nowrap">
           <button
             class="nav-link px-3 text-white"
             type="button"
@@ -190,7 +147,7 @@
             aria-label="Toggle search"
           ></button>
         </li>
-        <li class="nav-item text-nowrap">
+        <li class="nav-item list-group-item list-group-item-action text-nowrap">
           <button
             class="nav-link px-3 text-white"
             type="button"
@@ -238,11 +195,15 @@
             </div>
             <div
               class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto"
+              style="height: 100%"
             >
-              <ul class="nav flex-column">
-                <li class="nav-item">
+              <ul class="nav flex-column list-group" role="tablist">
+                <li
+                  class="nav-item list-group-item list-group-item-action active"
+                  data-bs-toggle="list"
+                >
                   <a
-                    class="nav-link d-flex align-items-center gap-2 active"
+                    class="nav-link d-flex align-items-center gap-2"
                     aria-current="page"
                     href="#"
                     id="dashboard"
@@ -250,7 +211,10 @@
                     <i class="fa-solid fa-table-columns"></i>Dashboard
                   </a>
                 </li>
-                <li class="nav-item">
+                <li
+                  class="nav-item list-group-item list-group-item-action"
+                  data-bs-toggle="list"
+                >
                   <a
                     class="nav-link d-flex align-items-center gap-2"
                     href=""
@@ -259,17 +223,22 @@
                     <i class="fa-solid fa-cart-shopping"></i> Products
                   </a>
                 </li>
-                <li class="nav-item">
+                <li
+                  class="nav-item list-group-item list-group-item-action"
+                  data-bs-toggle="list"
+                >
                   <a
                     class="nav-link d-flex align-items-center gap-2"
                     href=""
                     id="categories"
                   >
-                    <i class="fa-solid fa-cart-shopping"></i> Products
-                    Categories
+                    <i class="fa-solid fa-list"></i> Products Categories
                   </a>
                 </li>
-                <li class="nav-item">
+                <li
+                  class="nav-item list-group-item list-group-item-action"
+                  data-bs-toggle="list"
+                >
                   <a
                     class="nav-link d-flex align-items-center gap-2"
                     href="#"
@@ -279,7 +248,10 @@
                   </a>
                 </li>
 
-                <li class="nav-item">
+                <li
+                  class="nav-item list-group-item list-group-item-action"
+                  data-bs-toggle="list"
+                >
                   <a
                     class="nav-link d-flex align-items-center gap-2"
                     href="#"
@@ -288,7 +260,10 @@
                     <i class="fa-solid fa-user"></i>Users & Admins
                   </a>
                 </li>
-                <li class="nav-item">
+                <li
+                  class="nav-item list-group-item list-group-item-action"
+                  data-bs-toggle="list"
+                >
                   <a
                     class="nav-link d-flex align-items-center gap-2"
                     href="#"
@@ -297,7 +272,10 @@
                     <i class="fa-solid fa-chart-line"></i>Discounts
                   </a>
                 </li>
-                <li class="nav-item">
+                <li
+                  class="nav-item list-group-item list-group-item-action"
+                  data-bs-toggle="list"
+                >
                   <a
                     class="nav-link d-flex align-items-center gap-2"
                     href="#"
@@ -328,5 +306,10 @@
       crossorigin="anonymous"
     ></script>
     <script src="dashboard.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
