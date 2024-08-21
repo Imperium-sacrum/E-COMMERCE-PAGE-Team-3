@@ -23,7 +23,7 @@ foreach ($categories as $category) {
 
   $category_list .= "<li><a href='cards.php?category=$category_name'>$category_name</a></li>";
 }
-
+// CATEGORY
 
 
 
@@ -50,45 +50,91 @@ if (empty($condition)) {
 }
 
 
+// SEARCH 
+// TEST
+
+$search = "";
+
+if (isset($_GET['search'])) {
+  $search = $_GET['search'];
+}
 
 
+$sqlSearch = "SELECT * FROM `products` JOIN product_categories ON product_categories.category_id = products.category_id";
 
-
-
-$result = mysqli_query($connect, $sqlcategory);
+if (!empty($search)) {
+  $sqlSearch .= " WHERE `product_name` LIKE '%$search%' 
+    OR `category_name` LIKE '%$search%' 
+    ";
+}
+$resultSearch = mysqli_query($connect, $sqlSearch);
 $cards = "";
 
-if (mysqli_num_rows($result) == 0) {
-
-  $cards = "<p>No products found</p>";
+if (mysqli_num_rows($resultSearch) == 0) {
+  $cards = "<p>No results found</p>";
 } else {
-  $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  $rows = mysqli_fetch_all($resultSearch, MYSQLI_ASSOC);
+
   foreach ($rows as $key => $row) {
     $availabilityStatus = $row["availability"] == 1 ? "Available" : "Not Available";
     $cards .= "<div>
-     <div class='product-card'>
-      <div class='card-image'>
-       <img src='images/{$row["image"]}'>
-      </div>
-      <div class='card-info'>
-        <h2 class='product-name'>{$row["product_name"]}</h2>
-        <p class='product-price'>€ {$row["price"]}</p>
-         <p class='product-availability'>Status: {$availabilityStatus}</p>
-         
-        <div class='card-info d-flex'>
-        <button><a href='order.php?index={$row["product_id"]}'>Add to Cart</a></button>
-    <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
-      </div>
-      </div>
+   <div class='product-card'>
+    <div class='card-image'>
+     <img src='images/{$row["image"]}'>
     </div>
-      
-</div>
-
+    <div class='card-info'>
+      <h2 class='product-name'>{$row["product_name"]}</h2>
+      <p class='product-price'>€ {$row["price"]}</p>
+       <p class='product-availability'>Status: {$availabilityStatus}</p>
        
-           
-         ";
+      <div class='card-info d-flex'>
+      <button><a href='order.php?index={$row["product_id"]}'>Add to Cart</a></button>
+  <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
+    </div>
+    </div>
+  </div>
+    
+</div> ";
   }
 }
+// TEST
+//  OR `` LIKE'%$search%
+
+
+// CARDS 
+// $result = mysqli_query($connect, $sqlcategory);
+
+// if (mysqli_num_rows($result) == 0) {
+
+//   $cards = "<p>No products found</p>";
+// } else {
+//   $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//   foreach ($rows as $key => $row) {
+//     $availabilityStatus = $row["availability"] == 1 ? "Available" : "Not Available";
+//     $cards .= "<div>
+//      <div class='product-card'>
+//       <div class='card-image'>
+//        <img src='images/{$row["image"]}'>
+//       </div>
+//       <div class='card-info'>
+//         <h2 class='product-name'>{$row["product_name"]}</h2>
+//         <p class='product-price'>€ {$row["price"]}</p>
+//          <p class='product-availability'>Status: {$availabilityStatus}</p>
+
+//         <div class='card-info d-flex'>
+//         <button><a href='order.php?index={$row["product_id"]}'>Add to Cart</a></button>
+//     <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
+//       </div>
+//       </div>
+//     </div>
+
+// </div>
+
+
+
+//          ";
+//   }
+// }
 
 
 
@@ -113,17 +159,23 @@ mysqli_close($connect);
   <?php include 'components/navbar.php';
   ?>
   <h1 class="mt-5 text-dark">PRODUCTS</h1>
+  <form role="search">
+    <input class="form-control" type="search" value="<?php echo ($search) ?>" placeholder="Product or Category" aria-label="Search" name="search">
+    <button class="btn-create" type="submit">Search</button>
+  </form>
+
+
   <div class="categories ">
     <ul class="categ-li  d-flex flex-row text-dark justify-content-start">
       <!-- Loop caterory -->
-
+      <li><a href="cards.php?category=">ALL</a></li>
       <?= $category_list ?>
 
 
 
     </ul>
   </div>
-  <div class="section-card mt-5">
+  <div class="container-cards  section-card mt-5">
     <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-1 row-cols-xs-1">
       <?= $cards ?>
     </div>
