@@ -4,7 +4,7 @@ require_once "db_components/db_connect.php";
 
 $cards = "";
 
-$index = $_GET["index"];
+$index = $_GET["id"];
 
 
 $sql = "SELECT * FROM `products` WHERE product_id = $index";
@@ -40,8 +40,8 @@ if (mysqli_num_rows($result) == 0) {
     <h1>€ {$row["price"]}</h1>
     <p>{$row["description"]}</p>
     <p class='product-availability'>Status: {$availabilityStatus}</p>
-    <button><a href='cart.php?index={$row["product_id"]}'>Add to Cart</a></button>
-    <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
+    <button><a href='cart.php?id={$row["product_id"]}'>Add to Cart</a></button>
+    <button><a href='details.php?id={$row["product_id"]}'>Details</a></button>
   </div>
 </div>
 </div>

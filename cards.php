@@ -89,7 +89,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
        
       <div class='card-info d-flex'>
       <button onclick='addToCart({$row["product_id"]})'>Add to Cart</button>
-      <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
+      <button><a href='details.php?id={$row["product_id"]}'>Details</a></button>
     </div>
     </div>
   </div>
