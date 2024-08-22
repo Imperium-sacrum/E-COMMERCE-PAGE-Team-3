@@ -11,14 +11,17 @@ if (!isset($_SESSION['user'])) {
 // we are getting id 
 $username = $_SESSION['user'];
 $selectedUser = '';
-// $sql = "SELECT * FROM users WHERE user_id = $username";
-// $resultU = mysqli_query($connect, $sql);
-// $rowU = mysqli_fetch_assoc($result);
+$sql = "SELECT * FROM users WHERE user_id = $username";
+$resultU = mysqli_query($connect, $sql);
+$rowU = mysqli_fetch_assoc($resultU);
 
 
 if (isset($_GET['user'])) {
     $selectedUser = $_GET['user'];
     $selectedUser    = mysqli_real_escape_string($connect, $selectedUser);
+    $bringInfo = mysqli_query($connect, "SELECT * FROM users WHERE user_id = $selectedUser");
+    $resSelectedUser = mysqli_fetch_assoc($bringInfo);
+    $selectedUserName = $resSelectedUser["username"];
     $showChatBox = true; // i am selected user is true
 } else {
     $showChatBox = false; // Sset to false
@@ -48,22 +51,22 @@ if (isset($_GET['user'])) {
             <div class="welcome">
                 <!-- tere is some problem -->
 
-                <h2>Welcome, <?php echo ($username); ?>!</h2>
+                <h2>Welcome, <?php echo ($rowU["username"]); ?>!</h2>
             </div>
             <div class="user-list">
                 <h2>Select a User to Chat With:</h2>
                 <ul>
                     <?php
                     //i am fetching all users
-                    $sql = "SELECT  user_id FROM users WHERE user_id != '$username'";
+                    $sql = "SELECT * FROM users WHERE user_id != '$username'";
                     $result = $connect->query($sql);
 
                     if ($result->num_rows > 0) {
                         // loop for user list
                         while ($row = $result->fetch_assoc()) {
-                            $user = $row['user_id'];
-                            $user = ($user);
-                            echo "<li><a href='chat.php?user=$user'>$user</a></li>";
+                            $userName = $row['username'];
+                            $user = $row["user_id"];
+                            echo "<li><a href='chat.php?user=$user'>$userName</a></li>";
                         }
                     }
                     ?>
@@ -74,14 +77,14 @@ if (isset($_GET['user'])) {
         <?php if ($showChatBox): ?>
             <div class="chat-box" id="chat-box">
                 <div class="chat-box-header">
-                    <h2><?php echo ucfirst($selectedUser); ?></h2>
+                    <h2><?php echo ucfirst($selectedUserName); ?></h2>
                     <button class="close-btn" onclick="closeChat()">✖</button>
                 </div>
                 <div class="chat-box-body" id="chat-box-body">
                     <!-- chat message tere-->
                 </div>
                 <form class="chat-form" id="chat-form">
-                    <input type="hidden" id="sender" value="<?php echo $username; ?>">
+                    <input type="hidden" id="sender" value="<?php echo $rowU["user_id"]; ?>">
                     <input type="hidden" id="receiver" value="<?php echo $selectedUser; ?>">
                     <input type="text" id="message" placeholder="Type your message..." required>
                     <button type="submit">Send</button>

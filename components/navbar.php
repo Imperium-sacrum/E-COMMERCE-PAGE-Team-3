@@ -30,7 +30,7 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
-                <a class="btn btn-primary me-3" href="login.php" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">
+                <a class="btn btn-primary me-3" href="session/login.php" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">
                     Login
                 </a>
 
