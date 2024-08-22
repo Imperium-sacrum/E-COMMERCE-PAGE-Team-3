@@ -1,6 +1,10 @@
 <?php
 ob_start();
 session_start();
+if (isset($_SESSION['username'])) {
+    header("Location: ../index.php");
+    exit();
+}
 
 // if (isset($_SESSION["user"])) {
 //     header("Location: user.php");
@@ -8,27 +12,26 @@ session_start();
 // }
 
 
-// if (isset($_SESSION["admin"])) {
-//     header("Location: dashboard.php");
-//     exit();
-// }
+if (isset($_SESSION["admin"])) {
+    header("Location: admins/dashboard.html");
+    exit();
+}
 
 
-require_once "db_components/db_connect.php";
+require_once "../db_components/db_connect.php";
 
 $error = false;
-$email = $password = $emailError = $passError = "";
+$uname = $password = $unameError = $passError = "";
+$username = "";
+
 
 if (isset($_POST["login-btn"])) {
-    $email = cleanInput($_POST["email"]);
+    $uname = cleanInput($_POST["username"]);
     $password = cleanInput(($_POST["password"]));
 
-    if (empty($email)) {
+    if (empty($uname)) {
         $error = true;
-        $emailError = "Email is required!";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = true;
-        $emailError = "Not a valid email!";
+        $unameError = "Username is required!";
     }
 
 
@@ -39,22 +42,27 @@ if (isset($_POST["login-btn"])) {
 
 
     if (!$error) {
+
         $password = hash("sha256", $password);
-        $sql = "SELECT * FROM `users` WHERE email = '$email' AND Password = '$password'";
+        $sql = "SELECT * FROM `users` WHERE username = '$uname' AND Password = '$password'";
         $result = mysqli_query($connect, $sql);
 
 
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
+            $username = $row['username'];
 
             if ($row["status"] == "admin") {
 
                 $_SESSION["admin"] = $row["user_id"];
-                header("Location: dashboard.php");
+                header("Location: admins/dashboard.html");
             } else {
+                // its shows numer insteed name
 
                 $_SESSION["user"] = $row["user_id"];
-                header("Location: user.php");
+
+
+                header("Location: ../index.php");
             }
         } else {
             echo "Incorrect credintials!";
@@ -82,11 +90,11 @@ if (isset($_POST["login-btn"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body>
-    <?php include 'components/navbar.php';
+    <?php include '../components/navbar.php';
     ?>
     <div class="reglog">
         <div class="reglog_content">
@@ -106,8 +114,8 @@ if (isset($_POST["login-btn"])) {
 
                 <div class="mb-3 input-box">
                     <!-- <label for="Email">Email</label> -->
-                    <input type="email" class="form-control" name="email" placeholder="example@example.com" value="<?= $email ?>">
-                    <p class="text-danger"><?= $emailError ?></p>
+                    <input type="text" class="form-control" name="username" placeholder="username" value="<?= $uname ?>">
+                    <p class="text-danger"><?= $unameError ?></p>
                 </div>
 
                 <div class="mb-3 input-box">
@@ -138,7 +146,7 @@ if (isset($_POST["login-btn"])) {
             }
         }
     </script>
-    <?php include 'components/footer.php';
+    <?php include '../components/footer.php';
     ?>
 
 </body>
