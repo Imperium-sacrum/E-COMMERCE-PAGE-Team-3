@@ -45,7 +45,7 @@ if (isset($_GET['user'])) {
     <div class="container">
         <div class="header">
             <h1>Live Chat</h1>
-            <a href="../logout.php" class="logout">Logout</a>
+            <a href="../session/logout.php?logout" name='logout ' class="logout">Logout</a>
         </div>
         <div class="account-info">
             <div class="welcome">
@@ -146,7 +146,7 @@ if (isset($_GET['user'])) {
         // Fetch messages every 3 seconds
 
         fetchMessages();
-        setInterval(fetchMessages, 3000);
+        setInterval(fetchMessages, 2000);
     });
 
 

@@ -123,8 +123,8 @@ if (mysqli_num_rows($resultSearch) == 0) {
 //          <p class='product-availability'>Status: {$availabilityStatus}</p>
 
 //         <div class='card-info d-flex'>
-//         <button><a href='order.php?index={$row["product_id"]}'>Add to Cart</a></button>
-//     <button><a href='details.php?index={$row["product_id"]}'>Details</a></button>
+//         <button><a href='order.php?id={$row["product_id"]}'>Add to Cart</a></button>
+//     <button><a href='details.php?id={$row["product_id"]}'>Details</a></button>
 //       </div>
 //       </div>
 //     </div>
