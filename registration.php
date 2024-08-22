@@ -2,6 +2,10 @@
 require_once "db_components/db_connect.php";
 require_once "db_components/file_upload.php";
 
+if (isset($_SESSION['username'])) {
+    header("Location: users/profile.php");
+    exit();
+}
 $error = false;
 
 $uname = $fname = $lname = $email = $pass = $pictures = '';

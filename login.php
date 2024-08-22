@@ -1,6 +1,10 @@
 <?php
 ob_start();
 session_start();
+if (isset($_SESSION['username'])) {
+    header("Location: users/profile.php");
+    exit();
+}
 
 // if (isset($_SESSION["user"])) {
 //     header("Location: user.php");
@@ -18,6 +22,8 @@ require_once "db_components/db_connect.php";
 
 $error = false;
 $email = $password = $emailError = $passError = "";
+$username = "";
+
 
 if (isset($_POST["login-btn"])) {
     $email = cleanInput($_POST["email"]);
@@ -39,6 +45,7 @@ if (isset($_POST["login-btn"])) {
 
 
     if (!$error) {
+
         $password = hash("sha256", $password);
         $sql = "SELECT * FROM `users` WHERE email = '$email' AND Password = '$password'";
         $result = mysqli_query($connect, $sql);
@@ -46,15 +53,19 @@ if (isset($_POST["login-btn"])) {
 
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
+            $username = $row['username'];
 
             if ($row["status"] == "admin") {
 
                 $_SESSION["admin"] = $row["user_id"];
-                header("Location: dashboard.php");
+                header("Location: admins/dashboard.html");
             } else {
+                // its shows numer insteed name
 
                 $_SESSION["user"] = $row["user_id"];
-                header("Location: user.php");
+
+
+                header("Location: users/profile.php");
             }
         } else {
             echo "Incorrect credintials!";

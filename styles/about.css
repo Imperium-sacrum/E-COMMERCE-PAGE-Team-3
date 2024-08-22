@@ -153,3 +153,6 @@
 #show:target {
     display: block;
 }
+.form-control {
+    width: none;
+}

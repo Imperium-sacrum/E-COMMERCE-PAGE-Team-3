@@ -13,7 +13,13 @@ session_start();
 
 require_once "../db_components/db_connect.php";
 
-$sql = "SELECT * FROM users WHERE user_id = 1";
+if (isset($_SESSION["admin"])) { #if i am session admin , i create a session wich will store a id
+    $session = $_SESSION["admin"];
+} else {
+    $session = $_SESSION["user"]; # else i havin session user
+    ;
+}
+$sql = "SELECT * FROM users WHERE user_id = $session";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
 
@@ -63,6 +69,7 @@ $row = mysqli_fetch_assoc($result);
                                             <p class="text-muted"><?= $row["username"] ?></p>
                                         </div>
                                         <a href="profile-edit.php" class="btn">Edit profile</a>
+                                        <a href="../chat/chat.php" class="btn">Chat</a>
                                     </div>
                                 </div>
                             </div>
