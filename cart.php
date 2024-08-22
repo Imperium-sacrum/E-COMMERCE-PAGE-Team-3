@@ -1,24 +1,37 @@
 <?php
 session_start();
+require 'db_components/db_connect.php'; 
 
-// Sample product data
-$products = [
-    1 => ['name' => 'Bobr', 'price' => 900, 'image' => '', 'description' => '256GB, Navy Blue'],
-    2 => ['name' => 'Bobr', 'price' => 900, 'image' => '', 'description' => '256GB, Navy Blue'],
-    3 => ['name' => 'Bobr', 'price' => 1199, 'image' => '', 'description' => 'Onyx Black'],
-    4 => ['name' => 'Bobr', 'price' => 1799, 'image' => '', 'description' => '1TB, Graphite'],
-];
+$sql = "SELECT p.product_id AS id, p.product_name AS name, p.price, d.discount_percentage AS discount, p.image AS icon, p.description
+        FROM products p
+        LEFT JOIN discounts d ON p.discount_id = d.discount_id";
+$result = mysqli_query($connect, $sql);
+
+$products = [];
+if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $products[$row['id']] = [
+            'name' => $row['name'],
+            'price' => $row['price'],
+            'discount' => $row['discount'] ?? 0, // Use discount from the discounts table, default to 0 if null
+            'icon' => $row['icon'], 
+            'description' => $row['description']
+        ];
+    }
+}
+
+$taxRate = 0.1;
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [
-        1 => ['quantity' => 2],
-        2 => ['quantity' => 2],
-        3 => ['quantity' => 1],
-        4 => ['quantity' => 1],
+        3 => ['quantity' => 2],
+        4 => ['quantity' => 2],
+        5 => ['quantity' => 1],
+        6 => ['quantity' => 1],
     ];
 }
 
-// Handle actions: increment, decrement, delete
+// Handle actions: increment, decrement, delete, update
 if (isset($_GET['action'])) {
     $productId = (int)$_GET['product_id'];
 
@@ -30,11 +43,22 @@ if (isset($_GET['action'])) {
         case 'decrement':
             if ($_SESSION['cart'][$productId]['quantity'] > 1) {
                 $_SESSION['cart'][$productId]['quantity']--;
+            } else {
+                unset($_SESSION['cart'][$productId]);
             }
             break;
 
         case 'delete':
             unset($_SESSION['cart'][$productId]);
+            break;
+
+        case 'update':
+            $newQuantity = (int)$_GET['quantity'];
+            if ($newQuantity > 0) {
+                $_SESSION['cart'][$productId]['quantity'] = $newQuantity;
+            } else {
+                unset($_SESSION['cart'][$productId]);
+            }
             break;
     }
     
@@ -43,9 +67,23 @@ if (isset($_GET['action'])) {
 }
 
 $totalPrice = 0;
+$discountedTotalPrice = 0;
+$totalDiscount = 0;
+
 foreach ($_SESSION['cart'] as $productId => $details) {
-    $totalPrice += $products[$productId]['price'] * $details['quantity'];
+    if (isset($products[$productId])) {
+        $originalPrice = $products[$productId]['price'] * $details['quantity'];
+        $discountAmount = $products[$productId]['discount'] * $details['quantity'];
+        $finalPrice = $originalPrice - $discountAmount;
+
+        $totalPrice += $originalPrice;
+        $discountedTotalPrice += $finalPrice;
+        $totalDiscount += $discountAmount;
+    }
 }
+
+$totalTax = $discountedTotalPrice * $taxRate;
+$finalTotal = $discountedTotalPrice + $totalTax + 20; 
 ?>
 
 <!DOCTYPE html>
@@ -54,71 +92,125 @@ foreach ($_SESSION['cart'] as $productId => $details) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/shoppingcart.css">
 </head>
 <body>
 
-<div class="container">
-    <div class="cart">
-        <a href="index.php" class="continue-shopping"><i class="fas fa-arrow-left"></i> Continue shopping</a>
-        <h2>Shopping cart</h2>
-        <p>You have <?= array_sum(array_column($_SESSION['cart'], 'quantity')) ?> items in your cart</p>
-        
-        <?php foreach ($_SESSION['cart'] as $productId => $details): ?>
-        <div class="cart-item">
-            <img src="<?= $products[$productId]['image'] ?>" alt="<?= $products[$productId]['name'] ?>">
-            <div class="cart-item-details">
-                <h4><?= $products[$productId]['name'] ?></h4>
-                <p><?= $products[$productId]['description'] ?></p>
+<div class="container-fluid">
+    <div class="row">
+        <aside class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <a href="index.php" class="btn btn-light"><i class="fas fa-arrow-left"></i> Continue shopping</a>
+                    <h2 class="mt-4">Shopping cart</h2>
+                    <p>You have <?= array_sum(array_column($_SESSION['cart'], 'quantity')) ?> items in your cart</p>
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-shopping-cart">
+                            <thead class="text-muted">
+                                <tr class="small text-uppercase">
+                                    <th scope="col">Product</th>
+                                    <th scope="col" width="120">Quantity</th>
+                                    <th scope="col" width="120">Price</th>
+                                    <th scope="col" width="60" class="text-right"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($_SESSION['cart'] as $productId => $details): ?>
+                                <?php if (isset($products[$productId])): ?>
+                                <tr>
+                                    <td>
+                                        <figure class="itemside align-items-center">
+                                            <div class="aside">
+                                                <img src="images/<?= $products[$productId]['icon'] ?>" class="img-sm">
+                                            </div>
+                                            <figcaption class="info">
+                                                <a href="#" class="title text-light" data-abc="true"><?= $products[$productId]['name'] ?></a>
+                                                <p class="text-muted small"><?= $products[$productId]['description'] ?></p>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control select-quantity" value="<?= $details['quantity'] ?>" min="1" onchange="updateQuantity(this, <?= $productId ?>)">
+                                    </td>
+                                    <td>
+                                        <div class="price-wrap">
+                                            <var class="price">€<?= number_format($products[$productId]['price'] * $details['quantity'], 2) ?></var> 
+                                            <?php if ($products[$productId]['discount'] > 0): ?>
+                                                <small class="text-muted"> €<?= number_format($products[$productId]['price'] - $products[$productId]['discount'], 2) ?> each </small>
+                                                <p class="discount-amount">Discount: -€<?= number_format($products[$productId]['discount'] * $details['quantity'], 2) ?></p>
+                                            <?php endif; ?>
+                                        </div>
+                                    </td>
+                                    <td class="text-right trash-icon">
+                                        <a href="cart.php?action=delete&product_id=<?= $productId ?>" class="btn btn-light btn-round"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                <?php endif; ?>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="cart-item-quantity">
-                <a href="cart.php?action=decrement&product_id=<?= $productId ?>"><i class="fas fa-minus"></i></a>
-                <?= $details['quantity'] ?>
-                <a href="cart.php?action=increment&product_id=<?= $productId ?>"><i class="fas fa-plus"></i></a>
+        </aside>
+        <aside class="col-lg-4">
+            <div class="card-details">
+                <h3>Card details</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Card type</label>
+                        <div>
+                            <img src="images/mastercard.png" alt="MasterCard">
+                            <img src="images/bokbok3.jpg" alt="Visa">
+                            <img src="images/americanexpress.png" alt="Amex">
+                            <img src="images/paypal.png" alt="PayPal">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Cardholder's Name</label>
+                        <input type="text" class="form-control" placeholder="Cardholder's Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" class="form-control" placeholder="Card Number">
+                    </div>
+                    <div class="form-group">
+                        <label>Expiration</label>
+                        <input type="text" class="form-control" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" class="form-control" placeholder="CVV">
+                    </div>
+                    <hr>
+                    <div class="total">
+                        <p>Subtotal: €<?= number_format($discountedTotalPrice, 2) ?></p>
+                        <p>Discount: -€<?= number_format($totalDiscount, 2) ?></p>
+                        <p>Tax (10%): €<?= number_format($totalTax, 2) ?></p>
+                        <p>Shipping: €20.00</p>
+                        <h3>Total (Incl. taxes): €<?= number_format($finalTotal, 2) ?></h3>
+                    </div>
+                    <button class="checkout-btn">€<?= number_format($finalTotal, 2) ?> CHECKOUT →</button>
+                </form>
             </div>
-            <div class="cart-item-price">$<?= $products[$productId]['price'] * $details['quantity'] ?></div>
-            <div class="cart-item-remove"><a href="cart.php?action=delete&product_id=<?= $productId ?>"><i class="fas fa-trash"></i></a></div>
-        </div>
-        <?php endforeach; ?>
-    </div>
-
-    <div class="cart-summary">
-        <h2>Card details</h2>
-        <div class="form-group">
-            <label>Card type</label>
-            <div>
-                <img src="/" alt="MasterCard">
-                <img src="/" alt="Visa">
-                <img src="/" alt="Amex">
-                <img src="/" alt="PayPal">
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Cardholder's Name</label>
-            <input type="text" placeholder="Cardholder's Name">
-        </div>
-        <div class="form-group">
-            <label>Card Number</label>
-            <input type="text" placeholder="Card Number">
-        </div>
-        <div class="form-group">
-            <label>Expiration</label>
-            <input type="text" placeholder="MM/YY">
-        </div>
-        <div class="form-group">
-            <label>CVV</label>
-            <input type="text" placeholder="CVV">
-        </div>
-        <div class="total">
-        <p>Subtotal: €<?= number_format($totalPrice, 2) ?></p>
-            <p>Shipping: €20.00</p>
-            <h3>Total(Incl. taxes): €<?= number_format($totalPrice + 20, 2) ?></h3>
-        </div>
-        <button class="checkout-btn">€<?= number_format($totalPrice + 20, 2) ?> CHECKOUT →</button>
+        </aside>
     </div>
 </div>
+
+<!-- JavaScript to handle quantity changes -->
+<script>
+function updateQuantity(element, productId) {
+    var quantity = element.value;
+    if (quantity < 1) {
+        quantity = 1;
+        element.value = 1;
+    }
+    window.location.href = 'cart.php?action=update&product_id=' + productId + '&quantity=' + quantity;
+}
+</script>
+
 
 </body>
 </html>

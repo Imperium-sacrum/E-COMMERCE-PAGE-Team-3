@@ -7,7 +7,7 @@
                     <h5>Offers for every taste</h5>
                     <p>Save up to 50% on seleced products. 100% Organic</p>
                     <p>As long as stock is available</p>
-                    <a href="../products/product.php" class="btn btn-outline-light" type="button">Explore now</a>
+                    <a href="cards.php" class="btn btn-outline-light" type="button">Explore now</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -15,7 +15,7 @@
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Cold cuts</h5>
                     <p>No Artificial Additives | 100% Satisfaction Guaranteed</p>
-                    <a href="../products/product.php" class="btn btn-outline-light" type="button">Discover now</a>
+                    <a href="cards.php" class="btn btn-outline-light" type="button">Discover now</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -23,7 +23,7 @@
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Whole Grains</h5>
                     <p>100% Whole grains goodness for a healthier more nutrious choice</p>
-                    <a href="../products/product.php" class="btn btn-outline-light" type="button">Shop now</a>
+                    <a href="cards.php" class="btn btn-outline-light" type="button">Shop now</a>
                 </div>
             </div>
         </div>
