@@ -21,7 +21,7 @@ foreach ($categories as $category) {
 
   $category_name = ($category['category_name']);
 
-  $category_list .= "<li><a href='cards.php?category=$category_name'>$category_name</a></li>";
+  $category_list .= "<li><a href='cards.php?search=$category_name'>$category_name</a></li>";
 }
 // CATEGORY
 
@@ -95,8 +95,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
   </div>
     
 </div>";
-}
-
+  }
 }
 
 // TEST
@@ -177,14 +176,14 @@ mysqli_close($connect);
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- I touched this part to make it work -->
+  <!-- I touched this part to make it work -->
   <script>
-   function addToCart(productId) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "cart_action.php", true); 
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("product_id=" + productId);
-}
+    function addToCart(productId) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "cart_action.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send("product_id=" + productId);
+    }
   </script>
 </body>
 
