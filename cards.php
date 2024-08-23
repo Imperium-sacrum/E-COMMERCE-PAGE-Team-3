@@ -139,7 +139,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
 
 
 
-mysqli_close($connect);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,6 +152,7 @@ mysqli_close($connect);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="stylesheet" href="styles/cards.css">
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/.css">
 </head>
 
 <body id="cards-body">

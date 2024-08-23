@@ -83,7 +83,7 @@ if (isset($_POST["create"])) {
             </div>
             <div class="mb-3">
                 <label for="discount_percentage" class="form-label">Discount Percentage</label>
-                <input type="number" step="0.01" class="form-control" id="discount_percentage" name="percentage" required>
+                <input type="number" step="0.01" class="form-control" id="discount_percentage" name="percentage">
             </div>
             <div class="mb-3">
                 <label for="start_date" class="form-label">Start Date</label>

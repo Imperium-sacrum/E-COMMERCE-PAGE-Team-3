@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/footer.css">
+    <title>Document</title>
+</head>
+<body>
 <footer>
     <div class="container">
         <div class="row py-5">
@@ -38,13 +47,6 @@
                 </form>
             </div>
         </div>
-        <i data-star="0.5"></i>
-<i data-star=".5"></i>
-<i data-star="1"></i>
-<i data-star="2"></i>
-<i data-star="2.8"></i>
-<i data-star="3.3"></i>
-<i data-star="4.2"></i>
 
         <!-- Bottom Footer Links -->
         <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
@@ -58,3 +60,6 @@
         </div>
     </div>
 </footer>
+
+</body>
+</html>
