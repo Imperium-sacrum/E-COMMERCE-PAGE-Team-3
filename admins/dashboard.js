@@ -102,7 +102,8 @@ document.getElementById("categories").addEventListener("click", categories);
 document.getElementById("reviews").addEventListener("click", reviews);
 document.getElementById("dashboard").addEventListener("click", chartS);
 
-function fetch(source = "products") {
+
+function fetch(source = "products", category = "") {
   let xml = new XMLHttpRequest();
   xml.open("GET", "./api/api_" + source + ".php", true);
   xml.onload = function () {
@@ -112,6 +113,11 @@ function fetch(source = "products") {
         // Check if the response has a data property and if it's an array
         if (response.data && Array.isArray(response.data)) {
           let elements = response.data;
+
+          if (category) {
+            elements = elements.filter(product => product.category_name === category);
+          }
+
           let tableElement = document.getElementById("main");
           let createdBtn = document.getElementById("createdBtn");
           tableElement.innerHTML = "";
@@ -119,6 +125,14 @@ function fetch(source = "products") {
           if (tableElement) {
             if (source == "products") {
               createdBtn.innerHTML = `<a class="btn btn-success" href="./products/create.php">Create New Product</a>`;
+              let dropdownContent = '';
+              let uniqueCategories = new Set();
+              for (const val of elements) {
+                if (!uniqueCategories.has(val.category_name)) {
+                  uniqueCategories.add(val.category_name);
+                  dropdownContent += `<li><a class="dropdown-item" href="#" data-category="${val.category_name}">${val.category_name}</a></li>`;
+                }
+              }
               let tableContent = `
               <table class='table table-striped table-hover'>
                 <thead class='table-dark'>
@@ -168,16 +182,38 @@ function fetch(source = "products") {
                 </tbody>
               </table>
             `;
-
-              tableElement.innerHTML = tableContent;
-
-              let checkClass = document.querySelectorAll(".form-check-input");
-              let prodClass = document.querySelectorAll(".prodClass");
-              checkClass.forEach((element, index) => {
-                element.addEventListener("change", function () {
-                  checkAction(prodClass[index].innerHTML, element);
+              tableElement.innerHTML = `
+              <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                      <a id="allProductsBtn" class="nav-link " aria-current="page" href="#">All Product</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Categories</a>
+                    <ul class="dropdown-menu">
+                      ${dropdownContent}
+                    </ul>
+                  </li>
+              </ul>
+                ${tableContent} `;
+              document.getElementById("allProductsBtn").addEventListener("click", function (e) {
+                e.preventDefault();
+                fetch("products");
+              });
+              const dropdownItems = document.querySelectorAll('.dropdown-item');
+              dropdownItems.forEach(item => {
+                item.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  const category = this.getAttribute('data-category');
+                  fetch('products', category);
                 });
               });
+              // let checkClass = document.querySelectorAll(".form-check-input");
+              // let prodClass = document.querySelectorAll(".prodClass");
+              // checkClass.forEach((element, index) => {
+              //   element.addEventListener("change", function () {
+              //     checkAction(prodClass[index].innerHTML, element);
+              //   });
+              // });
             } else if (source == "orders") {
               createdBtn.innerHTML = `<a class="btn btn-success" href="./orders/create.php">Create New Orders</a>`;
               let tableContent = `

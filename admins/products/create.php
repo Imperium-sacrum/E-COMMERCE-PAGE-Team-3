@@ -132,7 +132,7 @@ if (isset($_POST["create"])) {
                 </div>
                 <div class="mb-3 ">
                     <select class='form-select' name="discount">
-                        <option value="" selected>---No Discount---</option>
+                        <option value="4" selected>---No Discount---</option>
                         <?= $option_discount ?>
                     </select>
                 </div>
