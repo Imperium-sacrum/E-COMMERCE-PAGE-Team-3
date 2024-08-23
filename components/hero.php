@@ -1,8 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/hero.css">
+    <title>hero</title>
+</head>
+<body>
 <div class="hero">
     <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="https://cdn.pixabay.com/photo/2015/03/28/17/14/fruit-696169_1280.jpg" class="d-block w-100" alt="Product 1">
+                
+
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Offers for every taste</h5>
                     <p>Save up to 50% on seleced products. 100% Organic</p>
@@ -38,33 +52,40 @@
     </div>
 </div>
 
-    <!-- Bestseller Content Section -->
-    <section class="favorites-section">
-        <h1>Best Sellers</h1>
-        <div class="product-grid">
-            <div class="product-item">
-                <img src="images/bokbok3.jpg" alt="bobr">
-                <h3>Bobr</h3>
-                <p>€</p>
+<section class="favorites-section">
+    <h1>Best Sellers</h1>
+    <div class="categories">
+        <ul class="categ-li d-flex flex-row text-dark justify-content-start">
+        </ul>
+    </div>
+
+    <div class="container-cards section-card mt-5">
+        <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-1 row-cols-xs-1">
+            <div class="col">
+                <div class="product-item card">
+                    <img src="images/bokbok3.jpg" alt="bobr">
+                    <h3>Bobr</h3>
+                    <p>€</p>
+                </div>
             </div>
-            <div class="product-item">
-                <img src="images/bokbok3.jpg" alt="bobr">
-                <h3>Bobr</h3>
-                <p>€</p>
+            <div class="col">
+                <div class="product-item card">
+                    <img src="images/bokbok3.jpg" alt="bobr">
+                    <h3>Bobr</h3>
+                    <p>€</p>
+                </div>
             </div>
-            <div class="product-item">
-                <img src="images/bokbok3.jpg" alt="bobr">
-                <h3>Bobr</h3>
-                <p>€</p>
-            </div>
-            <div class="product-item">
-                <img src="images/bokbok3.jpg" alt="bobr">
-                <h3>Bobr</h3>
-                <p>€</p>
+            <div class="col">
+                <div class="product-item card">
+                    <img src="images/bokbok3.jpg" alt="bobr">
+                    <h3>Bobr</h3>
+                    <p>€</p>
+                </div>
             </div>
         </div>
-    </section>
-
+    </div>
+    
+</section>
 <!-- whatever you wanna name it section -->
     <div class="container py-4 content-section">
         <div class="row align-items-md-stretch">
@@ -86,3 +107,7 @@
             </div>
         </div>
     </div>
+
+</body>
+</html>
+
