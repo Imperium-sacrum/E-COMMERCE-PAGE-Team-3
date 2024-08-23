@@ -3,6 +3,7 @@
   box-sizing: border-box;
 }
 
+
 #cards-body {
   background: #fbfbfb;
   font-family: "Raleway";
@@ -135,9 +136,6 @@ body .card .description p {
 }
 
 
-
-
-
 /*  TEST  */
 .product-card {
 /* gap: 2px; */
@@ -268,3 +266,6 @@ body .card .description p {
   cursor: pointer;
 }
 
+.d-flex{
+  top: 30vh;
+}
