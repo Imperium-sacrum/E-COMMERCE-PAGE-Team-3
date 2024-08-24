@@ -45,7 +45,7 @@ if (mysqli_num_rows($result) == 0) {
   }
 }
 
-mysqli_close($connect);
+// mysqli_close($connect);
 ?>
 
 

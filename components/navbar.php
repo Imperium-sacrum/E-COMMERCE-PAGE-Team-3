@@ -101,5 +101,4 @@ if (!$resultCategories) {
 
 <?php
 
-mysqli_close($connect); 
 ?>
