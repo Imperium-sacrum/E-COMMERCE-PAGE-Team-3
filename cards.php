@@ -92,7 +92,8 @@ if (mysqli_num_rows($resultSearch) == 0) {
       <button><a href='details.php?id={$row["product_id"]}'>Details</a></button>
     </div>
     </div>
-  </div>
+    </div>
+  
     
 </div>";
   }
@@ -139,7 +140,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
 
 
 
-mysqli_close($connect);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,15 +153,18 @@ mysqli_close($connect);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="stylesheet" href="styles/cards.css">
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/.css">
 </head>
 
 <body id="cards-body">
   <?php include 'components/navbar.php'; ?>
   <h1 class="mt-5 text-dark">PRODUCTS</h1>
-  <form role="search">
-    <input class="form-control" type="search" value="<?php echo ($search) ?>" placeholder="Product or Category" aria-label="Search" name="search">
-    <button class="btn-create" type="submit">Search</button>
-  </form>
+  <div class="search-container">
+    <form role="search">
+      <input class="form-control" type="search" value="<?php echo ($search) ?>" placeholder="Product or Category" aria-label="Search" name="search">
+      <button class="btn-create" type="submit">Search</button>
+    </form>
+  </div>
 
   <div class="categories">
     <ul class="categ-li d-flex flex-row text-dark justify-content-start">

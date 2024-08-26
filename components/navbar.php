@@ -1,3 +1,17 @@
+<?php
+
+require_once __DIR__ . '/../db_components/db_connect.php';
+
+
+// Fetch categories from the database
+$sqlCategories = "SELECT * FROM product_categories";
+$resultCategories = mysqli_query($connect, $sqlCategories);
+
+if (!$resultCategories) {
+    die("Query Failed: " . mysqli_error($connect));
+}
+?>
+
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
@@ -10,26 +24,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Meat</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Vegetables</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Grains</a>
-                </li>
+                <?php
+                if (mysqli_num_rows($resultCategories) > 0) {
+                    // Loop through each category and create a list item
+                    while ($category = mysqli_fetch_assoc($resultCategories)) {
+                        echo "<li class='nav-item'>";
+                        echo "<a class='nav-link' href='cards.php?category=" . $category['category_name'] . "'>" . $category['category_name'] . "</a>";
+                        echo "</li>";
+                    }
+                } else {
+                    echo "<li class='nav-item'><a class='nav-link' href='#'>No Categories</a></li>";
+                }
+                ?>
                 <li class="nav-item">
                     <a class="nav-link" href="about.php">About</a>
                 </li>
             </ul>
             <div class="d-flex align-items-center ms-auto">
-                <div class="search-bar me-3">
-                    <input type="text" placeholder="Search">
-                    <button type="button">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
                 <a class="btn btn-primary me-3" href="session/login.php" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">
                     Login
                 </a>
@@ -44,7 +55,7 @@
                             <li><a class="dropdown-item" href="profile.php">My account</a></li>
                             <li><a class="dropdown-item" href="logout.php?logout">Log out</a></li>
                         <?php else: ?>
-                            <li><a class="dropdown-item" href="registration.php" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">Register</a></li>
+                            <li><a class="dropdown-item" href="session/registration.php" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">Register</a></li>
                         <?php endif; ?>
                     </ul>
                 </li>
@@ -87,3 +98,7 @@
         </div>
     </div>
 </nav>
+
+<?php
+
+?>
