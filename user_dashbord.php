@@ -1,13 +1,13 @@
 <?php
-// session_start();
-// if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
-//     header("Location: session/login.php");
-//     exit();
-// }
-// if (isset($_SESSION["admin"])) {
-//     header("Location: admins/dashboard");
-//     exit();
-// }
+session_start();
+if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
+    header("Location: session/login.php");
+    exit();
+}
+if (isset($_SESSION["admin"])) {
+    header("Location: admins/dashboard");
+    exit();
+}
 require_once "db_components/db_connect.php";
 $id = $_GET["id"];
 
@@ -17,40 +17,45 @@ $sql = "SELECT * FROM `orders` WHERE user_id=$id";
 // run the query
 $result = mysqli_query($connect, $sql);
 // fetch data
-$row = mysqli_fetch_assoc($result);
-$layout = "
+$row = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$layout = "";
+foreach ($row as  $value) {
+    $layout .= "
 
   
-<div class='m-5 shadow-lg p-3 mb-5 bg-body rounded' >
+<div class=' shadow-lg p-3 m-5 bg-body rounded' >
 <div class='clearfix'>
 
 
   <div class= 'd-flex justify-content-start'>
       <dl class='w-50 m-5'>
         <dt>Name</dt>
-        <dd>{$row["products"]}</dd>
+        <dd>{$value["products"]}</dd>
 
         <dt>Status</dt>
-        <dd>{$row["order_status"]}</dd>
+        <dd>{$value["order_status"]}</dd>
 
         <dt>Ordered at</dt>
-        <dd>{$row["created_at"]}</dd>
+        <dd>{$value["created_at"]}</dd>
+    
   
    </div>
    
   
 
   <div class='d-flex '> 
-  <a href='users/leave-reviews.php?id={$row["____ hier should come the id of product ______"]}' class='btn btn-outline-secondary d-flex justify-content-center m-3 w-25'>Leave a review</a>
-  <br>
+  <a href='users/leave-reviews.php?id={$value["____ here should come the id of product ______"]}' class='btn btn-outline-secondary d-flex justify-content-center m-3 w-25'>Leave a review</a>
+
   
   </div>
  
-  
+    <hr>
 
 </div>
 </div>
 ";
+}
+
 
 
 
