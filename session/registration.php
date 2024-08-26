@@ -116,7 +116,7 @@ if (isset($_POST['btn-signup'])) {
           </div>";
         }
     }
-    header("Location: ../index.php");
+    header("Location: login.php");
 }
 
 ?>

@@ -37,7 +37,7 @@
                 <li class="nav-item dropdown" style="list-style-type: none;">
                     <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-expanded="false" style="display: flex; align-items: center;">
                         <i class="fa-solid fa-user" style="color: var(--russet); font-size: 1.2rem;"></i>
-                        <span style="color: var(--russet); margin-left: 0.5rem;"><a href="users/profile.php">Profile</a></span>
+                        <span style="color: var(--russet); margin-left: 0.5rem;"><a href="../users/profile.php">Profile</a></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="padding: 10px; border-radius: 5px; background-color: var(--beige);">
                         <?php if (isset($_SESSION['user']) || isset($_SESSION['admin'])): ?>

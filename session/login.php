@@ -52,7 +52,7 @@ if (isset($_POST["login-btn"])) {
             $row = mysqli_fetch_assoc($result);
             $username = $row['username'];
 
-            if ($row["status"] == "admin") {
+            if ($row["role"] == "admin") {
 
                 $_SESSION["admin"] = $row["user_id"];
                 header("Location: admins/dashboard.html");
