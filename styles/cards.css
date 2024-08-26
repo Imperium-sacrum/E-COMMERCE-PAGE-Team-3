@@ -157,8 +157,7 @@
 }
 
 .search-container input[type="search"] {
-
-  width: 150px; 
+  width: 200px; 
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 0;
