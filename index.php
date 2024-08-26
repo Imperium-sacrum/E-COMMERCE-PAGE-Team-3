@@ -1,6 +1,6 @@
 <?php
 // ob_start();
-session_start();
+// session_start
 
 // if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
 //     header("Location: index.php");
@@ -11,9 +11,7 @@ if (isset($_SESSION["admin"])) { #if i am session admin , i create a session wic
 } elseif (isset($_SESSION["user"])) {
     $session = $_SESSION["user"]; # else i havin session user
     ;
-} else {
 }
-
 require_once "db_components/db_connect.php";
 
 // Do not close the connection here. It will be used in other includes.

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
     header("Location: ../session/login.php");
