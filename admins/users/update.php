@@ -31,9 +31,9 @@ if (isset($_POST["update"])) {
     } else {
         // Delete the old picture if it exists and is not the default
         if ($row["image"] != "default.jpg") {
-            unlink("../images/{$row["image"]}");
+            unlink("../../images/{$row["image"]}");
         }
-        $update_sql = "UPDATE `users` SET `username`='{$uname}', `first_name`='{$fname}', `last_name`='{$lname}', `email`='{$email}', `role`='{$role}', `status`='{$status}', `image`='{$pic[0]}' WHERE id = {$id}";
+        $update_sql = "UPDATE `users` SET `username`='{$uname}', `first_name`='{$fname}', `last_name`='{$lname}', `email`='{$email}', `role`='{$role}', `status`='{$status}', `image`='{$pic[0]}' WHERE user_id = {$id}";
     }
 
     // Run the update query
@@ -50,7 +50,7 @@ if (isset($_POST["update"])) {
     </div>";
     }
     // Redirect after update
-    header("refresh: 3; url=../dashboard.html");
+    // header("refresh: 3; url=../dashboard.html");
 }
 ?>
 

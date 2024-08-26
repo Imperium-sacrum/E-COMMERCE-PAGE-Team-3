@@ -29,7 +29,7 @@ if (!$resultCategories) {
                     // Loop through each category and create a list item
                     while ($category = mysqli_fetch_assoc($resultCategories)) {
                         echo "<li class='nav-item'>";
-                        echo "<a class='nav-link' href='cards.php?category=" . $category['category_name'] . "'>" . $category['category_name'] . "</a>";
+                        echo "<a class='nav-link' href='../cards.php?search=" . $category['category_name'] . "'>" . $category['category_name'] . "</a>";
                         echo "</li>";
                     }
                 } else {
@@ -48,7 +48,9 @@ if (!$resultCategories) {
                 <li class="nav-item dropdown" style="list-style-type: none;">
                     <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-expanded="false" style="display: flex; align-items: center;">
                         <i class="fa-solid fa-user" style="color: var(--russet); font-size: 1.2rem;"></i>
-                        <span style="color: var(--russet); margin-left: 0.5rem;"><a href="users/profile.php">Profile</a></span>
+                        <?php if (isset($_SESSION['user']) || isset($_SESSION['admin'])): ?>
+                            <span style="color: var(--russet); margin-left: 0.5rem;"><a href="users/profile.php">Profile</a></span>
+                        <?php endif; ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="padding: 10px; border-radius: 5px; background-color: var(--beige);">
                         <?php if (isset($_SESSION['user']) || isset($_SESSION['admin'])): ?>
