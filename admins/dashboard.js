@@ -102,7 +102,6 @@ document.getElementById("categories").addEventListener("click", categories);
 document.getElementById("reviews").addEventListener("click", reviews);
 document.getElementById("dashboard").addEventListener("click", chartS);
 
-
 function fetch(source = "products", category = "") {
   let xml = new XMLHttpRequest();
   xml.open("GET", "./api/api_" + source + ".php", true);
@@ -115,7 +114,9 @@ function fetch(source = "products", category = "") {
           let elements = response.data;
 
           if (category) {
-            elements = elements.filter(product => product.category_name === category);
+            elements = elements.filter(
+              (product) => product.category_name === category
+            );
           }
 
           let tableElement = document.getElementById("main");
@@ -125,7 +126,7 @@ function fetch(source = "products", category = "") {
           if (tableElement) {
             if (source == "products") {
               createdBtn.innerHTML = `<a class="btn btn-success" href="./products/create.php">Create New Product</a>`;
-              let dropdownContent = '';
+              let dropdownContent = "";
               let uniqueCategories = new Set();
               for (const val of elements) {
                 if (!uniqueCategories.has(val.category_name)) {
@@ -195,25 +196,27 @@ function fetch(source = "products", category = "") {
                   </li>
               </ul>
                 ${tableContent} `;
-              document.getElementById("allProductsBtn").addEventListener("click", function (e) {
-                e.preventDefault();
-                fetch("products");
-              });
-              const dropdownItems = document.querySelectorAll('.dropdown-item');
-              dropdownItems.forEach(item => {
-                item.addEventListener('click', function (e) {
+              document
+                .getElementById("allProductsBtn")
+                .addEventListener("click", function (e) {
                   e.preventDefault();
-                  const category = this.getAttribute('data-category');
-                  fetch('products', category);
+                  fetch("products");
+                });
+              const dropdownItems = document.querySelectorAll(".dropdown-item");
+              dropdownItems.forEach((item) => {
+                item.addEventListener("click", function (e) {
+                  e.preventDefault();
+                  const category = this.getAttribute("data-category");
+                  fetch("products", category);
                 });
               });
-              // let checkClass = document.querySelectorAll(".form-check-input");
-              // let prodClass = document.querySelectorAll(".prodClass");
-              // checkClass.forEach((element, index) => {
-              //   element.addEventListener("change", function () {
-              //     checkAction(prodClass[index].innerHTML, element);
-              //   });
-              // });
+              let checkClass = document.querySelectorAll(".form-check-input");
+              let prodClass = document.querySelectorAll(".prodClass");
+              checkClass.forEach((element, index) => {
+                element.addEventListener("change", function () {
+                  checkAction(prodClass[index].innerHTML, element);
+                });
+              });
             } else if (source == "orders") {
               createdBtn.innerHTML = `<a class="btn btn-success" href="./orders/create.php">Create New Orders</a>`;
               let tableContent = `

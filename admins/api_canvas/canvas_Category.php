@@ -14,7 +14,15 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Method: GET");
 header("Access-Control-Allow-Origin: *");
 
-$sql = "SELECT * FROM `reviews`";
+$sql = "SELECT 
+    c.category_name, 
+    COUNT(p.product_id) AS product
+FROM 
+    products p
+JOIN 
+    product_categories	 c ON p.category_id = c.category_id
+GROUP BY 
+    c.category_name;";
 
 if ($result = mysqli_query($connect, $sql)) {
     if (mysqli_num_rows($result) > 0) {

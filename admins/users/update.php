@@ -1,9 +1,13 @@
 <?php
-// session_start();
-// if (!isset($_SESSION["admin"])) {
-//     header("Location: ../login.php");
-//     exit();
-// }
+session_start();
+if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
+    header("Location: ../../session/login.php");
+    exit();
+}
+if (isset($_SESSION["username"])) {
+    header("Location: ../../index.php");
+    exit();
+}
 
 require_once "../../db_components/db_connect.php";
 require_once "../../db_components/file_upload.php";
@@ -31,9 +35,9 @@ if (isset($_POST["update"])) {
     } else {
         // Delete the old picture if it exists and is not the default
         if ($row["image"] != "default.jpg") {
-            unlink("../images/{$row["image"]}");
+            unlink("../../images/{$row["image"]}");
         }
-        $update_sql = "UPDATE `users` SET `username`='{$uname}', `first_name`='{$fname}', `last_name`='{$lname}', `email`='{$email}', `role`='{$role}', `status`='{$status}', `image`='{$pic[0]}' WHERE id = {$id}";
+        $update_sql = "UPDATE `users` SET `username`='{$uname}', `first_name`='{$fname}', `last_name`='{$lname}', `email`='{$email}', `role`='{$role}', `status`='{$status}', `image`='{$pic[0]}' WHERE user_id = {$id}";
     }
 
     // Run the update query
@@ -50,7 +54,7 @@ if (isset($_POST["update"])) {
     </div>";
     }
     // Redirect after update
-    header("refresh: 3; url=../dashboard.html");
+    // header("refresh: 3; url=../dashboard.html");
 }
 ?>
 

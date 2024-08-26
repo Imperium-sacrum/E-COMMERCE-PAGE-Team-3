@@ -52,7 +52,7 @@ if (isset($_POST["login-btn"])) {
             $row = mysqli_fetch_assoc($result);
             $username = $row['username'];
 
-            if ($row["status"] == "admin") {
+            if ($row["role"] == "admin") {
 
                 $_SESSION["admin"] = $row["user_id"];
                 header("Location: admins/dashboard.html");
@@ -94,8 +94,8 @@ if (isset($_POST["login-btn"])) {
 </head>
 
 <body>
-    <?php include '../components/navbar.php';
-    ?>
+    <!-- <//?php include //'../components/navbar.php';
+     ?> -->
     <div class="reglog">
         <div class="reglog_content">
 

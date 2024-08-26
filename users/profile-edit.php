@@ -22,9 +22,14 @@ require_once "../db_components/file_upload.php";
 //     $session = $_SESSION["user"];
 //     $backTo = "home.php";
 // }
+if (isset($_SESSION["admin"])) { #if i am session admin , i create a session wich will store a id
+    $session = $_SESSION["admin"];
+} else {
+    $session = $_SESSION["username"]; # else i havin session user
+    ;
+}
 
-
-$sql = "SELECT * FROM users WHERE user_id = 1";
+$sql = "SELECT * FROM users WHERE user_id = $session";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
 
@@ -42,13 +47,13 @@ if (isset($_POST["edit"])) {
 
 
     if ($_FILES["image"]["error"] == 4) {
-        $sqlUpdate = "UPDATE users SET username = '$username', email = '$email', `password` = '$hashedPassword', first_name = '$first_name', last_name = '$last_name' WHERE user_id = 1";
+        $sqlUpdate = "UPDATE users SET username = '$username', email = '$email', `password` = '$hashedPassword', first_name = '$first_name', last_name = '$last_name' WHERE user_id =  $session";
     } else {
         if ($row["image"] != 'avatar-1.png') // avatar.jpg for default picture
         {
             unlink("../images/" . $row["image"]);
         }
-        $sqlUpdate = "UPDATE users SET username = '$username', email = '$email', `password` = '$hashedPassword', first_name = '$first_name', last_name = '$last_name',  `image` ='$image[0]' WHERE user_id = 1";
+        $sqlUpdate = "UPDATE users SET username = '$username', email = '$email', `password` = '$hashedPassword', first_name = '$first_name', last_name = '$last_name',  `image` ='$image[0]' WHERE user_id =  $session";
     }
     $result = mysqli_query($connect, $sqlUpdate);
 

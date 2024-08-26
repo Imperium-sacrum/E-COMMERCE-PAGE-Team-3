@@ -4,6 +4,38 @@ require_once "db_components/db_connect.php";
 $cards = "";
 $index = $_GET["id"];
 
+// Fetch the reviews for the product
+$sql_review = "SELECT * FROM `reviews` WHERE product_id=$index";
+$result_review = mysqli_query($connect, $sql_review);
+
+
+$sql_users = "SELECT r.comment, u.username FROM reviews r JOIN users u ON r.user_id = u.user_id WHERE r.product_id=$index";
+$result_user = mysqli_query($connect, $sql_users);
+
+$reviews = "";
+
+if (mysqli_num_rows($result_review) == 0) {
+  $reviews = "<p>No reviews found</p>";
+} else {
+  $reviews .= "<div class='card mb-3'>
+                    <div class='card-header'>
+                        Reviews
+                    </div>";
+
+  while ($review = mysqli_fetch_assoc($result_user)) {
+    $reviews .= "<div class='card-body'>
+                        <blockquote class='blockquote mb-0'>
+                            <p>{$review["comment"]}</p>
+                            <footer class='blockquote-footer'>{$review["username"]}</footer>
+                        </blockquote>
+                        <hr>
+                     </div>";
+  }
+
+  $reviews .= "</div>";
+}
+
+// Fetch the product details
 $sql = "SELECT * FROM `products` WHERE product_id = $index";
 $result = mysqli_query($connect, $sql);
 
@@ -67,11 +99,10 @@ if (mysqli_num_rows($result) == 0) {
 
 <body>
   <?php include 'components/navbar.php'; ?>
-  <div class=" container">
-
+  <div class="container">
 
     <?= $cards ?>
-
+    <?= $reviews ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
