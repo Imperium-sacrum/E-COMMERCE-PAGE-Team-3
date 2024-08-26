@@ -25,7 +25,7 @@ require_once "../db_components/file_upload.php";
 if (isset($_SESSION["admin"])) { #if i am session admin , i create a session wich will store a id
     $session = $_SESSION["admin"];
 } else {
-    $session = $_SESSION["user"]; # else i havin session user
+    $session = $_SESSION["username"]; # else i havin session user
     ;
 }
 
