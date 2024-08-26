@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
+if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
     header("Location: ../session/login.php");
     exit();
 }
@@ -19,7 +19,7 @@ $sql = "SELECT * FROM users WHERE user_id = $id ";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
 
-if ($row["image"] != "product.jpg") {
+if ($row["image"] != "avatar-1.png") {
     unlink("../images/{$row["image"]}");
 }
 
