@@ -69,7 +69,7 @@
     <script>
         function initMap() {
             // coordinate for code factory location
-            const businessLocation = {
+            const ourLocation = {
                 lat: 48.19679697492332,
                 lng: 16.359630573899167
             };
@@ -77,12 +77,12 @@
             //center and  zoom 
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 15,
-                center: businessLocation,
+                center: ourLocation,
             });
 
             // marker for our location
             const marker = new google.maps.Marker({
-                position: businessLocation,
+                position: ourLocation,
                 map: map,
             });
         }
