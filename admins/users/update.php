@@ -1,9 +1,13 @@
 <?php
-// session_start();
-// if (!isset($_SESSION["admin"])) {
-//     header("Location: ../login.php");
-//     exit();
-// }
+session_start();
+if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
+    header("Location: ../../session/login.php");
+    exit();
+}
+if (isset($_SESSION["username"])) {
+    header("Location: ../../index.php");
+    exit();
+}
 
 require_once "../../db_components/db_connect.php";
 require_once "../../db_components/file_upload.php";
