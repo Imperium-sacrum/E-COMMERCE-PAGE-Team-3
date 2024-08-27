@@ -6,21 +6,24 @@ if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
     header("Location: ../session/login.php");
     exit();
 }
-
-// if (!isset($_SESSION["username"])) {
-//     header("Location: home.php");
-//     exit();
-// }
-
-require_once "../db_components/db_connect.php";
-
 if (isset($_SESSION["admin"])) { #if i am session admin , i create a session wich will store a id
     $session = $_SESSION["admin"];
 } else {
     $session = $_SESSION["username"]; # else i havin session user
 }
+// if (!isset($_SESSION["username"])) {
+//     header("Location: home.php");
+//     exit();
+// }
 
-$sql = "SELECT * FROM users WHERE user_id = $session";
+
+
+require_once "../db_components/db_connect.php";
+
+
+
+$id = $_GET["id"];
+$sql = "SELECT * FROM users WHERE user_id = $id";
 
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
@@ -69,7 +72,7 @@ $row = mysqli_fetch_assoc($result);
                                             <h6>User Name</h6>
                                             <p class="text-muted"><?= $row["username"] ?></p>
                                         </div>
-
+                                        <a class="btn" href='../user_dashboard.php?id=<?= $row["user_id"] ?>'>Orders</a>
                                         <a href="profile-edit.php" class="btn">Edit profile</a>
                                         <a href="../chat/chat.php" class="btn">Chat</a>
                                         <a href='delete.php?id=<?= $row["user_id"] ?>' class='btn btn-danger'>Delete</a>
