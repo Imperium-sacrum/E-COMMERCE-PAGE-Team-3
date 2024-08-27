@@ -76,13 +76,13 @@
     <script>
         // iniziali a new map function
         function initMap() {
-            // coordinate for code factory location
+            // coordinate for code factory location from google
             const ourLocation = {
                 lat: 48.19679697492332,
                 lng: 16.359630573899167
             };
 
-            //center and  zoom 
+            //center and  zoom a map
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 15,
                 center: ourLocation,
@@ -92,6 +92,12 @@
             const marker = new google.maps.Marker({
                 position: ourLocation,
                 map: map,
+                icon: {
+                    url: '../images/green-areas.png',
+                    scaledSize: new google.maps.Size(50, 50),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(25, 50)
+                }
             });
         }
     </script>
