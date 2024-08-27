@@ -333,6 +333,7 @@ input[type="submit"] {
   background-color: black;
   color: white;
   border: none;
+  text-transform: uppercase;
 }
 
 label {
@@ -347,7 +348,7 @@ label {
 /* Btns input form */
 
 input[type="submit"]:hover {
-  background-color: black;
+  background-color: #6c757d;
 } 
 a.btn-signup {
   text-align: center;
@@ -459,7 +460,7 @@ a.btn-signup-a {
 }
 .btn-custom {
   background-color: transparent !important;
-  color: #000000;
+  color: #717070;
   border: 1px solid #d9d9d9;
   padding: 15px 0;  
   width: 100%; 
