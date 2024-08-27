@@ -61,6 +61,38 @@ p{
   margin: 0 auto;
 }
 
+.nav-link {
+  color: #783D19; 
+  font-size: 16px; 
+  font-weight: 400; 
+  text-transform: uppercase; 
+  transition: color 0.3s ease;
+  
+}
+.nav-link:hover {
+  color: #5e381b; 
+  text-decoration: none; 
+  border: 1px solid #5e381b;
+  padding: 5px 0;  
+}
+.navbar-nav.ms-auto .nav-link {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  
+
+}
+/* Navbar List */
+.navbar ul {
+
+  list-style-type: none; 
+  margin: 0 auto; 
+  padding: 0;
+
+  justify-content: center; /
+}
+
+
 
 
 /* Buttons */
