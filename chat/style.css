@@ -24,6 +24,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  
+}
+.header-btn {
+    display: flex;
+    gap: 2px;
+
 }
 .header h1 {
     margin: 0;

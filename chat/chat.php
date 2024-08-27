@@ -45,7 +45,13 @@ if (isset($_GET['user'])) {
     <div class="container">
         <div class="header">
             <h1>Live Chat</h1>
-            <a href="../session/logout.php?logout" name='logout ' class="logout">Logout</a>
+            <div class="header-btn">
+
+
+                <a href="../index.php" name='logout ' class="logout">Home</a>
+                <a href="..users/profile.php" name='logout ' class="logout">Profile</a>
+                <a href="../session/logout.php?logout" name='logout ' class="logout">Logout</a>
+            </div>
         </div>
         <div class="account-info">
             <div class="welcome">

@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['user'])) {
     header("Location: ../index.php");
     exit();
 }
