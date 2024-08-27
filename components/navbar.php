@@ -47,14 +47,14 @@ if (!$resultCategories) {
                 </a>
 
                 <li class="nav-item dropdown" style="list-style-type: none;">
-                    <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-expanded="false" style="display: flex; align-items: center;">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex; align-items: center;">
                         <i class="fa-solid fa-user" style="color: var(--russet); font-size: 1.2rem;"></i>
-                        <?php if (isset($_SESSION['user']) || isset($_SESSION['admin'])): ?>
+                        <?php if (isset($_SESSION['username'])): ?>
                             <span style="color: var(--russet); margin-left: 0.5rem;"><a href="../users/profile.php">Profile</a></span>
                         <?php endif; ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="padding: 10px; border-radius: 5px; background-color: var(--beige);">
-                        <?php if (isset($_SESSION['user']) || isset($_SESSION['admin'])): ?>
+                        <?php if (isset($_SESSION['username']) || isset($_SESSION['admin'])): ?>
                             <li><a class="dropdown-item" href="profile.php">My account</a></li>
                             <li><a class="dropdown-item" href="logout.php?logout">Log out</a></li>
                         <?php else: ?>

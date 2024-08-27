@@ -6,12 +6,7 @@ ob_start();
 //     header("Location: index.php");
 //     exit();
 // }
-if (isset($_SESSION["admin"])) { #if i am session admin , i create a session wich will store a id
-    $session = $_SESSION["admin"];
-} elseif (isset($_SESSION["user"])) {
-    $session = $_SESSION["user"]; # else i havin session user
-    ;
-}
+
 require_once "db_components/db_connect.php";
 
 // Do not close the connection here. It will be used in other includes.
@@ -33,6 +28,7 @@ require_once "db_components/db_connect.php";
     <?php include 'components/navbar.php'; ?>
 
     <!-- Hero goes here -->
+
     <?php include 'components/hero.php'; ?>
 
     <!-- Index File Content -->
@@ -42,7 +38,7 @@ require_once "db_components/db_connect.php";
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 
 </html>
 

@@ -4,7 +4,7 @@ ob_start();
 session_start();
 
 if (isset($_GET["logout"])) {
-    unset($_SESSION["user"]);
+    unset($_SESSION["username"]);
     unset($_SESSION["admin"]);
 
     session_unset();

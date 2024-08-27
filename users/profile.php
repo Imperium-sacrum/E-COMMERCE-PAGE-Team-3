@@ -1,5 +1,7 @@
 <?php
+include '../components/navbar.php';
 
+if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
 
 if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
     header("Location: ../session/login.php");
@@ -40,8 +42,7 @@ $row = mysqli_fetch_assoc($result);
 </head>
 
 <body>
-    <?php include '../components/navbar.php';
-    ?>
+
     <section class="vh-100" style="background-color: #f4f5f7;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
