@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    <style>
+        #map {
+            border-radius: 5px;
+        }
+    </style>
 
     <footer>
         <div class="container">
@@ -48,8 +53,10 @@
                         </div>
                         <small>By subscribing, you agree to our Privacy Policy and Terms.</small>
                     </form>
-                    <div id="map" class="m-2" style="height: 350px; width: 100%;"></div>
+
+
                 </div>
+                <div id="map" class="m-2" style="height: 350px; width: 100%;"></div>
             </div>
 
 
@@ -67,6 +74,7 @@
     </footer>
 
     <script>
+        // iniziali a new map function
         function initMap() {
             // coordinate for code factory location
             const ourLocation = {
