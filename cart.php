@@ -2,6 +2,7 @@
 session_start();
 require 'db_components/db_connect.php';
 
+// Fetch products and discounts from the database
 $sql = "SELECT p.product_id AS id, p.product_name AS name, p.price, d.discount_percentage AS discount, p.image AS icon, p.description
         FROM products p
         LEFT JOIN discounts d ON p.discount_id = d.discount_id";
@@ -20,44 +21,51 @@ if ($result && mysqli_num_rows($result) > 0) {
     }
 }
 
+// Define tax rate and initialize totals
 $taxRate = 0.1;
+$totalPrice = 0;
+$discountedTotalPrice = 0;
+$totalDiscount = 0;
 
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = [
-        3 => ['quantity' => 2],
-        4 => ['quantity' => 2],
-        5 => ['quantity' => 1],
-        6 => ['quantity' => 1],
-    ];
-}
-
-// Handle actions: increment, decrement, delete, update
+// Handle cart actions (increment, decrement, delete, update)
 if (isset($_GET['action'])) {
     $productId = (int)$_GET['product_id'];
 
     switch ($_GET['action']) {
         case 'increment':
             $_SESSION['cart'][$productId]['quantity']++;
+            $updatesql = "UPDATE `shopping_cart` SET `quantity` = `quantity` + 1 WHERE product_id = $productId AND user_id = {$_SESSION["username"]}";
+            mysqli_query($connect, $updatesql);
             break;
 
         case 'decrement':
             if ($_SESSION['cart'][$productId]['quantity'] > 1) {
                 $_SESSION['cart'][$productId]['quantity']--;
+                $updatesql = "UPDATE `shopping_cart` SET `quantity` = `quantity` - 1 WHERE product_id = $productId AND user_id = {$_SESSION["username"]}";
+                mysqli_query($connect, $updatesql);
             } else {
                 unset($_SESSION['cart'][$productId]);
+                $deletesql = "DELETE FROM `shopping_cart` WHERE product_id = $productId AND user_id = {$_SESSION["username"]}";
+                mysqli_query($connect, $deletesql);
             }
             break;
 
         case 'delete':
             unset($_SESSION['cart'][$productId]);
+            $deletesql = "DELETE FROM `shopping_cart` WHERE product_id = $productId AND user_id = {$_SESSION["username"]}";
+            mysqli_query($connect, $deletesql);
             break;
 
         case 'update':
             $newQuantity = (int)$_GET['quantity'];
             if ($newQuantity > 0) {
                 $_SESSION['cart'][$productId]['quantity'] = $newQuantity;
+                $updatesql = "UPDATE `shopping_cart` SET `quantity` = $newQuantity WHERE product_id = $productId AND user_id = {$_SESSION["username"]}";
+                mysqli_query($connect, $updatesql);
             } else {
                 unset($_SESSION['cart'][$productId]);
+                $deletesql = "DELETE FROM `shopping_cart` WHERE product_id = $productId AND user_id = {$_SESSION["username"]}";
+                mysqli_query($connect, $deletesql);
             }
             break;
     }
@@ -66,10 +74,7 @@ if (isset($_GET['action'])) {
     exit();
 }
 
-$totalPrice = 0;
-$discountedTotalPrice = 0;
-$totalDiscount = 0;
-
+// Calculate totals for display
 foreach ($_SESSION['cart'] as $productId => $details) {
     if (isset($products[$productId])) {
         $originalPrice = $products[$productId]['price'] * $details['quantity'];
@@ -88,7 +93,6 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20;
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -97,9 +101,7 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="styles/shoppingcart.css">
 </head>
-
 <body>
-
     <div class="container-fluid">
         <div class="row">
             <aside class="col-lg-8">
@@ -159,33 +161,6 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20;
             </aside>
             <aside class="col-lg-4">
                 <div class="card-details">
-                    <h3>Card details</h3>
-                    <form>
-                        <div class="form-group">
-                            <label>Card type</label>
-                            <div>
-                                <img src="images/mastercard.png" alt="MasterCard">
-                                <img src="images/bokbok3.jpg" alt="Visa">
-                                <img src="images/americanexpress.png" alt="Amex">
-                                <img src="images/paypal.png" alt="PayPal">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Cardholder's Name</label>
-                            <input type="text" class="form-control" placeholder="Cardholder's Name">
-                        </div>
-                        <div class="form-group">
-                            <label>Card Number</label>
-                            <input type="text" class="form-control" placeholder="Card Number">
-                        </div>
-                        <div class="form-group">
-                            <label>Expiration</label>
-                            <input type="text" class="form-control" placeholder="MM/YY">
-                        </div>
-                        <div class="form-group">
-                            <label>CVV</label>
-                            <input type="text" class="form-control" placeholder="CVV">
-                        </div>
                         <hr>
                         <div class="total">
                             <p>Subtotal: €<?= number_format($discountedTotalPrice, 2) ?></p>
@@ -194,7 +169,7 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20;
                             <p>Shipping: €20.00</p>
                             <h3>Total (Incl. taxes): €<?= number_format($finalTotal, 2) ?></h3>
                         </div>
-                        <button class="checkout-btn">€<?= number_format($finalTotal, 2) ?> CHECKOUT →</button>
+                        <button onclick="window.location.href='/stripe/checkout.php'" class="checkout-btn">€<?= number_format($finalTotal, 2) ?> CHECKOUT →</button>
                     </form>
                 </div>
             </aside>
@@ -212,8 +187,7 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20;
             window.location.href = 'cart.php?action=update&product_id=' + productId + '&quantity=' + quantity;
         }
     </script>
-
-
 </body>
-
 </html>
+
+
