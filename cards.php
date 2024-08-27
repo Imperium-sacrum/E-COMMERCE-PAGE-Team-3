@@ -156,6 +156,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
   <link rel="stylesheet" href="styles/cards.css">
   <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="styles/.css">
+  <link rel="stylesheet" href="../styles/footer.css">
 </head>
 
 <body id="cards-body">
@@ -191,6 +192,8 @@ if (mysqli_num_rows($resultSearch) == 0) {
       xhr.send("product_id=" + productId);
     }
   </script>
+  <?php include '/components/footer.php';
+  ?>
 </body>
 
 </html>
