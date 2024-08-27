@@ -70,6 +70,7 @@ if (mysqli_num_rows($result) == 0) {
                     <p>{$row["description"]}</p>
                     <p class='product-availability'>Status: {$availabilityStatus}</p>
                     <button><a href='cart.php?id={$row["product_id"]}'>Add to Cart</a></button>
+                    <button><a href='contact.php?id={$row["product_id"]}'>questions</a></button>
                     
                 </div>
             </div>
