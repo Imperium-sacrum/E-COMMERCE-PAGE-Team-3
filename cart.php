@@ -13,7 +13,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         $products[$row['id']] = [
             'name' => $row['name'],
             'price' => $row['price'],
-            'discount' => $row['discount'] ?? 0, // Use discount from the discounts table, default to 0 if null
+            'discount' => $row['discount'] ?? 0, 
             'icon' => $row['icon'], 
             'description' => $row['description']
         ];
@@ -155,47 +155,28 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20;
                 </div>
             </div>
         </aside>
-        <aside class="col-lg-4">
-            <div class="card-details">
-                <h3>Card details</h3>
-                <form>
-                    <div class="form-group">
-                        <label>Card type</label>
-                        <div>
-                            <img src="images/mastercard.png" alt="MasterCard">
-                            <img src="images/bokbok3.jpg" alt="Visa">
-                            <img src="images/americanexpress.png" alt="Amex">
-                            <img src="images/paypal.png" alt="PayPal">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Cardholder's Name</label>
-                        <input type="text" class="form-control" placeholder="Cardholder's Name">
-                    </div>
-                    <div class="form-group">
-                        <label>Card Number</label>
-                        <input type="text" class="form-control" placeholder="Card Number">
-                    </div>
-                    <div class="form-group">
-                        <label>Expiration</label>
-                        <input type="text" class="form-control" placeholder="MM/YY">
-                    </div>
-                    <div class="form-group">
-                        <label>CVV</label>
-                        <input type="text" class="form-control" placeholder="CVV">
-                    </div>
-                    <hr>
-                    <div class="total">
-                        <p>Subtotal: €<?= number_format($discountedTotalPrice, 2) ?></p>
-                        <p>Discount: -€<?= number_format($totalDiscount, 2) ?></p>
-                        <p>Tax (10%): €<?= number_format($totalTax, 2) ?></p>
-                        <p>Shipping: €20.00</p>
-                        <h3>Total (Incl. taxes): €<?= number_format($finalTotal, 2) ?></h3>
-                    </div>
-                    <button class="checkout-btn">€<?= number_format($finalTotal, 2) ?> CHECKOUT →</button>
-                </form>
-            </div>
-        </aside>
+<aside class="col-lg-4">
+    <div class="card-details">
+        <h3>Order Summary</h3>
+        <hr>
+        <div class="total">
+            <p>Subtotal: €<?= number_format($discountedTotalPrice, 2) ?></p>
+            <p>Discount: -€<?= number_format($totalDiscount, 2) ?></p>
+            <p>Tax (10%): €<?= number_format($totalTax, 2) ?></p>
+            <p>Shipping: €20.00</p>
+            <h3>Total (Incl. taxes): €<?= number_format($finalTotal, 2) ?></h3>
+        </div>
+        <form action="stripe/checkout.php" method="POST">
+            <?php foreach ($_SESSION['cart'] as $productId => $details): ?>
+                <input type="hidden" name="product_ids[]" value="<?= $productId ?>">
+                <input type="hidden" name="quantities[]" value="<?= $details['quantity'] ?>">
+            <?php endforeach; ?>
+            <button type="submit" class="checkout-btn">Proceed to Checkout</button>
+        </form>
+    </div>
+</aside>
+
+
     </div>
 </div>
 
@@ -210,7 +191,6 @@ function updateQuantity(element, productId) {
     window.location.href = 'cart.php?action=update&product_id=' + productId + '&quantity=' + quantity;
 }
 </script>
-
 
 </body>
 </html>
