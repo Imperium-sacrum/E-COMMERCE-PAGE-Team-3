@@ -171,7 +171,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
     </form>
   </div>
 
-  <div class="categories">
+  <div class="categories container">
     <ul class="categ-li d-flex flex-row text-dark justify-content-start">
       <li><a href="cards.php?category=">ALL</a></li>
       <?= $category_list ?>
@@ -179,7 +179,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
   </div>
 
   <div class="container-cards section-card mt-5">
-    <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-2 row-cols-xs-2">
+    <div class="row row-cols-xl-5 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-xs-2">
       <?= $cards ?>
     </div>
   </div>

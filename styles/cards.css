@@ -11,7 +11,7 @@
 
 
 .container-cards {
-  display: flex;
+  /* display: flex; */
   justify-content: center; 
   flex-wrap: wrap; 
   padding: 0 5px; 
@@ -127,13 +127,19 @@
 }
 
 .categ-li {
-  gap: 30px;
+  padding-left: 4px;
+
+width: 100%;
+
   list-style: none;
   text-decoration: none;
   color: black;
 }
 
 .categ-li a {
+  border-right: #A9B388 solid 1px;
+  padding-right:4px;
+  padding-left: 4px;
   color: rgba(0, 0, 0, 0.351);
   text-decoration: none;
   text-transform: uppercase;
@@ -141,6 +147,7 @@
 
 
 .categ-li a:hover {
+  border-right: none;
   color: #A9B388;
   outline: 0;
   border: 0;
