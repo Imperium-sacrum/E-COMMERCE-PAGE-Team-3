@@ -5,7 +5,7 @@ require_once '../db_components/db_connect.php';
 
 \Stripe\Stripe::setApiKey($stripeSecretKey);
 
-$YOUR_DOMAIN = 'http://localhost:4242';
+$YOUR_DOMAIN = 'http://localhost:3000';
 
 // Check if product_ids and quantities are set
 if (!isset($_POST['product_ids']) || !isset($_POST['quantities'])) {
