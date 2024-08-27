@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 # none users if they try to access the dashboard
 // if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
@@ -8,7 +8,7 @@ session_start();
 // }
 
 
-
+include '../components/navbar.php';
 require_once "../db_components/db_connect.php";
 require_once "../db_components/file_upload.php";
 
@@ -25,7 +25,7 @@ require_once "../db_components/file_upload.php";
 if (isset($_SESSION["admin"])) { #if i am session admin , i create a session wich will store a id
     $session = $_SESSION["admin"];
 } else {
-    $session = $_SESSION["user"]; # else i havin session user
+    $session = $_SESSION["username"]; # else i havin session user
     ;
 }
 
@@ -77,7 +77,7 @@ if (isset($_POST["edit"])) {
 </head>
 
 <body>
-    <?php include '../components/navbar.php';
+    <?php
     ?>
     <div class="container rounded bg-white mt-5 mb-5">
         <form enctype="multipart/form-data" method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>">

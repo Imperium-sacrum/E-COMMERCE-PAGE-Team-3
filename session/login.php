@@ -13,7 +13,7 @@ if (isset($_SESSION['username'])) {
 
 
 if (isset($_SESSION["admin"])) {
-    header("Location: admins/dashboard.html");
+    header("Location: ../admins/dashboard.html");
     exit();
 }
 
@@ -55,11 +55,11 @@ if (isset($_POST["login-btn"])) {
             if ($row["role"] == "admin") {
 
                 $_SESSION["admin"] = $row["user_id"];
-                header("Location: admins/dashboard.html");
+                header("Location: ../admins/dashboard.html");
             } else {
                 // its shows numer insteed name
 
-                $_SESSION["user"] = $row["user_id"];
+                $_SESSION["username"] = $row["user_id"];
 
 
                 header("Location: ../index.php");

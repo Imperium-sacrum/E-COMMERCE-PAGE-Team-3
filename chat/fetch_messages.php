@@ -3,7 +3,7 @@ session_start();
 require_once "../db_components/db_connect.php";
 
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['username'])) {
     exit("You are not logged in");
 }
 

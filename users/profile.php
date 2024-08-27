@@ -1,7 +1,7 @@
 <?php
+include '../components/navbar.php';
 
-
-if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
+if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
     header("Location: ../session/login.php");
     exit();
 }
@@ -16,7 +16,7 @@ require_once "../db_components/db_connect.php";
 if (isset($_SESSION["admin"])) { #if i am session admin , i create a session wich will store a id
     $session = $_SESSION["admin"];
 } else {
-    $session = $_SESSION["user"]; # else i havin session user
+    $session = $_SESSION["username"]; # else i havin session user
 }
 
 $sql = "SELECT * FROM users WHERE user_id = $session";
@@ -40,8 +40,7 @@ $row = mysqli_fetch_assoc($result);
 </head>
 
 <body>
-    <?php include '../components/navbar.php';
-    ?>
+
     <section class="vh-100" style="background-color: #f4f5f7;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">

@@ -2,14 +2,14 @@
 session_start();
 require_once "../db_components/db_connect.php";
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['username'])) {
     header("Location: ../session/login.php");
     exit();
 }
 
 // tere is problem with user name 
 // we are getting id 
-$username = $_SESSION['user'];
+$username = $_SESSION['username'];
 $selectedUser = '';
 $sql = "SELECT * FROM users WHERE user_id = $username";
 $resultU = mysqli_query($connect, $sql);

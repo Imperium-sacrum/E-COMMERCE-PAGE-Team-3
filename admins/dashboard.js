@@ -1,74 +1,3 @@
-const chartS = () => {
-  createdBtn.innerHTML = "";
-  document.getElementById("main").innerHTML = `<div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-          >
-            <h1 class="h2">Dashboard</h1>
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Share
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Export
-                </button>
-              </div>
-              <button
-                type="button"
-                class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1"
-              >
-
-                This week
-              </button>
-            </div>
-          </div>
-
-          <canvas
-            class="my-4 w-100"
-            id="myChart"
-            width="900"
-            height="380"
-          ></canvas>
-
-          </div>`;
-  const ctx = document.getElementById("myChart");
-  // eslint-disable-next-line no-unused-vars
-  const myChart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-      datasets: [
-        {
-          data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-          lineTension: 0,
-          backgroundColor: "transparent",
-          borderColor: "#007bff",
-          borderWidth: 4,
-          pointBackgroundColor: "#007bff",
-        },
-      ],
-    },
-    options: {
-      plugins: {
-        legend: {
-          display: false,
-        },
-        tooltip: {
-          boxPadding: 3,
-        },
-      },
-    },
-  });
-};
-chartS();
 function products(e) {
   e.preventDefault();
   fetch("products");
@@ -100,7 +29,6 @@ document.getElementById("users").addEventListener("click", users);
 document.getElementById("discounts").addEventListener("click", discounts);
 document.getElementById("categories").addEventListener("click", categories);
 document.getElementById("reviews").addEventListener("click", reviews);
-document.getElementById("dashboard").addEventListener("click", chartS);
 
 function fetch(source = "products", category = "") {
   let xml = new XMLHttpRequest();
@@ -248,7 +176,7 @@ function fetch(source = "products", category = "") {
                   <td class="text-center">${val.user_id}</td>
                   <td class="text-center">
                     <a href='./orders/update.php?id=${val.order_id}' class='btn btn-outline-dark btn-sm'>Update</a>
-                    <a href='./orders/update.php?id=${val.order_id}' class='btn btn-outline-danger btn-sm'>Delete</a>
+                    <a href='./orders/delete.php?id=${val.order_id}' class='btn btn-outline-danger btn-sm'>Delete</a>
                   </td>
                 </tr>
               `;
