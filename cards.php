@@ -77,7 +77,8 @@ if (mysqli_num_rows($resultSearch) == 0) {
 
   foreach ($rows as $key => $row) {
     $availabilityStatus = $row["availability"] == 1 ? "Available" : "Not Available";
-    $cards .= "<div>
+    $cards .= "
+  
    <div class='product-card'>
     <div class='card-image'>
      <img src='images/{$row["image"]}'>
@@ -93,9 +94,8 @@ if (mysqli_num_rows($resultSearch) == 0) {
     </div>
     </div>
     </div>
-  
-    
-</div>";
+   
+ ";
   }
 }
 
@@ -174,7 +174,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
   </div>
 
   <div class="container-cards section-card mt-5">
-    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 row-cols-xs-1">
+    <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-2 row-cols-xs-2">
       <?= $cards ?>
     </div>
   </div>

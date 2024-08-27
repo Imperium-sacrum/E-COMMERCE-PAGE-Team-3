@@ -14,11 +14,14 @@
   display: flex;
   justify-content: center; 
   flex-wrap: wrap; 
-  padding: 0 20px; 
+  padding: 0 5px; 
+  /* padding-top: 5px; */
 }
 
 .product-card {
   width: 250px;
+  padding-left: 0;
+  padding-right: 0;
   /* margin: 5px;  */
   border: 1px solid #e5e5e5;
   overflow: hidden;
@@ -54,7 +57,7 @@
 }
 
 .card-info {
-  padding: 15px;
+  padding: 10px;
   text-align: center;
 }
 
