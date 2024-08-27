@@ -106,12 +106,12 @@ if (isset($_POST["login-btn"])) {
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" autocomplete="off" enctype="multipart/form-data" method="POST" class="mx-auto">
                 <h1 class="mb-3">Hello</h1>
 
-                <div class="mb-3 input-box d-flex">
+                <div class="mb-3 input-box button-container d-flex">
 
-                    <a class="btn btn-trans" href="login.php">Log in</a>
+                    <a style="text-decoration: none;" class="btn-custom" href="login.php">Log in</a>
 
 
-                    <a class="btn btn-trans" href="registration.php">Sign up</a>
+                    <a style="text-decoration: none;" class="btn-custom" href="registration.php">Sign up</a>
                 </div>
 
                 <div class="mb-3 input-box">
@@ -131,7 +131,7 @@ if (isset($_POST["login-btn"])) {
                 </div>
 
                 <div class="mb-3 input-box">
-                    <input type="submit" class="btn btn-signup" value=" Login" name="login-btn"></input>
+                    <input type="submit" class=" btn-signup-a" value=" Login" name="login-btn"></input>
                 </div>
             </form>
         </div>

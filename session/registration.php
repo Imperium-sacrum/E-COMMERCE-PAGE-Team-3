@@ -140,10 +140,11 @@ if (isset($_POST['btn-signup'])) {
 
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="POST" class="mx-auto">
                 <h1 class="mb-3">Hello</h1>
-                <div class="mb-3 input-box d-flex">
-                    <button type="submit" class="btn btn-trans " name="btn-signup">SIGN UP</button>
-                    <button type="button" class="btn btn-trans ">
-                        <a class="text-decoration-none text-dark" href="login.php">LOG IN</a>
+                <div class="mb-3 input-box button-container">
+                    <button type="submit" class="btn-custom" name="btn-signup">SIGN UP</button>
+
+                    <button type="button" class="btn-custom">
+                        <a href="login.php">LOG IN</a>
                     </button>
                 </div>
                 <div class="mb-3 input-box">
@@ -185,7 +186,7 @@ if (isset($_POST['btn-signup'])) {
                     <input type="checkbox" onclick="myFunction()"> Show Password
                 </div>
                 <div class="mb-3 input-box">
-                    <button type="submit" class="btn btn-signup " name="btn-signup">SIGN UP</button>
+                    <button type="submit" class="btn btn-signup-a " name="btn-signup">SIGN UP</button>
 
                 </div>
 
