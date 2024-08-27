@@ -6,24 +6,23 @@ if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
     header("Location: ../session/login.php");
     exit();
 }
-if (isset($_SESSION["admin"])) { #if i am session admin , i create a session wich will store a id
-    $session = $_SESSION["admin"];
-} else {
-    $session = $_SESSION["username"]; # else i havin session user
-}
+
 // if (!isset($_SESSION["username"])) {
 //     header("Location: home.php");
 //     exit();
 // }
 
-
+$id = $_GET["id"];
 
 require_once "../db_components/db_connect.php";
 
+if (isset($_SESSION["admin"])) { #if i am session admin , i create a session wich will store a id
+    $session = $_SESSION["admin"];
+} else {
+    $session = $_SESSION["username"]; # else i havin session user
+}
 
-
-$id = $_GET["id"];
-$sql = "SELECT * FROM users WHERE user_id = $id";
+$sql = "SELECT * FROM users WHERE user_id = $session";
 
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
