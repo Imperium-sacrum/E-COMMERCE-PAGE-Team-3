@@ -45,7 +45,7 @@ ob_start();
 
             </h2>
             <h2>
-                <li> Our Mission</li>
+                <li class="mt-5 mb-2"> Our Mission</li>
                 <div class="images">
                     <div class="img1">
 
@@ -59,7 +59,7 @@ ob_start();
                 </div>
             </h2>
             <h2>
-                <li> Why Choose Us?</li>
+                <li class="mt-5 mb-2"> Why Choose Us?</li>
                 <h3>Quality You Can Trust: We only offer products that meet our high standards. If we wouldn’t serve it at our own table, we won’t sell it.
                     Personalized Service: As a small business, we pride ourselves on our personal touch. We treat every customer like family.
                     Fast & Reliable Delivery: We know how important your time is. That’s why we offer quick, reliable delivery so you can enjoy your food fresh and fast.
