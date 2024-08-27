@@ -174,7 +174,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
   </div>
 
   <div class="container-cards section-card mt-5">
-    <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-1 row-cols-xs-1">
+    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 row-cols-xs-1">
       <?= $cards ?>
     </div>
   </div>

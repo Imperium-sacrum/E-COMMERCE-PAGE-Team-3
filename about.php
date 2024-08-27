@@ -1,3 +1,8 @@
+<?php
+require_once "db_components/db_connect.php";
+ob_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,14 +10,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/about.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/about.css">
+
 
 
 </head>
 
 <body>
+    <?php include 'components/navbar.php'; ?>
+
+
     <div class="hero-about">
 
     </div>
@@ -25,7 +37,7 @@
                 <h3>We're passionate about bringing high-quality, delicious food directly to your doorstep. As a small, family-run business, we believe in the power of good food to bring people together and create lasting memories.</h3>
             </h2>
             <h2>
-                <li class="mt-2"> Our Story</li>
+                <li class="mt-5"> Our Story</li>
 
                 <div class="bg">
 
@@ -61,8 +73,8 @@
                     <a href="contact.php">Contact Us</a>
                     <a href="chat/chat.php">Chat with us</a>
                     <a href="#show">Visit us</a>
-                    <h5 id="show">Our Team E-commerce <br>
-                        addresse </h5>
+                    <h5 style="font-weight: 100;" id="show"> Kettenbrückengasse 23 / 2 / 12, <br>
+                        1050 Wien</h5>
                 </ul>
         </ul>
         </h2>
@@ -72,5 +84,6 @@
     </div>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </html>
