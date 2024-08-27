@@ -1,5 +1,6 @@
 <?php
 require_once "db_components/db_connect.php";
+include 'components/navbar.php';
 
 $cards = "";
 $index = $_GET["id"];
@@ -99,7 +100,7 @@ if (mysqli_num_rows($result) == 0) {
 </head>
 
 <body>
-  <?php include 'components/navbar.php'; ?>
+
   <div class="container">
 
     <?= $cards ?>

@@ -4,13 +4,15 @@ ini_set('display_errors', 1);
 
 // ob_start();
 // session_start();
+
+
 // if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
 //     header("Location: login.php");
 //     exit();
 // }
 
 require_once "db_components/db_connect.php";
-
+include 'components/navbar.php';
 
 $sqlCN = "SELECT * FROM product_categories";
 $resultCN = mysqli_query($connect, $sqlCN);
@@ -160,7 +162,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
 </head>
 
 <body id="cards-body">
-  <?php include 'components/navbar.php'; ?>
+
   <h1 class="mt-5 text-dark">PRODUCTS</h1>
   <div class="search-container">
     <form role="search">
@@ -192,8 +194,9 @@ if (mysqli_num_rows($resultSearch) == 0) {
       xhr.send("product_id=" + productId);
     }
   </script>
-  <?php include '/components/footer.php';
-  ?>
+
 </body>
+<?php include 'components/footer.php';
+?>
 
 </html>

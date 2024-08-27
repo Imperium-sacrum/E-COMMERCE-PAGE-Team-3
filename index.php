@@ -1,5 +1,5 @@
 <?php
-ob_start();
+// ob_start();
 // session_start
 
 // if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
@@ -8,6 +8,7 @@ ob_start();
 // }
 
 require_once "db_components/db_connect.php";
+include 'components/navbar.php';
 
 // Do not close the connection here. It will be used in other includes.
 ?>
@@ -25,7 +26,7 @@ require_once "db_components/db_connect.php";
 
 <body>
     <!-- Navbar -->
-    <?php include 'components/navbar.php'; ?>
+
 
     <!-- Hero goes here -->
 
