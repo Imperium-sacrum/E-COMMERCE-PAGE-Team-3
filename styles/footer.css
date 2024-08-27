@@ -1,7 +1,7 @@
 footer {
     background-color: var(--lemon-meringue);
     text-align: center;
-    padding: 20px 20px; /* Reduced padding */
+    padding: 20px 20px;
     color: var(--dark-olive-green);
     width: 100%;
     bottom: 0;
@@ -12,17 +12,17 @@ footer {
   
   footer .container {
     max-width: 1200px;
-    margin-top: 10px; /* Reduced margin */
+    margin-top: 10px;
   }
   
   footer .row {
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: 10px; 
     justify-content: space-between;
   }
   
   footer h5, footer p, footer a {
     color: var(--dark-olive-green);
-    margin-bottom: 5px; /* Reduced margin */
+    margin-bottom: 5px; 
   }
   
   footer a {
