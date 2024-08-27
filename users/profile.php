@@ -2,11 +2,13 @@
 include '../components/navbar.php';
 
 if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
+
+if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
     header("Location: ../session/login.php");
     exit();
 }
 
-// if (!isset($_SESSION["user"])) {
+// if (!isset($_SESSION["username"])) {
 //     header("Location: home.php");
 //     exit();
 // }

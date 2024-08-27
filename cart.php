@@ -13,7 +13,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         $products[$row['id']] = [
             'name' => $row['name'],
             'price' => $row['price'],
-            ' ' => $row['discount'] ?? 0, // Use discount from the discounts table, default to 0 if null
+            'discount' => $row['discount'] ?? 0,
             'icon' => $row['icon'],
             'description' => $row['description']
         ];

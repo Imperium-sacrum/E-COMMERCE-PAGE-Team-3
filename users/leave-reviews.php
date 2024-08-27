@@ -43,25 +43,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/style.css">
+
 </head>
 
 <body>
-    <div class="container">
-        <!-- Alert area for showing success/error messages -->
-        <div id="alert-area"></div>
+    <div class="reglog">
+        <form id="review-form" action="#" method="POST" class="mx-auto">
+            <h1 class="mb-3">Submit Your Review <img style="width: 35px;" src="../images/reviews.png" alt=""></h1>
 
-        <!-- Review form -->
-        <form id="review-form" class="mx-auto w-50 my-5 shadow-lg p-3 mb-5 bg-body rounded">
-            <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($id); ?>"> <!-- Product ID -->
-            <div class="mb-3">
-                <label for="rating">Rating:</label>
-                <input class="form-control" type="number" name="rating" min="1" max="5" required>
+            <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($id); ?>">
+
+            <div class="mb-3 input-box">
+                <input class="form-control" type="number" name="rating" min="1" max="5" placeholder="Rating (1-5)" required>
             </div>
-            <div class="mb-3">
-                <label for="comment">Comment:</label>
-                <textarea class="form-control" name="comment" required></textarea>
+
+            <div class="mb-3 input-box">
+                <textarea class="form-control" name="comment" placeholder="Your Comment" required></textarea>
             </div>
-            <input type="submit" class="btn btn-dark mb-5" value="Send">
+
+            <div class="mb-3 input-box">
+                <input type="submit" class="btn btn-signup" value="Submit Review">
+            </div>
         </form>
     </div>
 

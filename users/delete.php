@@ -19,7 +19,7 @@ $sql = "SELECT * FROM users WHERE user_id = $id ";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
 
-if ($row["image"] != "product.jpg") {
+if ($row["image"] != "avatar-1.png") {
     unlink("../images/{$row["image"]}");
 }
 
