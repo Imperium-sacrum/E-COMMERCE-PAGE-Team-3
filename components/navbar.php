@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 
 require_once __DIR__ . '/../db_components/db_connect.php';
 
@@ -42,21 +42,22 @@ if (!$resultCategories) {
                 </li>
             </ul>
             <div class="d-flex align-items-center ms-auto">
-                <a class="btn btn-primary me-3" href="session/login.php" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">
-                    Login
-                </a>
-
+                <?php if (!isset($_SESSION['username'])): ?>
+                    <a class="btn btn-primary me-3" href="session/login.php" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">
+                        Login
+                    </a>
+                <?php endif; ?>
                 <li class="nav-item dropdown" style="list-style-type: none;">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex; align-items: center;">
                         <i class="fa-solid fa-user" style="color: var(--russet); font-size: 1.2rem;"></i>
-                        <?php if (isset($_SESSION['username'])): ?>
+                        <?php if (!isset($_SESSION['username'])): ?>
                             <span style="color: var(--russet); margin-left: 0.5rem;"><a href="../users/profile.php">Profile</a></span>
                         <?php endif; ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="padding: 10px; border-radius: 5px; background-color: var(--beige);">
-                        <?php if (isset($_SESSION['username']) || isset($_SESSION['admin'])): ?>
-                            <li><a class="dropdown-item" href="profile.php">My account</a></li>
-                            <li><a class="dropdown-item" href="logout.php?logout">Log out</a></li>
+                        <?php if (isset($_SESSION['username'])): ?>
+                            <li><a class="dropdown-item" href="../users/profile.php" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">My account</a></li>
+                            <li><a class="dropdown-item" href="logout.php?logout" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">Log out</a></li>
                         <?php else: ?>
                             <li><a class="dropdown-item" href="session/registration.php" style="background-color: var(--dark-olive-green); border-color: var(--dark-olive-green); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">Register</a></li>
                         <?php endif; ?>
