@@ -1,8 +1,13 @@
 
 .favorites-section {
-  padding: 20px;
   text-align: center;
+  padding: 50px 0;
+
+  padding-bottom: 150px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 h1 {
   margin-bottom: 30px;
@@ -52,4 +57,40 @@ h1 {
   color: white;
   padding: 50px 0;
   text-align: center;
+}
+
+.content-middle {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  max-width: 100vw; 
+  margin-top: 15vh;
+  margin-bottom: 60px;
+  margin-left: 25px;
+ margin-right: 25px;
+
+
+
+  border-radius: 5px;
+}
+.content-middle img {
+  width: 50%; 
+  height: 90%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.content-middle .text {
+  font-size: 14px; 
+  color: #333;
+  text-align: left;
+  h1{
+    text-align: left;
+    text-transform: uppercase ;
+    color: #4a4949;
+  }
+}
+.content-middle p {
+  font-size: 18px;
+  color: #515151;
+  
 }

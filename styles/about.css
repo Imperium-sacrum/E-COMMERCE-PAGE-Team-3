@@ -115,9 +115,11 @@
         font-weight: 200;
         margin-top: 5PX;
         margin-bottom: 5px;
+       color: #515151;
       }
       h3 {
         font-size: 1.25rem;;
+        color: #515151;
       }
      
     
@@ -131,7 +133,7 @@
         font-size: 1.25rem;
         list-style: none;
     text-decoration: none;
-    color: black;
+    color: #515151;
  
 
     }
