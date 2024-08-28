@@ -105,8 +105,8 @@
                 <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
                     <img src="images/hero6.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
-                        <h2 style="font-size: 2rem; color:#5F6F52;">ALKOHOLS</h2>
-                        <p style="font-size: 0.9rem;">Explore our unique selection of Alkohols from different countries.</p>
+                        <h2 style="font-size: 2rem; color:#2C5021;">ALKOHOLS</h2>
+                        <p style=" color:black;font-size: 1rem;">Explore our unique selection of Alkohols from different countries.</p>
                         <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Discover more</a>
                     </div>
                 </div>
@@ -116,8 +116,8 @@
                 <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
                     <img src="images/gre.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
-                        <h2 style="font-size: 2rem; color:#5F6F52">FRUITS</h2>
-                        <p style="font-size: 0.9rem;">Check out our most loved fruits by our loyal customers.</p>
+                        <h2 style="font-size: 2rem; color:#2C5021">FRUITS</h2>
+                        <p style="color:black ;font-size: 1rem;">Check out our most loved fruits by our loyal customers.</p>
                         <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Shop Now</a>
                     </div>
                 </div>
@@ -137,8 +137,8 @@
                 <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
                     <img src="images/cake.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
-                        <h2 style="font-size: 2rem; color:#9b4c7b;">SWEETNEES</h2>
-                        <p style="color:antiquewhite ;font-size: 0.9rem;">Explore our unique selection of Alkohols from different countries.</p>
+                        <h2 style="font-size: 2rem; color:#D962A2;">SWEETNEES</h2>
+                        <p style="color:antiquewhite ;font-size:1rem;">Explore our unique selection of Alkohols from different countries.</p>
                         <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Discover more</a>
                     </div>
                 </div>
@@ -148,8 +148,8 @@
                 <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
                     <img src="images/tort.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
-                        <h2 style="font-size: 2rem; color:#9b4c7b">CAKES</h2>
-                        <p style="color:antiquewhite; font-size: 0.9rem;">Check out our most loved fruits by our loyal customers.</p>
+                        <h2 style="font-size: 2rem; color:#D962A2">CAKES</h2>
+                        <p style="color:antiquewhite; font-size: 1rem;">Check out our most loved fruits by our loyal customers.</p>
                         <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Shop Now</a>
                     </div>
                 </div>
@@ -163,8 +163,8 @@
                 <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
                     <img src="images/herbs.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
-                        <h2 style="font-size: 2rem; color:#5F6F52;">HERBS</h2>
-                        <p style="font-size: 0.9rem;">Explore our unique selection of Alkohols from different countries.</p>
+                        <h2 style="font-size: 2rem; color:#E25822;">HERBS</h2>
+                        <p style="color:antiquewhite; font-size: 1rem;">Explore our unique selection of Alkohols from different countries.</p>
                         <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Discover more</a>
                     </div>
                 </div>
@@ -174,8 +174,8 @@
                 <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
                     <img src="images/spices.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
-                        <h2 style="font-size: 2rem; color:#5F6F52">SPICES</h2>
-                        <p style="font-size: 0.9rem;">Check out our most loved fruits by our loyal customers.</p>
+                        <h2 style="font-size: 2rem; color:#E25822">SPICES</h2>
+                        <p style="color:antiquewhite; font-size: 1rem;">Check out our most loved fruits by our loyal customers.</p>
                         <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Shop Now</a>
                     </div>
                 </div>
