@@ -5,7 +5,7 @@ function canvasData(source, canvas, id, xValues, yValues, type) {
     if (this.status == 200) {
       try {
         let response = JSON.parse(this.responseText);
-        document.getElementById("main").innerHTML = `
+        document.getElementById("main").innerHTML += `
         ${canvas}
         `;
 
@@ -20,12 +20,9 @@ function canvasData(source, canvas, id, xValues, yValues, type) {
         var numbers = [];
 
         arr[2].forEach((element) => {
-          // console.log(element);
-
           names.push(element[xValues]);
           numbers.push(element[yValues]);
         });
-        // console.log(names);
 
         names;
         numbers;
@@ -98,21 +95,22 @@ canvasData(
   "canvas1",
   `category_name`,
   "product",
+  "line"
+);
+canvasData(
+  "canvas_Category",
+  '<canvas id="canvas2"></canvas>',
+  "canvas2",
+  `category_name`,
+  "product",
   "doughnut"
 );
-// canvasData(
-//   "canvas_Category",
-//   '<canvas id="canvas1" style="width:100px;max-width:700px"></canvas>',
-//   "canvas1",
-//   `category_name`,
-//   "product",
-//   "doughnut"
-// );
 
 document.getElementById("dashboard").addEventListener("click", function () {
+  document.getElementById("main").innerHTML += ` `;
   canvasData(
     "canvas_Category",
-    '<canvas id="canvas1" style="width:100px;max-width:700px"></canvas>',
+    '<canvas id="canvas1"></canvas>',
     "canvas1",
     `category_name`,
     "product",
