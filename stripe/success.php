@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 require_once '../vendor/autoload.php';
@@ -9,37 +8,52 @@ require_once '../db_components/db_connect.php';
 \Stripe\Stripe::setApiKey($stripeSecretKey);
 
 try {
-    // Retrieve the user_id from the session
     if (!isset($_SESSION['username'])) {
         throw new Exception('User is not logged in.');
     }
 
     $user_id = $_SESSION['username'];
 
-    // Assuming this is the real session ID from Stripe checkout
+    // Check if session_id is present in the URL
+    if (!isset($_GET['session_id'])) {
+        throw new Exception('Session ID is missing from the URL.');
+    }
+
     $session_id = $_GET['session_id'];
-    // $checkout_session = \Stripe\Checkout\Session::retrieve($session_id);
-    // $customer = \Stripe\Customer::retrieve($checkout_session->customer);
+    $checkout_session = \Stripe\Checkout\Session::retrieve($session_id);
+    $paymentIntent = \Stripe\PaymentIntent::retrieve($checkout_session->payment_intent);
 
-    // $paymentIntent = \Stripe\PaymentIntent::retrieve($checkout_session->payment_intent);
+    // Extract relevant information
+    $paymentStatus = $paymentIntent->status;
+    $paymentAmount = $paymentIntent->amount_received / 100;
+    $paymentCurrency = $paymentIntent->currency;
 
-    // // Extract relevant information
-    // $paymentStatus = $paymentIntent->status;
-    // $paymentAmount = $paymentIntent->amount_received;
-    // $paymentCurrency = $paymentIntent->currency;
-    // $paymentMethod = $paymentIntent->payment_method;
-    // $customerEmail = $customer->email;
+    // Retrieve the user's cart items from the shopping_cart table
+    $cartQuery = "SELECT product_id, quantity FROM shopping_cart WHERE user_id = $user_id";
+    $cartResult = mysqli_query($connect, $cartQuery);
 
-    # find all ids of products and qttys
-    var_dump($_SESSION["cart"]);
+    if (!$cartResult) {
+        throw new Exception('Error fetching cart items: ' . mysqli_error($connect));
+    }
 
-    # bring info from the user 
+    while ($cartItem = mysqli_fetch_assoc($cartResult)) {
+        $product_id = $cartItem['product_id'];
+        $quantity = $cartItem['quantity'];
 
-    // Insert order into database using the user_id
-        $query = "INSERT INTO orders (user_id, session_id, customer_email, amount, currency, payment_status, payment_method)
-                VALUES ('$user_id', '$session_id', '$customerEmail', '$paymentAmount', '$paymentCurrency', '$paymentStatus', '$paymentMethod')";
+     
+        $productQuery = "SELECT price FROM products WHERE product_id = $product_id";
+        $productResult = mysqli_query($connect, $productQuery);
+        $product = mysqli_fetch_assoc($productResult);
 
-    mysqli_query($connect, $query);
+        if ($product) {
+            $totalAmount = $product['price'] * $quantity;
+
+            // Insert order into the orders table
+            $orderQuery = "INSERT INTO orders (user_id, total_amount, order_status, products)
+                           VALUES ('$user_id', '$totalAmount', 'completed', '$product_id')";
+            mysqli_query($connect, $orderQuery);
+        }
+    }
 
     echo "<h1>Thank you for your order!</h1>";
 

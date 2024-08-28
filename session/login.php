@@ -95,8 +95,13 @@ if (isset($_POST["login-btn"])) {
                 </div>
 
                 <?php if (!empty($error)): ?>
-                    <div class="text-danger mb-3">
-                        <?php echo htmlspecialchars($error); ?>
+                    <script>
+                        setTimeout(() => {
+                            document.getElementById("errormsg").innerHTML = "";
+                        }, 3000);
+                    </script>
+                    <div class="text-danger mb-3" id="errormsg">
+                        <?php echo $error; ?>
                     </div>
                 <?php endif; ?>
 

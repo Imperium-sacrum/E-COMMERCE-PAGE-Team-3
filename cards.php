@@ -81,27 +81,46 @@ if (mysqli_num_rows($resultSearch) == 0) {
     $availabilityStatus = $row["availability"] == 1 ? "Available" : "Not Available";
     $cards .= "
     <div class='my-3'>
-   <div class='product-card'>
-    <div class='card-image'>
-     <img src='images/{$row["image"]}'>
-    </div>
-    <div class='card-info'>
-      <h2 class='product-name'>{$row["product_name"]}</h2>
-      <p class='product-price'>€ {$row["price"]}</p>
-       <p class='product-availability'>Status: {$availabilityStatus}</p>
-       
-      <div class='card-info d-flex'>
-      <button onclick='addToCart({$row["product_id"]})'>Add to Cart</button>
-      <button><a href='details.php?id={$row["product_id"]}'>Details</a></button>
-    </div>
-    </div>
-    </div>
-    </div>
+
+    <div class=' product-card'>
+                    <div class='card-hero position-relative overflow-hidden'>
+                        <img src='images/{$row["image"]}' style='height: 300px; object-fit: cover;' class='card-img-top' alt='Image 1'>
+                        <div class='card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white'>
+                            <p class='card-title-hero text-white text-center'>{$row['product_name']}</p>
+                            <p class='product-price'>€ {$row['price']}</p>
+                            <div class='card-info'>
+
+   <button><a href='details.php?id={$row["product_id"]}'>Details</a></button> 
+   <button onclick='addToCart({$row["product_id"]})'>Add to Cart</button>
+   </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
 
    
  ";
   }
 }
+
+
+// <div class='product-card'>
+// <div class='card-image'>
+//  <img src='images/{$row["image"]}'>
+// </div>
+// <div class='card-info'>
+//   <h2 class='product-name'>{$row["product_name"]}</h2>
+//   <p class='product-price'>€ {$row["price"]}</p>
+//    <p class='product-availability'>Status: {$availabilityStatus}</p>
+
+//   <div class='card-info d-flex'>
+//   <button onclick='addToCart({$row["product_id"]})'>Add to Cart</button>
+//   <button><a href='details.php?id={$row["product_id"]}'>Details</a></button>
+// </div>
+// </div>
+// </div>
+// </div>
+
 
 // TEST
 //  OR `` LIKE'%$search%
