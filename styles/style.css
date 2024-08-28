@@ -229,16 +229,24 @@ p{
 }
 
 .content-section {
+
   padding: 2rem 1rem;
 }
 
 .content-section h2 {
-  color: darkolivegreen;
+  color: rgb(98, 118, 63);
+  font-size: 50px;
 }
 
 .content-section p {
-  color: sienna;
+  color: rgb(213, 85, 25);
+  font-size: 20px;
 }
+.bg-opacity-50 {
+  --bs-bg-opacity: 0.2;
+}
+
+
 
 .container {
   max-width: 1200px;
@@ -526,4 +534,29 @@ a.btn-signup-a {
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+
+/* HERO PHOTOS */
+
+
+.favorites-section h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+.card-img-overlay-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.card-title-hero {
+  font-size: 1.25rem;
+}
+.card-hero {
+  border: none;
+  border-radius: 0.5rem;
 }
