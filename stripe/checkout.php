@@ -26,7 +26,6 @@ if (isset($_GET["checkout"])) {
         'line_items' => $prices,
         'mode' => 'payment',
         'success_url' => $YOUR_DOMAIN . '/stripe/success.php',
-        'cancel_url' => $YOUR_DOMAIN . '/stripe/cancel.php',
     ]);
 
     header("HTTP/1.1 303 See Other");
