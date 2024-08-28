@@ -1,59 +1,34 @@
 <?php
+session_start();
 require_once '../vendor/autoload.php';
 require_once 'secrets.php';
 require_once '../db_components/db_connect.php'; 
 
-\Stripe\Stripe::setApiKey($stripeSecretKey);
+if (isset($_GET["checkout"])) {
+    $userId = $_SESSION["username"];
+    $stripe = new \Stripe\StripeClient($stripeSecretKey);
 
-$YOUR_DOMAIN = 'http://localhost:3000';
+    $sql = "SELECT products.priceId, shopping_cart.quantity FROM products JOIN shopping_cart on shopping_cart.product_id = products.product_id WHERE shopping_cart.user_id = {$userId}";
+    $result = mysqli_query($connect, $sql);
+    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-// Check if product_ids and quantities are set
-if (!isset($_POST['product']) || !isset($_POST['quantities'])) {
-    die("Product IDs or Quantities were not provided.");
-}
+    $prices = [];
 
-// Retrieve product IDs and quantities from the form submission
-$productIds = $_POST['product'];
-$quantities = $_POST['quantities'];
-
-$line_items = [];
-foreach ($productIds as $index => $productId) {
-    $quantity = $quantities[$index];
-    
-    // Retrieve product details from the database
-    $result = mysqli_query($connect, "SELECT * FROM products WHERE product_id = $productId");
-    $product = mysqli_fetch_assoc($result);
-
-    if ($product) {
-        $line_items[] = [
-            'price_data' => [
-                'currency' => 'eur',
-                'product_data' => [
-                    'name' => $product['product_name'],
-                    'description' => $product['description'],
-                ],
-                'unit_amount' => $product['price'] * 100, // Amount in cents
-            ],
-            'quantity' => $quantity,
-        ];
+    foreach ($rows as $row) {
+        array_push($prices, [
+            'price' => $row['priceId'],
+            'quantity' => $row['quantity']
+        ]);
     }
+    $YOUR_DOMAIN = 'http://localhost:3000';
+
+    $session = $stripe->checkout->sessions->create([
+        'line_items' => $prices,
+        'mode' => 'payment',
+        'success_url' => $YOUR_DOMAIN . '/stripe/success.php',
+        'cancel_url' => $YOUR_DOMAIN . '/stripe/cancel.php',
+    ]);
+
+    header("HTTP/1.1 303 See Other");
+    header("Location: " . $session->url);
 }
-
-// Ensure we have at least one line item
-if (empty($line_items)) {
-    die("No valid line items found.");
-}
-
-// Create the Stripe Checkout session
-$checkout_session = \Stripe\Checkout\Session::create([
-  'line_items' => $line_items,
-  'mode' => 'payment',
-  'success_url' => $YOUR_DOMAIN . '/stripe/success.php?session_id={CHECKOUT_SESSION_ID}',
-  'cancel_url' => $YOUR_DOMAIN . '/stripe/cancel.html',
-]);
-
-// Redirect to Stripe Checkout
-header("HTTP/1.1 303 See Other");
-header("Location: " . $checkout_session->url);
-exit();
-?>
