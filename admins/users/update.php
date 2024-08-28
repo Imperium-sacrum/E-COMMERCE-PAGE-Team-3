@@ -110,8 +110,8 @@ if (isset($_POST["update"])) {
                 <div class="mb-3">
                     <label for="status">Status</label>
                     <select class="form-select" id="status" name="status">
-                        <option value="active" <?= $row["status"] == 'active' ? 'selected' : '' ?>>Active</option>
-                        <option value="banned" <?= $row["status"] == 'banned' ? 'selected' : '' ?>>Banned</option>
+                        <option value="0" <?= $row["status"] == 'active' ? 'selected' : '' ?>>Active</option>
+                        <option value="1" <?= $row["status"] == 'banned' ? 'selected' : '' ?>>Banned</option>
                     </select>
                 </div>
 
