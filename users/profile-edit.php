@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 # none users if they try to access the dashboard
 // if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
@@ -8,7 +8,7 @@
 // }
 
 
-include '../components/navbar.php';
+
 require_once "../db_components/db_connect.php";
 require_once "../db_components/file_upload.php";
 
@@ -73,7 +73,8 @@ if (isset($_POST["edit"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello <?= $row["first_name"] ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/style.css">
+
+    <link rel="stylesheet" href="../styles/profile.css">
 </head>
 
 <body>
@@ -103,7 +104,8 @@ if (isset($_POST["edit"])) {
                             </div>
                         </div>
                         <input type="file" name="image" class="form-control mb-3">
-                        <div class="mt-5 text-center"><input type="submit" name="edit" value="Update profile" class="btn"></div>
+                        <div class="mt-5 text-center"><input type="submit" name="edit" value="Update profile" class="btn btn-outline-dark m-1 btn-sm"></div>
+                        <div class="mt-5 text-center"><input type="submit" name="edit" value="Back" class="btn btn-outline-dark m-1 btn-sm" href="profile.php"></div>
                     </div>
                 </div>
 
