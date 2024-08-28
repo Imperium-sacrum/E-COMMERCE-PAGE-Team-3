@@ -14,15 +14,15 @@ $id = $_GET["id"];
 
 // Fetch the reviews for the product
 
-$sql = "SELECT users.user_id as User_ID, users.username, users.email , shopping_cart.product_id, shopping_cart.quantity FROM users JOIN shopping_cart ON shopping_cart.user_id = users.user_id where shopping_cart.user_id = $id";
+// $sql = "SELECT users.user_id as User_ID, users.username, users.email , shopping_cart.product_id, shopping_cart.quantity FROM users JOIN shopping_cart ON shopping_cart.user_id = users.user_id where shopping_cart.user_id = $id";
 
-// run the query
-$result = mysqli_query($connect, $sql);
-// fetch data
-$row = mysqli_fetch_all($result, MYSQLI_ASSOC);
-foreach ($row as  $value) {
-    $productId = "{$value["product_id"]}";
-}
+// // run the query
+// $result = mysqli_query($connect, $sql);
+// // fetch data
+// $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
+// foreach ($row as  $value) {
+//     $productId = "{$value["product_id"]}";
+// }
 
 
 $sql_orders = "SELECT * FROM `orders` WHERE user_id=$id";
@@ -56,7 +56,7 @@ foreach ($row_orders as  $value_orders) {
   
 
   <div class='d-flex '> 
-  <a href='users/leave-reviews.php?id='{$productId}' class='btn btn-outline-secondary d-flex justify-content-center m-3 w-25'>Leave a review</a>
+  <a href='users/leave-reviews.php?id='{$value_orders["products"]}' class='btn btn-outline-secondary d-flex justify-content-center m-3 w-25'>Leave a review</a>
 
   
   </div>
