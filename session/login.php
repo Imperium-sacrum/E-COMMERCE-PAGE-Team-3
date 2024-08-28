@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 require_once "../db_components/db_connect.php";
 
 
@@ -68,60 +68,56 @@ if (isset($_POST["login-btn"])) {
 </head>
 
 <body>
-    <<<<<<< HEAD
 
-        ?>
-        =======
-        <?php include '../components/navbar.php'; ?>
 
-        >>>>>>> de5066ced303e4b8e5e03347ef76056db0703f0a
-        <div class="reglog">
-            <div class="reglog_content">
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="mx-auto">
-                    <h1 class="mb-3">Hello</h1>
 
-                    <div class="mb-3 input-box button-container d-flex">
-                        <a style="text-decoration: none;" class="btn-custom" href="login.php">Log in</a>
-                        <a style="text-decoration: none;" class="btn-custom " href="registration.php">Sign up</a>
+    <div class="reglog">
+        <div class="reglog_content">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="mx-auto">
+                <h1 class="mb-3">Hello</h1>
+
+                <div class="mb-3 input-box button-container d-flex">
+                    <a style="text-decoration: none;" class="btn-custom" href="login.php">Log in</a>
+                    <a style="text-decoration: none;" class="btn-custom " href="registration.php">Sign up</a>
+                </div>
+
+                <?php if (!empty($error)): ?>
+                    <div class="text-danger mb-3">
+                        <?php echo htmlspecialchars($error); ?>
                     </div>
+                <?php endif; ?>
 
-                    <?php if (!empty($error)): ?>
-                        <div class="text-danger mb-3">
-                            <?php echo htmlspecialchars($error); ?>
-                        </div>
-                    <?php endif; ?>
+                <div class="mb-3 input-box">
+                    <input type="text" class="form-control" name="username" placeholder="Username" value="<?php echo htmlspecialchars($uname); ?>">
+                </div>
 
-                    <div class="mb-3 input-box">
-                        <input type="text" class="form-control" name="username" placeholder="Username" value="<?php echo htmlspecialchars($uname); ?>">
-                    </div>
+                <div class="mb-3 input-box">
+                    <input type="password" class="form-control" id="myInput" name="password" placeholder="Password">
+                </div>
 
-                    <div class="mb-3 input-box">
-                        <input type="password" class="form-control" id="myInput" name="password" placeholder="Password">
-                    </div>
+                <div class="mb-3 input-box">
+                    <input type="checkbox" onclick="myFunction()"> Show Password
+                </div>
 
-                    <div class="mb-3 input-box">
-                        <input type="checkbox" onclick="myFunction()"> Show Password
-                    </div>
-
-                    <div class="mb-3 input-box">
-                        <input type="submit" class="btn-signup-a" value="Login" name="login-btn">
-                    </div>
-                </form>
-            </div>
+                <div class="mb-3 input-box">
+                    <input type="submit" class="btn-signup-a" value="Login" name="login-btn">
+                </div>
+            </form>
         </div>
+    </div>
 
-        <script>
-            function myFunction() {
-                var x = document.getElementById("myInput");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
             }
-        </script>
+        }
+    </script>
 
-        <?php include '../components/footer.php'; ?>
+    <?php include '../components/footer.php'; ?>
 </body>
 
 </html>
