@@ -218,8 +218,16 @@ if (mysqli_num_rows($resultCategory) == 0) {
       xhr.open("POST", "cart_action.php", true);
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.send("product_id=" + productId);
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "The product has been added to the cart!!",
+        showConfirmButton: false,
+        timer: 2000
+      });
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 <?php include 'components/footer.php';
