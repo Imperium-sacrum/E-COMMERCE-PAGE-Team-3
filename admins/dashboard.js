@@ -211,23 +211,23 @@ function fetch(source = "products", category = "") {
                   val.status == 1
                     ? `<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>`
                     : `<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">`;
-                if (val.status == 0) {
-                  tr = `tr class="bg-danger"`;
+                if (val.status == 1) {
+                  tr = `bg-danger`;
                 } else {
-                  tr = `tr class=""`;
+                  tr = ` text-black`;
                 }
                 tableContent += `
-                <${tr}}>
-                  <td class="text-center prodClass">${val.user_id}</td>
-                  <td class="text-center">${val.username}</td>
-                  <td class="text-center">${val.email}</td>
-                  <td class="text-center">${val.first_name}</td>
-                  <td class="text-center">${val.last_name}</td>
-                  <td class="text-center">
-                    <img src='../images/${val.image}' alt='${val.username}' class='img-thumbnail' style='width: 50px; height: 50px;'>
+                <tr>
+                  <td class="text-center prodClass ${tr}">${val.user_id}</td>
+                  <td class="text-center ${tr}">${val.username}</td>
+                  <td class="text-center ${tr}">${val.email}</td>
+                  <td class="text-center ${tr}">${val.first_name}</td>
+                  <td class="text-center ${tr}">${val.last_name}</td>
+                  <td class="text-center ${tr}">
+                    <img src='../images/${val.image}' alt='${val.username}' class='img-thumbnail ${tr}' style='width: 50px; height: 50px;'>
                   </td>
-                  <td class="text-center">${val.role}</td>
-                  <td class="text-center">
+                  <td class="text-center ${tr}">${val.role}</td>
+                  <td class="text-center ${tr}">
                     <div class="form-check form-switch">
                       ${status}
                     </div>

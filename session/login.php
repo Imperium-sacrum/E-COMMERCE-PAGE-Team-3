@@ -67,9 +67,10 @@ if (isset($_POST["login-btn"])) {
 </head>
 
 <body>
+    <<<<<<< HEAD
 
 
-    <div class="reglog">
+        <div class="reglog">
         <div class="reglog_content">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="mx-auto">
                 <h1 class="mb-3">Hello</h1>
@@ -107,20 +108,20 @@ if (isset($_POST["login-btn"])) {
                 </div>
             </form>
         </div>
-    </div>
+        </div>
 
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myInput");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myInput");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
             }
-        }
-    </script>
+        </script>
 
-    <?php include '../components/footer.php'; ?>
+        <?php include '../components/footer.php'; ?>
 </body>
 
 </html>
