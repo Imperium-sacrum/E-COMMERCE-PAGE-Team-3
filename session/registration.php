@@ -127,7 +127,7 @@ if (isset($_POST['btn-signup'])) {
 </head>
 
 <body>
-    <?php include '../components/navbar.php'; ?>
+
 
     <div class="reglog">
         <div class="reglog_content">

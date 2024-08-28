@@ -55,56 +55,71 @@
     </div>
 
     <section class="favorites-section">
-        <h1>Best Sellers</h1>
-        <div class="categories">
-            <ul class="categ-li d-flex flex-row text-dark justify-content-start">
-            </ul>
-        </div>
-
-        <div class="container-cards section-card mt-5">
-            <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-1 row-cols-xs-1">
-                <div class="col">
-                    <div class="product-item card">
-                        <img src="images/bokbok3.jpg" alt="bobr">
-                        <h3>Bobr</h3>
-                        <p>€</p>
+        <h1>Shop. Eat. Repeat.</h1>
+        <div class="container mt-5">
+            <div class="row">
+                <!-- Card 1 -->
+                <div class="col-md-3">
+                    <div class="card-hero position-relative overflow-hidden">
+                        <img src="images/hero2.jpg" style="height: 300px; object-fit: cover;" class="card-img-top" alt="Image 1">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white">
+                            <p class="card-title-hero text-white text-center">Fresh Flavors,</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="product-item card">
-                        <img src="images/bokbok3.jpg" alt="bobr">
-                        <h3>Bobr</h3>
-                        <p>€</p>
+                <!-- Card 2 -->
+                <div class="col-md-3">
+                    <div class="card-hero position-relative overflow-hidden">
+                        <img src="images/hero3.jpg" style="height: 300px; object-fit: cover;" class="card-img-top" alt="Image 2">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white">
+                            <p class="card-title-hero text-white text-center">Delivered Fast.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="product-item card">
-                        <img src="images/bokbok3.jpg" alt="bobr">
-                        <h3>Bobr</h3>
-                        <p>€</p>
+                <!-- Card 3 -->
+                <div class="col-md-3">
+                    <div class="card-hero position-relative overflow-hidden">
+                        <img src="images/hero1.png" style="height: 300px; object-fit: cover;" class="card-img-top" alt="Image 3">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white">
+                            <p class="card-title-hero text-white text-center">Your Plate</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-md-3">
+                    <div class="card-hero position-relative overflow-hidden">
+                        <img src="images/hero5.jpg" style="height: 300px; object-fit: cover;" class="card-img-top" alt="Image 4">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white">
+                            <p class="card-title-hero text-white text-center">Our Priority.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
     <!-- whatever you wanna name it section -->
-    <div class="container py-4 content-section">
+    <div class="container-fluid py-4 content-section">
         <div class="row align-items-md-stretch">
+            <!-- Left Hero Section -->
             <div class="col-md-6">
-                <div class="h-100 p-5 text-bg-dark">
-                    <img src="images/bokbok3.jpg" alt="bobr">
-                    <h2>Bobr</h2>
-                    <p>Explore our unique selection of Bobr</p>
-                    <button class="btn" type="button">Discover More</button>
+                <div class="h-100 position-relative overflow-hidden text-white">
+                    <img src="images/hero6.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-5 bg-dark bg-opacity-50">
+                        <h2>Bobr</h2>
+                        <p>Explore our unique selection of Bobr</p>
+                        <button class="btn btn-light" type="button">Discover More</button>
+                    </div>
                 </div>
             </div>
+            <!-- Right Hero Section -->
             <div class="col-md-6">
-                <div class="h-100 p-5 bg-body-tertiary border">
-                    <img src="images/bokbok3.jpg" alt="bobr">
-                    <h2>Bobr</h2>
-                    <p>Check out our most loved products by our loyal customers.</p>
-                    <button class="btn" type="button">Shop Now</button>
+                <div class="h-100 position-relative overflow-hidden text-white">
+                    <img src="images/gre.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-5 bg-dark bg-opacity-50">
+                        <h2>Bobr</h2>
+                        <p>Check out our most loved products by our loyal customers.</p>
+                        <button class="btn btn-light" type="button">Shop Now</button>
+                    </div>
                 </div>
             </div>
         </div>
