@@ -482,6 +482,25 @@ a.btn-signup {
   color: #aedaa6;
   cursor: pointer;
 }
+.btn-rew {
+  background-color: transparent !important;
+  color: #717070;
+  border: 1px solid #d9d9d9;
+  padding: 15px 0;  
+  width: 100%; 
+  border-radius: 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.btn-rew:hover {
+  border: 1px solid #aedaa6;
+  color: #aedaa6;
+  cursor: pointer;
+}
   
 /* DONT TOUCH :D BUTTONS */
 .btn-signup-a {

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/hero.css">
-    <title>hero</title>
+    <title>Our Website</title>
 </head>
 
 <body>
@@ -118,7 +118,7 @@
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
                         <h2 style="font-size: 2rem; color:#2C5021">FRUITS</h2>
                         <p style="color:black ;font-size: 1rem;">Check out our most loved fruits by our loyal customers.</p>
-                        <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Shop Now</a>
+                        <!-- <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Shop Now</a> -->
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
     </div>
 
 
-    <!-- last  -->
+    <!-- last section  -->
 
 
     <div class="container-fluid content-section">
@@ -139,7 +139,7 @@
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
                         <h2 style="font-size: 2rem; color:#D962A2;">SWEETNEES</h2>
                         <p style="color:antiquewhite ;font-size:1rem;">Explore our unique selection of Alkohols from different countries.</p>
-                        <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Discover more</a>
+                        <!-- <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Discover more</a> -->
                     </div>
                 </div>
             </div>
@@ -176,7 +176,7 @@
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
                         <h2 style="font-size: 2rem; color:#E25822">SPICES</h2>
                         <p style="color:antiquewhite; font-size: 1rem;">Check out our most loved fruits by our loyal customers.</p>
-                        <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Shop Now</a>
+                        <!-- <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Shop Now</a> -->
                     </div>
                 </div>
             </div>
