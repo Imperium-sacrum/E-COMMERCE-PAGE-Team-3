@@ -70,7 +70,7 @@ if (mysqli_num_rows($result) == 0) {
                     <h1>€ {$row["price"]}</h1>
                     <p>{$row["description"]}</p>
                     <p class='product-availability'>Status: {$availabilityStatus}</p>
-                    <button><a href='cart.php?id={$row["product_id"]}'>Add to Cart</a></button>
+                    <button onclick='addToCart({$row["product_id"]})'>Add to Cart</button>
                     <button><a href='contact.php?id={$row["product_id"]}'>questions</a></button>
                     
                 </div>
@@ -107,6 +107,22 @@ if (mysqli_num_rows($result) == 0) {
     <?= $reviews ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+      function addToCart(productId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "cart_action.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("product_id=" + productId);
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "The product has been added to the cart!!",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

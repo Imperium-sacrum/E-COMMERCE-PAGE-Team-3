@@ -46,19 +46,19 @@ if (isset($_POST["create"])) {
     $availability = cleanInput($_POST["availability"]);
 
 
-     // Stripe 
-     $stripe = new \Stripe\StripeClient($stripeSecretKey);
+    // Stripe 
+    $stripe = new \Stripe\StripeClient($stripeSecretKey);
 
-     $product = $stripe->products->create([
-         "name" => $name,
-         "description" => $description
-     ]);
- 
-     $priceStripe = $stripe->prices->create([
-         'unit_amount' => $price * 100,
-         'currency' => 'usd',
-         'product' => $product["id"]
-     ]);
+    $product = $stripe->products->create([
+        "name" => $name,
+        "description" => $description
+    ]);
+
+    $priceStripe = $stripe->prices->create([
+        'unit_amount' => $price * 100,
+        'currency' => 'usd',
+        'product' => $product["id"]
+    ]);
 
 
     // validation:
@@ -122,7 +122,7 @@ if (isset($_POST["create"])) {
                 </div>
 
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="price" aria-describedby="price" name="price" placeholder="Price">
+                    <input type="number" class="form-control" id="price" aria-describedby="price" name="price" placeholder="Price">
                 </div>
 
 
