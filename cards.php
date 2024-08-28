@@ -4,13 +4,15 @@ ini_set('display_errors', 1);
 
 // ob_start();
 // session_start();
+
+
 // if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
 //     header("Location: login.php");
 //     exit();
 // }
 
 require_once "db_components/db_connect.php";
-
+include 'components/navbar.php';
 
 $sqlCN = "SELECT * FROM product_categories";
 $resultCN = mysqli_query($connect, $sqlCN);
@@ -77,7 +79,8 @@ if (mysqli_num_rows($resultSearch) == 0) {
 
   foreach ($rows as $key => $row) {
     $availabilityStatus = $row["availability"] == 1 ? "Available" : "Not Available";
-    $cards .= "<div>
+    $cards .= "
+    <div class='my-3'>
    <div class='product-card'>
     <div class='card-image'>
      <img src='images/{$row["image"]}'>
@@ -93,9 +96,10 @@ if (mysqli_num_rows($resultSearch) == 0) {
     </div>
     </div>
     </div>
-  
-    
-</div>";
+    </div>
+
+   
+ ";
   }
 }
 
@@ -154,10 +158,11 @@ if (mysqli_num_rows($resultSearch) == 0) {
   <link rel="stylesheet" href="styles/cards.css">
   <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="styles/.css">
+  <link rel="stylesheet" href="../styles/footer.css">
 </head>
 
 <body id="cards-body">
-  <?php include 'components/navbar.php'; ?>
+
   <h1 class="mt-5 text-dark">PRODUCTS</h1>
   <div class="search-container">
     <form role="search">
@@ -166,7 +171,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
     </form>
   </div>
 
-  <div class="categories">
+  <div class="categories container">
     <ul class="categ-li d-flex flex-row text-dark justify-content-start">
       <li><a href="cards.php?category=">ALL</a></li>
       <?= $category_list ?>
@@ -174,7 +179,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
   </div>
 
   <div class="container-cards section-card mt-5">
-    <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-1 row-cols-xs-1">
+    <div class="row row-cols-xl-5 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-xs-2">
       <?= $cards ?>
     </div>
   </div>
@@ -189,6 +194,9 @@ if (mysqli_num_rows($resultSearch) == 0) {
       xhr.send("product_id=" + productId);
     }
   </script>
+
 </body>
+<?php include 'components/footer.php';
+?>
 
 </html>

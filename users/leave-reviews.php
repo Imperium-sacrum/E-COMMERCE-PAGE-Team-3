@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <div class="mb-3 input-box">
-                <input type="submit" class="btn btn-signup" value="Submit Review">
+                <input type="submit" class="btn btn-signup-a" value="Submit Review">
             </div>
         </form>
     </div>

@@ -72,7 +72,7 @@ $row = mysqli_fetch_assoc($result);
                                             <p class="text-muted"><?= $row["username"] ?></p>
                                         </div>
                                         <a class="btn" href='../user_dashboard.php?id=<?= $row["user_id"] ?>'>Orders</a>
-                                        <a href="profile-edit.php" class="btn">Edit profile</a>
+                                        <a href="../profile-edit.php" class="btn">Edit profile</a>
                                         <a href="../chat/chat.php" class="btn">Chat</a>
                                         <a href='delete.php?id=<?= $row["user_id"] ?>' class='btn btn-danger'>Delete</a>
                                     </div>

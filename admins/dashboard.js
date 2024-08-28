@@ -46,7 +46,6 @@ function fetch(source = "products", category = "") {
               (product) => product.category_name === category
             );
           }
-
           let tableElement = document.getElementById("main");
           let createdBtn = document.getElementById("createdBtn");
           tableElement.innerHTML = "";
@@ -96,7 +95,6 @@ function fetch(source = "products", category = "") {
                   <td class="text-center">
                     <div class="form-check form-switch">
                       ${availability}
-                      
                     </div>
                   </td>
                   <td class="text-center">
@@ -209,9 +207,18 @@ function fetch(source = "products", category = "") {
             `;
 
               for (const val of elements) {
+                let status =
+                  val.status == 1
+                    ? `<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>`
+                    : `<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">`;
+                if (val.status == 0) {
+                  tr = `tr class="bg-danger"`;
+                } else {
+                  tr = `tr class=""`;
+                }
                 tableContent += `
-                <tr>
-                  <td class="text-center">${val.user_id}</td>
+                <${tr}}>
+                  <td class="text-center prodClass">${val.user_id}</td>
                   <td class="text-center">${val.username}</td>
                   <td class="text-center">${val.email}</td>
                   <td class="text-center">${val.first_name}</td>
@@ -220,7 +227,11 @@ function fetch(source = "products", category = "") {
                     <img src='../images/${val.image}' alt='${val.username}' class='img-thumbnail' style='width: 50px; height: 50px;'>
                   </td>
                   <td class="text-center">${val.role}</td>
-                  <td class="text-center">${val.status}</td>
+                  <td class="text-center">
+                    <div class="form-check form-switch">
+                      ${status}
+                    </div>
+                  </td>
                   <td class="text-center">
                     <a href='./users/update.php?id=${val.user_id}' class='btn btn-outline-dark btn-sm'>Update</a>
                     <a href='./users/delete.php?id=${val.user_id}' class='btn btn-outline-danger btn-sm'>Delete</a>
@@ -233,8 +244,14 @@ function fetch(source = "products", category = "") {
                 </tbody>
               </table>
             `;
-
               tableElement.innerHTML = tableContent;
+              let checkClass = document.querySelectorAll(".form-check-input");
+              let prodClass = document.querySelectorAll(".prodClass");
+              checkClass.forEach((element, index) => {
+                element.addEventListener("change", function () {
+                  checkAction2(prodClass[index].innerHTML, element);
+                });
+              });
             } else if (source == "discount") {
               createdBtn.innerHTML = `<a class="btn btn-success" href="./discount/create.php">Create New Discount</a>`;
               let tableContent = `
@@ -277,7 +294,7 @@ function fetch(source = "products", category = "") {
 
               tableElement.innerHTML = tableContent;
             } else if (source == "reviews") {
-              createdBtn.innerHTML = `<a class="btn btn-success" href="./review/create.php">Create New Review</a>`;
+              createdBtn.innerHTML = `<a class="btn btn-success" href="./reviews/create.php">Create New Review</a>`;
               let tableContent = `
     <table class='table table-striped table-hover'>
       <thead class='table-dark'>
@@ -297,7 +314,8 @@ function fetch(source = "products", category = "") {
 
               for (const val of elements) {
                 tableContent += `
-      <tr>
+
+      <tr >
         <td class="text-center">${val.review_id}</td>
         <td class="text-center">${val.product_id}</td>
         <td class="text-center">${val.user_id}</td>
@@ -396,7 +414,20 @@ function checkAction(index) {
       // action
     }
   };
+
   xml.open("GET", "./api/api_product_status.php?id=" + index);
+
+  xml.send();
+}
+function checkAction2(index) {
+  let xml = new XMLHttpRequest();
+
+  xml.onload = function () {
+    if (this.status == 200) {
+      // action
+    }
+  };
+  xml.open("GET", "./api/api_user_status.php?id=" + index);
 
   xml.send();
 }

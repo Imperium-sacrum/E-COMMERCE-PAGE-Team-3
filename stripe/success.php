@@ -10,29 +10,34 @@ require_once '../db_components/db_connect.php';
 
 try {
     // Retrieve the user_id from the session
-    if (!isset($_SESSION['user_id'])) {
+    if (!isset($_SESSION['username'])) {
         throw new Exception('User is not logged in.');
     }
 
-    $user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['username'];
 
     // Assuming this is the real session ID from Stripe checkout
     $session_id = $_GET['session_id'];
-    $checkout_session = \Stripe\Checkout\Session::retrieve($session_id);
-    $customer = \Stripe\Customer::retrieve($checkout_session->customer);
+    // $checkout_session = \Stripe\Checkout\Session::retrieve($session_id);
+    // $customer = \Stripe\Customer::retrieve($checkout_session->customer);
 
-    $paymentIntent = \Stripe\PaymentIntent::retrieve($checkout_session->payment_intent);
+    // $paymentIntent = \Stripe\PaymentIntent::retrieve($checkout_session->payment_intent);
 
-    // Extract relevant information
-    $paymentStatus = $paymentIntent->status;
-    $paymentAmount = $paymentIntent->amount_received;
-    $paymentCurrency = $paymentIntent->currency;
-    $paymentMethod = $paymentIntent->payment_method;
-    $customerEmail = $customer->email;
+    // // Extract relevant information
+    // $paymentStatus = $paymentIntent->status;
+    // $paymentAmount = $paymentIntent->amount_received;
+    // $paymentCurrency = $paymentIntent->currency;
+    // $paymentMethod = $paymentIntent->payment_method;
+    // $customerEmail = $customer->email;
+
+    # find all ids of products and qttys
+    var_dump($_SESSION["cart"]);
+
+    # bring info from the user 
 
     // Insert order into database using the user_id
-    $query = "INSERT INTO orders (user_id, session_id, customer_email, amount, currency, payment_status, payment_method)
-              VALUES ('$user_id', '$session_id', '$customerEmail', '$paymentAmount', '$paymentCurrency', '$paymentStatus', '$paymentMethod')";
+        $query = "INSERT INTO orders (user_id, session_id, customer_email, amount, currency, payment_status, payment_method)
+                VALUES ('$user_id', '$session_id', '$customerEmail', '$paymentAmount', '$paymentCurrency', '$paymentStatus', '$paymentMethod')";
 
     mysqli_query($connect, $query);
 
