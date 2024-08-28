@@ -15,6 +15,9 @@ if (isset($_SESSION["admin"])) {
 $error = "";
 $uname = $password = "";
 
+
+
+
 if (isset($_POST["login-btn"])) {
     $uname = trim($_POST["username"]);
     $password = trim($_POST["password"]);
@@ -33,16 +36,26 @@ if (isset($_POST["login-btn"])) {
             $error = "Error connecting to the database: " . mysqli_error($connect);
         } elseif (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
-            // user banned ?
 
-            if ($row["status"] == 1) {
+            $userU = $row['user_id'];
+            $banTime = $row["timeBan"];
+
+            if ($banTime <= date('Y-m-d H:i:s')) {
+                $sqlU = "UPDATE `users` SET `status`='0',`timeBan`=NULL WHERE user_id = $userU";
+                $result = mysqli_query($connect, $sqlU);
+            }
+            $sql = "SELECT * FROM `users` WHERE username = '$uname' AND Password = '$password'";
+            $result = mysqli_query($connect, $sql);
+            $rowU = mysqli_fetch_assoc($result);
+
+            if ($rowU["status"] == 1) {
                 $error = "Your account is banned. Please contact support.";
-            } elseif ($row["role"] == "admin") {
-                $_SESSION["admin"] = $row["user_id"];
+            } elseif ($rowU["role"] == "admin") {
+                $_SESSION["admin"] = $rowU["user_id"];
                 header("Location: ../admins/dashboard.html");
                 exit();
             } else {
-                $_SESSION["username"] = $row["user_id"];
+                $_SESSION["username"] = $rowU["user_id"];
                 header("Location: ../index.php");
                 exit();
             }
@@ -51,6 +64,7 @@ if (isset($_POST["login-btn"])) {
         }
     }
 }
+
 ?>
 
 
@@ -67,10 +81,10 @@ if (isset($_POST["login-btn"])) {
 </head>
 
 <body>
-    <<<<<<< HEAD
 
 
-        <div class="reglog">
+
+    <div class="reglog">
         <div class="reglog_content">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="mx-auto">
                 <h1 class="mb-3">Hello</h1>
@@ -103,20 +117,20 @@ if (isset($_POST["login-btn"])) {
                 </div>
             </form>
         </div>
-        </div>
+    </div>
 
-        <script>
-            function myFunction() {
-                var x = document.getElementById("myInput");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
             }
-        </script>
+        }
+    </script>
 
-        <?php include '../components/footer.php'; ?>
+    <?php include '../components/footer.php'; ?>
 </body>
 
 </html>

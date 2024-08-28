@@ -20,12 +20,12 @@ function canvasData(source, canvas, id, xValues, yValues, type) {
         var numbers = [];
 
         arr[2].forEach((element) => {
-          console.log(element);
+          // console.log(element);
 
           names.push(element[xValues]);
           numbers.push(element[yValues]);
         });
-        console.log(names);
+        // console.log(names);
 
         names;
         numbers;
