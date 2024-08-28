@@ -55,19 +55,50 @@ if (isset($_POST["update"])) {
     $discount = cleanInput($_POST["discount"]);
     $availability = cleanInput($_POST["availability"]);
 
+    //stripe
+    $stripe = new \Stripe\StripeClient($stripeSecretKey);
+
+    // to search for an existing price
+    $priceId = $stripe->prices->retrieve($row["priceId"]);
+
+    // to find product id
+    $productId = $priceId->product;
+
+    $oldPriceId = $priceId->id;
+
+    $product = $stripe->products->update($productId, [
+        "name" => $name,
+        "description" => $description
+    ]);
+
+    if ($price != $row["price"]) {
+        // to create a price
+        $priceId = $stripe->prices->create([
+            'unit_amount' => $price * 100,
+            'currency' => 'usd',
+            'product' => $product->id
+        ]);
+
+
+    // to deactivate a price
+    $deactivated_price = $stripe->prices->update($oldPriceId, [
+        'active' => false,
+    ]);
+
     # checking if a picture has been selected in the input for the image 
     if ($_FILES["image"]["error"] == 4) {
-        $update_sql = "UPDATE `products` SET `product_name`='{$name}',`description`='{$description}',`price`='{$price}',`category_id`='{$category}',`discount_id`='{$discount}',`availability`='{$availability}' WHERE product_id = {$id}";
+        $update_sql = "UPDATE `products` SET `product_name`='{$name}',`description`='{$description}',`price`='{$price}',`category_id`='{$category}', priceId = '{$priceId->id}',`discount_id`='{$discount}',`availability`='{$availability}' WHERE product_id = {$id}";
     } else {
         //  delete the old picture
 
         if ($row["image"] != "product.jpg") {
             unlink("../images/{$row["image"]}");
         }
-        $update_sql = "UPDATE `products` SET `product_name`='{$name}',`description`='{$description}',`price`='{$price}',`category_id`='{$category}',`discount_id`='{$discount}',`image`='$image[0]',`availability`='{$availability}' WHERE product_id = {$id}";
+        $update_sql = "UPDATE `products` SET `product_name`='{$name}',`description`='{$description}',`price`='{$price}',`category_id`='{$category}', priceId = '{$priceId->id}',`discount_id`='{$discount}',`image`='$image[0]',`availability`='{$availability}' WHERE product_id = {$id}";
     }
     // run the query
     $update_result = mysqli_query($connect, $update_sql);
+}
 }
 ?>
 <!DOCTYPE html>
