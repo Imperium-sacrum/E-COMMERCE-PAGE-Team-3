@@ -89,10 +89,14 @@ p{
   margin: 0 auto; 
   padding: 0;
 
-  justify-content: center; /
+  justify-content: center; }
+
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 0;
+  align-items: center;
 }
-
-
 
 
 /* Buttons */
