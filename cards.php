@@ -83,8 +83,8 @@ if (mysqli_num_rows($resultSearch) == 0) {
     <div class='my-3'>
 
     <div class=' product-card'>
-                    <div class='card-hero position-relative overflow-hidden'>
-                        <img src='images/{$row["image"]}' style='height: 300px; object-fit: cover;' class='card-img-top' alt='Image 1'>
+                    <div class='card position-relative overflow-hidden'>
+                        <img src='images/{$row["image"]}' style='height: 400px; object-fit: cover;' class='card-img-top' alt='Image 1'>
                         <div class='card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white'>
                             <p class='card-title-hero text-white text-center'>{$row['product_name']}</p>
                             <p class='product-price'>€ {$row['price']}</p>
@@ -211,8 +211,16 @@ if (mysqli_num_rows($resultSearch) == 0) {
       xhr.open("POST", "cart_action.php", true);
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.send("product_id=" + productId);
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "The product has been added to the cart!!",
+        showConfirmButton: false,
+        timer: 2000
+      });
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 <?php include 'components/footer.php';

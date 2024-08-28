@@ -4,7 +4,7 @@
   --laurel-green: #A9B388;
   --cornsilk: #FEFAE0;
   --lemon-meringue: #F9EBC7;
-  --camel: #B99470;
+  --camel: rgb(233, 173, 113);
   --russet: #783D19;
   --highlight-green: var(--dark-olive-green);
 }
@@ -89,10 +89,14 @@ p{
   margin: 0 auto; 
   padding: 0;
 
-  justify-content: center; /
+  justify-content: center; }
+
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 0;
+  align-items: center;
 }
-
-
 
 
 /* Buttons */
