@@ -11,7 +11,16 @@ if (isset($_SESSION["username"])) {
 require_once "../../db_components/db_connect.php";
 
 $error = false;
-$total_amount = $order_status = $products = $user_id = $msgError = "";
+$total_amount = $order_status = $products = $user_id = $msgError = $option_user = "";
+
+// user table
+$sql_user = "SELECT * FROM `users`";
+$result_user = mysqli_query($connect, $sql_user);
+$user = mysqli_fetch_all($result_user, MYSQLI_ASSOC);
+$option_user = "";
+foreach ($user as  $row) {
+    $option_user .= "<option value='{$row["user_id"]}'>{$row["username"]}</option>";
+}
 
 if (isset($_POST["create"])) {
     $total_amount = cleanInput($_POST["total_amount"]);
@@ -88,8 +97,11 @@ if (isset($_POST["create"])) {
                     <textarea class="form-control" id="products" name="products" placeholder="Products (e.g., Product1, Product2, ...)" rows="3"><?= $products ?></textarea>
                 </div>
 
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="user_id" name="user_id" placeholder="User ID" value="<?= $user_id ?>">
+                <div class="mb-3 ">
+                    <select class='form-select' name="user_id">
+                        <option value="" selected>---Select User---</option>
+                        <?= $option_user ?>
+                    </select>
                 </div>
 
                 <input type="submit" class="btn btn-dark mb-5" value="Create" name="create">
