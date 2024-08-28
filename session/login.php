@@ -1,6 +1,7 @@
 <?php
 ob_start();
-// session_start();
+session_start();
+
 if (isset($_SESSION['username'])) {
     header("Location: ../index.php");
     exit();
@@ -96,7 +97,7 @@ if (isset($_POST["login-btn"])) {
 </head>
 
 <body>
-    <?php include '../components/navbar.php';
+
     ?>
     <div class="reglog">
         <div class="reglog_content">
