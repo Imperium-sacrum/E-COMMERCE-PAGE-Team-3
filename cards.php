@@ -5,7 +5,6 @@ ini_set('display_errors', 1);
 // ob_start();
 // session_start();
 
-
 // if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) {
 //     header("Location: login.php");
 //     exit();
@@ -25,10 +24,8 @@ foreach ($categories as $category) {
 
   $category_list .= "<li><a href='cards.php?search=$category_name'>$category_name</a></li>";
 }
+
 // CATEGORY
-
-
-
 $condition = isset($_GET['category']) ? $_GET['category'] : "";
 $sqlCN = "SELECT * FROM product_categories";
 if (!empty($condition)) {
@@ -51,57 +48,67 @@ if (empty($condition)) {
   $sqlcategory = "SELECT * FROM `products` WHERE category_id= " . $row["category_id"];
 }
 
-
-// SEARCH 
-// TEST
-
-$search = "";
-
-if (isset($_GET['search'])) {
-  $search = $_GET['search'];
-}
+$resultCategory = mysqli_query($connect, $sqlcategory);
 
 
-$sqlSearch = "SELECT * FROM `products` JOIN product_categories ON product_categories.category_id = products.category_id";
-
-if (!empty($search)) {
-  $sqlSearch .= " WHERE `product_name` LIKE '%$search%' 
-    OR `category_name` LIKE '%$search%' 
-    ";
-}
-$resultSearch = mysqli_query($connect, $sqlSearch);
-$cards = "";
-
-if (mysqli_num_rows($resultSearch) == 0) {
-  $cards = "<p>No results found</p>";
+if (mysqli_num_rows($resultCategory) == 0) {
+  $cards .= "<p>No products found in this category.</p>";
 } else {
-  $rows = mysqli_fetch_all($resultSearch, MYSQLI_ASSOC);
+  $products = mysqli_fetch_all($resultCategory, MYSQLI_ASSOC);
+  $cards = "";
 
-  foreach ($rows as $key => $row) {
-    $availabilityStatus = $row["availability"] == 1 ? "Available" : "Not Available";
-    $cards .= "
-    <div class='my-3'>
+  // SEARCH 
+  $search = "";
 
-    <div class=' product-card'>
-                    <div class='card position-relative overflow-hidden'>
-                        <img src='images/{$row["image"]}' style='height: 400px; object-fit: cover;' class='card-img-top' alt='Image 1'>
-                        <div class='card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white'>
-                            <p class='card-title-hero text-white text-center'>{$row['product_name']}</p>
-                            <p class='product-price'>€ {$row['price']}</p>
-                            <div class='card-info'>
+  if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+  }
 
-   <button><a href='details.php?id={$row["product_id"]}'>Details</a></button> 
-   <button onclick='addToCart({$row["product_id"]})'>Add to Cart</button>
-   </div>
-                        </div>
-                    </div>
+  $sqlSearch = "SELECT * FROM `products` JOIN product_categories ON product_categories.category_id = products.category_id";
+
+  if (!empty($search)) {
+    $sqlSearch .= " WHERE `product_name` LIKE '%$search%' 
+      OR `category_name` LIKE '%$search%' 
+      ";
+  }
+
+  $resultSearch = mysqli_query($connect, $sqlSearch);
+  $cards = "";
+
+  if (mysqli_num_rows($resultSearch) == 0) {
+    $cards = "<p>No results found</p>";
+  } else {
+    $rows = mysqli_fetch_all($resultSearch, MYSQLI_ASSOC);
+
+    foreach ($rows as $key => $row) {
+      if ($row["availability"] == 1) {
+        $cards .= "
+        <div class='my-3'>
+          <div class='product-card'>
+            <div class='card position-relative overflow-hidden'>
+              <img src='images/{$row["image"]}' style='height: 400px; object-fit: cover;' class='card-img-top' alt='Image 1'>
+              <div class='card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white'>
+                <p class='card-title-hero text-white text-center'>{$row['product_name']}</p>
+                <p class='product-price'>€ {$row['price']}</p>
+                <div class='card-info'>
+                  <button><a href='details.php?id={$row["product_id"]}'>Details</a></button> 
+                  <button onclick='addToCart({$row["product_id"]})'>Add to Cart</button>
                 </div>
-                </div>
+              </div>
+            </div>
+          </div>
+        </div>";
+      }
+    }
 
-   
- ";
+
+
+    if (empty($cards)) {
+      $cards .= "<p>No products available in this category.</p>";
+    }
   }
 }
+
 
 
 // <div class='product-card'>
