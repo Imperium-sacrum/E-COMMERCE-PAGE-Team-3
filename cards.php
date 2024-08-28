@@ -84,7 +84,7 @@ if (mysqli_num_rows($resultSearch) == 0) {
 
     <div class=' product-card'>
                     <div class='card-hero position-relative overflow-hidden'>
-                        <img src='images/hero2.jpg' style='height: 300px; object-fit: cover;' class='card-img-top' alt='Image 1'>
+                        <img src='images/{$row["image"]}' style='height: 300px; object-fit: cover;' class='card-img-top' alt='Image 1'>
                         <div class='card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white'>
                             <p class='card-title-hero text-white text-center'>{$row['product_name']}</p>
                             <p class='product-price'>€ {$row['price']}</p>
