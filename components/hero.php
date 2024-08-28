@@ -55,7 +55,7 @@
     </div>
 
     <section class="favorites-section">
-        <h1>Shop. Eat. Repeat.</h1>
+        <h1 style="font-weight: 600;" class="py-5">Shop<span style="color: #783D19; font-size: 80px"> . </span> Eat<span style="color: #B99470; font-size: 80px"> . </span>Repeat <span style="color: #A9B388; font-size: 80px"> . </span></h1>
         <div class="container mt-5">
             <div class="row">
                 <!-- Card 1 -->
@@ -97,17 +97,32 @@
             </div>
         </div>
     </section>
+    <section class="content-middle">
+
+        <img src="images/left-photo.jpg" alt="Photo">
+        <div class="text">
+            <h1>Fresh Ingredients, Amazing Recipes</h1>
+
+            <p>From farm-fresh produce to exotic spices, we source the finest ingredients to create recipes that delight the senses. Explore our collection of easy-to-follow recipes, from comforting classics to innovative dishes that push the boundaries of flavor.</p>
+
+            <h1>Passion for Culinary Excellence</h1>
+
+            <p>Our team of food lovers is dedicated to bringing you the best in culinary content. We share our passion for cooking through step-by-step guides, cooking videos, and insider tips that make every meal memorable.</p>
+        </div>
+
+    </section>
+
     <!-- whatever you wanna name it section -->
-    <div class="container-fluid py-4 content-section">
+    <div class="container-fluid py-5 mt-5 content-section">
         <div class="row align-items-md-stretch">
             <!-- Left Hero Section -->
             <div class="col-md-6">
                 <div class="h-100 position-relative overflow-hidden text-white">
                     <img src="images/hero6.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-5 bg-dark bg-opacity-50">
-                        <h2>Bobr</h2>
-                        <p>Explore our unique selection of Bobr</p>
-                        <button class="btn btn-light" type="button">Discover More</button>
+                        <h2>ALKOHOLS</h2>
+                        <p>Explore our unique selection of Alkohols from different countries.</p>
+                        <button class="btn " type="button">Discover More</button>
                     </div>
                 </div>
             </div>
@@ -116,9 +131,9 @@
                 <div class="h-100 position-relative overflow-hidden text-white">
                     <img src="images/gre.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-5 bg-dark bg-opacity-50">
-                        <h2>Bobr</h2>
-                        <p>Check out our most loved products by our loyal customers.</p>
-                        <button class="btn btn-light" type="button">Shop Now</button>
+                        <h2>FRIUTS</h2>
+                        <p>Check out our most loved friuts by our loyal customers.</p>
+                        <button class="btn " type="button">Shop Now</button>
                     </div>
                 </div>
             </div>
