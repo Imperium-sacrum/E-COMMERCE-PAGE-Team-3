@@ -9,20 +9,22 @@ session_start();
 
 require_once "../db_components/db_connect.php";
 
-$id = $_GET["id"]; // Product ID from the URL
+// Product ID from the URL
+$product_id = isset($_GET["id"]) ? $_GET["id"] : '';
 
 // Handle the form submission via AJAX
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $product_id = $_POST['product_id'];
-    $user_id = $_SESSION['user_id']; // Get the logged-in user ID from session
+    $product_id = $_POST['product_id'];  // Correct the variable name here
+    $user_id = $_SESSION['username']; // Make sure this is the correct key, you might mean $_SESSION['user_id'] if using a user ID instead of a username
     $rating = $_POST['rating'];
     $comment = $_POST['comment'];
-    $created_at = date('Y-m-d H:i:s');
-    $updated_at = date('Y-m-d H:i:s');
 
-    // Insert the review into the database
-    $sqlReview = "INSERT INTO `reviews`(`product_id`, `user_id`, `rating`, `comment`, `created_at`, `updated_at`) 
-                  VALUES ('$product_id', '$user_id', '$rating', '$comment', '$created_at', '$updated_at')";
+
+    // Correctly build the SQL query
+    $sqlReview = "INSERT INTO `reviews`(`product_id`, `user_id`, `rating`, `comment`) 
+                  VALUES ('$product_id', '$user_id', '$rating', '$comment')";
+
+
     $resultReview = mysqli_query($connect, $sqlReview);
 
     if ($resultReview) {
@@ -49,10 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <div class="reglog">
-        <form id="review-form" action="#" method="POST" class="mx-auto">
+        <div id="alert-area"></div>
+        <form id="review-form" method="POST" class="mx-auto">
             <h1 class="mb-3">Submit Your Review <img style="width: 35px;" src="../images/reviews.png" alt=""></h1>
 
-            <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($id); ?>">
+            <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($product_id); ?>">
 
             <div class="mb-3 input-box">
                 <input class="form-control" type="number" name="rating" min="1" max="5" placeholder="Rating (1-5)" required>
@@ -67,6 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </form>
     </div>
+
+
+
+
+
+
 
     <script>
         // AJAX form submission

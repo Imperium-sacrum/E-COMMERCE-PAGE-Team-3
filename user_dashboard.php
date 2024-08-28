@@ -16,22 +16,40 @@ $id = $_GET["id"];
 
 $sql = "SELECT users.user_id as User_ID, users.username, users.email , shopping_cart.product_id, shopping_cart.quantity FROM users JOIN shopping_cart ON shopping_cart.user_id = users.user_id where shopping_cart.user_id = $id";
 
+$productId = [];
 // run the query
 $result = mysqli_query($connect, $sql);
 // fetch data
 $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
-foreach ($row as  $value) {
-    $productId = "{$value["product_id"]}";
+
+
+foreach ($row as $value) {
+    $productId[] = $value["product_id"];
 }
+
 
 
 $sql_orders = "SELECT * FROM `orders` WHERE user_id=$id";
 $result_orders = mysqli_query($connect, $sql_orders);
 $row_orders = mysqli_fetch_all($result_orders, MYSQLI_ASSOC);
 
+$i = 0;
+$condition = "";
+foreach ($productId as $val) {
+    if ($condition != "") {
+        $condition .= " or ";
+    }
+    $condition .= " product_id = " . $val;
+}
+$sqlproducts = "SELECT * FROM products WHERE $condition";
+
+$resultProducts = mysqli_query($connect, $sqlproducts);
+$productsInfo = mysqli_fetch_all($resultProducts, MYSQLI_ASSOC);
+
+
 
 $layout = "";
-foreach ($row_orders as  $value_orders) {
+foreach ($productsInfo as  $value_orders) {
     $layout .= "
 
   
@@ -42,13 +60,10 @@ foreach ($row_orders as  $value_orders) {
   <div class= 'd-flex justify-content-start'>
       <dl class='w-50 m-5'>
         <dt>Name</dt>
-        <dd>{$value_orders["products"]}</dd>
-
-        <dt>Status</dt>
-        <dd>{$value_orders["order_status"]}</dd>
+        <dd>{$value_orders["product_name"]}</dd>
 
         <dt>Ordered at</dt>
-        <dd>{$value_orders["created_at"]}</dd>
+        <dd>{$value_orders["price"]}</dd>
     
   
    </div>
@@ -56,7 +71,7 @@ foreach ($row_orders as  $value_orders) {
   
 
   <div class='d-flex '> 
-  <a href='users/leave-reviews.php?id='{$productId}' class='btn btn-outline-secondary d-flex justify-content-center m-3 w-25'>Leave a review</a>
+  <a href='users/leave-reviews.php?id={$value_orders["product_id"]}' class='btn btn-outline-secondary d-flex justify-content-center m-3 w-25'>Leave a review</a>
 
   
   </div>

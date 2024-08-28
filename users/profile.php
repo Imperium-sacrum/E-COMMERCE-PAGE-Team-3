@@ -12,7 +12,7 @@ if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
 //     exit();
 // }
 
-$id = $_GET["id"];
+
 
 require_once "../db_components/db_connect.php";
 
