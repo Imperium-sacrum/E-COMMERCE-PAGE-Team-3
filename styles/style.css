@@ -28,13 +28,13 @@ p{
   font-size: 12px;
 }
 /* Carousel */
-.carousel-caption {
+/* .carousel-caption {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-}
+} */
 
 .carousel-caption h5, .carousel-caption{
   margin: 0;
@@ -559,4 +559,11 @@ a.btn-signup-a {
 .card-hero {
   border: none;
   border-radius: 0.5rem;
+}
+.carousel-caption {
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }

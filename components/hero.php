@@ -16,7 +16,7 @@
         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://cdn.pixabay.com/photo/2015/03/28/17/14/fruit-696169_1280.jpg" class="d-block w-100" alt="Product 1">
+                    <img style="object-fit: cover; filter:brightness(0.7)" src="images/slide.jpg" class="d-block w-100" alt="Product 1">
 
 
                     <div class="carousel-caption d-none d-md-block">
@@ -26,8 +26,8 @@
                         <a href="cards.php" class="btn" type="button">Explore now</a>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://cdn.pixabay.com/photo/2017/06/05/17/27/meat-2374652_1280.jpg" class="d-block w-100" alt="Product 2">
+                <div class="carousel-item ">
+                    <img src="images/meat.jpg" style="object-fit: cover; filter:brightness(0.7)" class="d-block w-100" alt="Product 2">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Cold cuts</h5>
                         <p class="text-white">No Artificial Additives | 100% Satisfaction Guaranteed</p>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://cdn.pixabay.com/photo/2023/07/15/10/52/bread-8128550_1280.jpg" class="d-block w-100" alt="Product 3">
+                    <img src="https://cdn.pixabay.com/photo/2023/07/15/10/52/bread-8128550_1280.jpg" style="object-fit: cover; filter:brightness(0.7)" class="d-block w-100" alt="Product 3">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Whole Grains</h5>
                         <p class="text-white">100% Whole grains goodness for a healthier more nutrious choice</p>
