@@ -4,7 +4,7 @@
   --laurel-green: #A9B388;
   --cornsilk: #FEFAE0;
   --lemon-meringue: #F9EBC7;
-  --camel: #B99470;
+  --camel: rgb(233, 173, 113);
   --russet: #783D19;
   --highlight-green: var(--dark-olive-green);
 }
