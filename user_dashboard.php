@@ -14,7 +14,7 @@ $id = $_GET["id"];
 
 // Fetch the reviews for the product
 
-$sql = "SELECT users.user_id as User_ID, users.username, users.email , shopping_cart.product_id, shopping_cart.quantity FROM users JOIN shopping_cart ON shopping_cart.user_id = users.user_id where shopping_cart.user_id = $id";
+$sql = "SELECT * from orders WHERE user_id = $id";
 
 $productId = [];
 // run the query
@@ -24,9 +24,12 @@ $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
 foreach ($row as $value) {
-  $productId[] = $value["product_id"];
+  $data = $value["products"];
+  $data = json_decode($data);
+  foreach ($data as $val) {
+    $productId[] =  $val[0];
+  }
 }
-
 
 
 $sql_orders = "SELECT * FROM `orders` WHERE user_id=$id";
