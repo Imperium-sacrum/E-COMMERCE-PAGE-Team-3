@@ -59,8 +59,10 @@
 }
 
 .card-info {
+  
   padding: 10px;
   text-align: center;
+
 }
 
 .card-title-hero{
@@ -104,8 +106,8 @@
 }
 
 .product-card .card-info button:hover {
-  border: 1.5px solid #A9B388;
-  color: #A9B388;
+  border: 1.5px solid #36382f;
+  color: #36382f;
   cursor: pointer;
 }
 
@@ -124,7 +126,7 @@
   font-size: 13px;
 }
 .product-card .card-info a:hover {
-  color:#A9B388 ;
+  color:#36382f ;
 }
 
 .product-card .card-image a:hover {
@@ -178,6 +180,7 @@ width: 100%;
 }
 
 .search-container input[type="search"] {
+  height: 40px;
   width: 200px; 
   padding: 5px 10px;
   border: 1px solid #ccc;

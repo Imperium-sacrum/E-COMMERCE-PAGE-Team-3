@@ -87,10 +87,10 @@ if (mysqli_num_rows($resultCategory) == 0) {
           <div class='product-card'>
             <div class='card position-relative overflow-hidden'>
               <img src='images/{$row["image"]}' style='height: 400px; object-fit: cover;' class='card-img-top' alt='Image 1'>
-              <div class='card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white'>
+              <div class='card-img-overlay d-flex flex-column justify-content-between align-items-center p-4 bg-dark bg-opacity-50 text-white'>
                 <p class='card-title-hero text-white text-center'>{$row['product_name']}</p>
                 <p class='product-price'>€ {$row['price']}</p>
-                <div class='card-info'>
+                <div class='card-info '>
                   <button><a href='details.php?id={$row["product_id"]}'>Details</a></button> 
                   <button onclick='addToCart({$row["product_id"]})'>Add to Cart</button>
                 </div>
@@ -190,7 +190,8 @@ if (mysqli_num_rows($resultCategory) == 0) {
 <body id="cards-body">
 
   <h1 class="mt-5 text-dark">PRODUCTS</h1>
-  <div class="search-container">
+  <div class="search-container d-flex">
+
     <form role="search">
       <input class="form-control" type="search" value="<?php echo ($search) ?>" placeholder="Product or Category" aria-label="Search" name="search">
       <button class="btn-create" type="submit">Search</button>
@@ -205,7 +206,7 @@ if (mysqli_num_rows($resultCategory) == 0) {
   </div>
 
   <div class="container-cards section-card mt-5">
-    <div class="row row-cols-xl-5 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-xs-2">
+    <div class="row row-cols-xl-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-xs-2">
       <?= $cards ?>
     </div>
   </div>
