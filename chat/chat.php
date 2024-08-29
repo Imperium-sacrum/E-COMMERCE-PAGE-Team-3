@@ -152,7 +152,7 @@ if (isset($_GET['user'])) {
         // Fetch messages every 3 seconds
 
         fetchMessages();
-        setInterval(fetchMessages, 2000);
+        setInterval(fetchMessages, 1000);
     });
 
 

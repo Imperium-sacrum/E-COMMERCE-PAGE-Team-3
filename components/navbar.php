@@ -16,8 +16,11 @@ if (!$resultCategories) {
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img src="/images/logo4.jpg" alt="Brand Logo" style="height: 60px;">
-            AJYKZJ
+            <span class="logo" style="font-family: 'Caveat'; font-size: 30px">SHIN
+
+            </span> <span class="p-2" style="font-size: 12px;">
+                Food , Drinks and more . . .
+            </span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
