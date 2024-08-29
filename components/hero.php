@@ -23,7 +23,7 @@
                         <h5>Offers for every taste</h5>
                         <p class="text-white">Save up to 50% on seleced products. 100% Organic</p>
                         <p class="text-white">As long as stock is available</p>
-                        <a href="cards.php" class="btn btn-outline-light" type="button">Explore now</a>
+                        <a href="cards.php" class="btn" type="button">Explore now</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -31,7 +31,7 @@
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Cold cuts</h5>
                         <p class="text-white">No Artificial Additives | 100% Satisfaction Guaranteed</p>
-                        <a href="cards.php" class="btn btn-outline-light" type="button">Discover now</a>
+                        <a href="cards.php" class="btn" type="button">Discover now</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -39,7 +39,7 @@
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Whole Grains</h5>
                         <p class="text-white">100% Whole grains goodness for a healthier more nutrious choice</p>
-                        <a href="cards.php" class="btn btn-outline-light" type="button">Shop now</a>
+                        <a href="cards.php" class="btn" type="button">Shop now</a>
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                     <img src="images/bokbok3.jpg" alt="bobr">
                     <h2>Bobr</h2>
                     <p>Explore our unique selection of Bobr</p>
-                    <button class="btn btn-outline-light" type="button">Discover More</button>
+                    <button class="btn" type="button">Discover More</button>
                 </div>
             </div>
             <div class="col-md-6">
@@ -104,7 +104,7 @@
                     <img src="images/bokbok3.jpg" alt="bobr">
                     <h2>Bobr</h2>
                     <p>Check out our most loved products by our loyal customers.</p>
-                    <button class="btn btn-outline-light" type="button">Shop Now</button>
+                    <button class="btn" type="button">Shop Now</button>
                 </div>
             </div>
         </div>

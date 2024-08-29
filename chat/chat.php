@@ -49,7 +49,7 @@ if (isset($_GET['user'])) {
 
 
                 <a href="../index.php" name='logout ' class="logout">Home</a>
-                <a href="..users/profile.php" name='logout ' class="logout">Profile</a>
+                <a href="../users/profile.php" name='logout ' class="logout">Profile</a>
                 <a href="../session/logout.php?logout" name='logout ' class="logout">Logout</a>
             </div>
         </div>

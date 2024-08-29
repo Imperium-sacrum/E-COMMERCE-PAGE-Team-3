@@ -8,12 +8,12 @@ require_once '../db_components/db_connect.php';
 $YOUR_DOMAIN = 'http://localhost:3000';
 
 // Check if product_ids and quantities are set
-if (!isset($_POST['product_ids']) || !isset($_POST['quantities'])) {
+if (!isset($_POST['product']) || !isset($_POST['quantities'])) {
     die("Product IDs or Quantities were not provided.");
 }
 
 // Retrieve product IDs and quantities from the form submission
-$productIds = $_POST['product_ids'];
+$productIds = $_POST['product'];
 $quantities = $_POST['quantities'];
 
 $line_items = [];
