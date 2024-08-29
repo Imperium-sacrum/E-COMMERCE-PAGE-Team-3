@@ -40,7 +40,7 @@ if (isset($_POST["update"])) {
         // run the query
         $update_result = mysqli_query($connect, $update_sql);
         if ($update_result) {
-            header("refresh: 3; url=../dashboard.html");
+            header("refresh: 3; url=../dashboard.php");
         }
     }
 }
@@ -73,7 +73,7 @@ if (isset($_POST["update"])) {
     </div";
             }
             // // redirect to index.php
-            header("refresh: 3; url=../dashboard.html");
+            header("refresh: 3; url=../dashboard.php");
         } ?>
 
         <div class="container min-vh-100">

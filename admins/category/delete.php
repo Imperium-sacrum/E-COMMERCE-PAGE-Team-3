@@ -19,4 +19,4 @@ $row = mysqli_fetch_assoc($result);
 
 $delete_sql = "DELETE FROM `product_categories` WHERE category_id = {$id}";
 mysqli_query($connect, $delete_sql);
-header("location:../dashboard.html");
+header("location:../dashboard.php");
