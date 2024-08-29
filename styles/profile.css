@@ -58,3 +58,22 @@ body {
   font-family: "Source Code Pro", monospace;
   text-transform: uppercase;
 }
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #ffffff;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right bottom,
+    rgba(168, 168, 168, 0.747),
+    rgba(6, 87, 24, 0.507)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to right bottom,
+    rgba(168, 168, 168, 0.747),
+    rgba(6, 87, 24, 0.507)
+  );
+}

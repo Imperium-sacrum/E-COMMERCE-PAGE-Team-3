@@ -45,4 +45,6 @@ foreach ($prices->data as $price) {
 $stripe->products->update($productId, ['active' => false]);
 $delete_sql = "DELETE FROM `products` WHERE product_id = {$id}";
 mysqli_query($connect, $delete_sql);
+$sqld = "DELETE FROM * FROM `reviews` WHERE product_id = {$id}";
+mysqli_query($connect, $sqld);
 header("location:../dashboard.php");
