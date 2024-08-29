@@ -99,7 +99,7 @@ function fetch(source = "products", category = "") {
                   </td>
                   <td class="text-center">
                     <a href='./products/update.php?id=${val.product_id}' class='btn btn-outline-dark btn-sm'>Update</a>
-                    <button class='btn btn-outline-danger btn-sm' onclick='deleteElement()'><a href='./products/delete.php?id=${val.product_id}' >Delete</a></button>
+                    <a class='btn btn-outline-danger btn-sm' href='./products/delete.php?id=${val.product_id}' >Delete</a>
                   </td>
                 </tr>
               `;
