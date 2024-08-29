@@ -14,17 +14,25 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Method: GET");
 header("Access-Control-Allow-Origin: *");
 
-$sql = "SELECT 
-    DATE(created_at) AS order_date,
-    SUM(total_amount) AS daily_total
-FROM 
-    orders
-GROUP BY 
-    DATE(created_at)
-ORDER BY 
-    order_date ASC;
-";
-
+$sql = "
+    SELECT 
+        p.product_id, 
+        p.product_name, 
+        p.description, 
+        p.price, 
+        p.image, 
+        p.availability, 
+        pc.category_name, 
+        d.discount_name, 
+        d.discount_percentage, 
+        d.start_date, 
+        d.end_date
+    FROM 
+        `products` p
+    INNER JOIN 
+        `product_categories` pc ON p.category_id = pc.category_id
+    LEFT JOIN 
+        `discounts` d ON p.discount_id = d.discount_id";
 if ($result = mysqli_query($connect, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         // Fetching data as an associative array

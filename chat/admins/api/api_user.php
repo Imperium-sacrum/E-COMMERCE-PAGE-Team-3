@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 if (!isset($_SESSION["username"]) && !isset($_SESSION["admin"])) {
     header("Location: ../../session/login.php");
@@ -14,16 +15,7 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Method: GET");
 header("Access-Control-Allow-Origin: *");
 
-$sql = "SELECT 
-    DATE(created_at) AS order_date,
-    SUM(total_amount) AS daily_total
-FROM 
-    orders
-GROUP BY 
-    DATE(created_at)
-ORDER BY 
-    order_date ASC;
-";
+$sql = "SELECT * FROM `users`";
 
 if ($result = mysqli_query($connect, $sql)) {
     if (mysqli_num_rows($result) > 0) {
