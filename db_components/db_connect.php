@@ -10,7 +10,7 @@ $dbname = "e_commerce_team3";
 // the host name is : 173.212.235.205
 // user:joshuacodefactor_projectTeam3
 // Database:joshuacodefactor_e_commerce_team3
-// password:jEFEmAESTRO_"!!/
+// password:9hB(~SW}SuJ^
 
 
 $connect = new mysqli($hostname, $username, $password, $dbname);
