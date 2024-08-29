@@ -161,8 +161,8 @@ $row = mysqli_fetch_assoc($result);
             </li>
 
           </ul>
-          <a class="navbar-brand" href="/">
-            <img src="images\SHIN__2_-removebg-preview.png" alt="" style="width: 80px;">
+          <a>
+            <img src="../images/shin2.png" alt="" style="width: 80px;">
 
           </a>
           <!-- <form class="d-flex">
