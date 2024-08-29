@@ -9,8 +9,8 @@ $dbname = "e_commerce_team3";
 
 // $hostname = "173.212.235.205";
 // $username = "joshuacodefactor_projectTeam3";
-// $password = "joshuacodefactor_e_commerce_team3";
-// $dbname = "9hB(~SW}SuJ^";
+// $password = "LV}DJ5-;n7g6";
+// $dbname = "joshuacodefactor_e_commerce_team3";
 
 // the host name is : 173.212.235.205
 // user:joshuacodefactor_projectTeam3

@@ -1,0 +1,6 @@
+[29-Aug-2024 10:23:09 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'joshuacodefactor_projectTeam3'@'vmi198149.contaboserver.net' (using password: YES) in /home/joshuacodefactor/public_html/db_components/db_connect.php:21
+Stack trace:
+#0 /home/joshuacodefactor/public_html/db_components/db_connect.php(21): mysqli->__construct('173.212.235.205', 'joshuacodefacto...', Object(SensitiveParameterValue), '9hB(~SW}SuJ^')
+#1 /home/joshuacodefactor/public_html/admins/dashboard.php(11): require_once('/home/joshuacod...')
+#2 {main}
+  thrown in /home/joshuacodefactor/public_html/db_components/db_connect.php on line 21
