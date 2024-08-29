@@ -122,7 +122,7 @@ if (isset($_POST["create"])) {
                 </div>
 
                 <div class="mb-3">
-                    <input type="number" class="form-control" id="price" aria-describedby="price" name="price" placeholder="Price">
+                    <input type="text" class="form-control" id="price" aria-describedby="price" name="price" placeholder="Price">
                 </div>
 
 
