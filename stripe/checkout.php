@@ -2,7 +2,7 @@
 session_start();
 require_once '../vendor/autoload.php';
 require_once 'secrets.php';
-require_once '../db_components/db_connect.php'; 
+require_once '../db_components/db_connect.php';
 
 if (isset($_GET["checkout"])) {
     $userId = $_SESSION["username"];
@@ -20,7 +20,7 @@ if (isset($_GET["checkout"])) {
             'quantity' => $row['quantity']
         ]);
     }
-    $YOUR_DOMAIN = 'http://localhost:3000';
+    $YOUR_DOMAIN = 'http://localhost:3001';
 
     $session = $stripe->checkout->sessions->create([
         'line_items' => $prices,
