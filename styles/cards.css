@@ -10,6 +10,7 @@
 }
 
 
+
 .container-cards {
   /* display: flex; */
   justify-content: center; 
@@ -215,5 +216,15 @@ border: 1px solid #A9B388;
 color: #A9B388;
 cursor: pointer;
 }
+@media (max-width: 768px) {
+  .categ-li {
+      justify-content: wrap;
 
+  }
+
+  .categ-li li a {
+      padding: 6px 10px;
+      font-size: 14px;
+  }
+}
 
