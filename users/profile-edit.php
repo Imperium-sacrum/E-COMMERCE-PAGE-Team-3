@@ -80,7 +80,7 @@ if (isset($_POST["edit"])) {
 <body>
     <?php
     ?>
-    <div class="container rounded bg-white mt-5 mb-5">
+    <div class="container rounded  mt-5 mb-5">
         <form enctype="multipart/form-data" method="post" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
             <div class="row">
                 <div class="col-md-3 border-right">
@@ -104,8 +104,8 @@ if (isset($_POST["edit"])) {
                             </div>
                         </div>
                         <input type="file" name="image" class="form-control mb-3">
-                        <div class="mt-5 text-center"><input type="submit" name="edit" value="Update profile" class="btn btn-outline-dark m-1 btn-sm"></div>
-                        <div class="mt-5 text-center"><input type="submit" name="edit" value="Back" class="btn btn-outline-dark m-1 btn-sm" href="profile.php"></div>
+                        <div class="mt-5 text-center"><input type="submit" name="edit" value="Update profile" class="btn btn-outline-light m-1 btn-sm"></div>
+                        <div class="mt-5 text-center"><input type="submit" name="edit" value="Back" class="btn btn-outline-light m-1 btn-sm" href="profile.php"></div>
                     </div>
                 </div>
 
