@@ -6,23 +6,24 @@ function canvasData() {
       try {
         let response = JSON.parse(this.responseText);
         document.getElementById("main").innerHTML = `
-  <div class="container d-flex">
+  <div class="p-3">
     <div class="row">
       <div class="col-md-6">
         <div class="canvas-container">
-          <canvas id="canvas1" "></canvas>
+          <canvas id="canvas1" style="width: 100%; height: 400px;"></canvas>
         </div>
       </div>
       <div class="col-md-6">
-        <div class="canvas-container">
-          <canvas id="canvas2" "></canvas>
+              <div class="canvas-container">
+          <canvas id="canvas3" style="width: 100%; height: 400px;"></canvas>
         </div>
+
       </div>
     </div>
     <div class="row mt-4">
       <div class="col-md-12 text-center">
-        <div class="canvas-container">
-          <canvas id="canvas3""></canvas>
+                <div class="canvas-container">
+          <canvas id="canvas2" style="width: 100%; height: 400px;"></canvas>
         </div>
       </div>
     </div>
@@ -345,16 +346,16 @@ function canvasData3() {
         var xValues = [];
         var yValues = [];
         var barColors = [
-          "yellow",
-          "green",
-          "blue",
-          "orange",
-          "brown",
-          "purple",
-          "red",
-          "pink",
-          "cyan",
-          "magenta",
+          "#4CAF50", // Verde
+          "#FF5722", // Naranja
+          "#2196F3", // Azul
+          "#FFC107", // Amarillo
+          "#9C27B0", // Púrpura
+          "#FF9800", // Naranja claro
+          "#00BCD4", // Cian
+          "#8BC34A", // Verde claro
+          "#E91E63", // Rosa
+          "#3F51B5", // Azul oscuro
         ];
 
         arr[2].forEach((element) => {
@@ -367,6 +368,7 @@ function canvasData3() {
             labels: yValues,
             datasets: [
               {
+                label: "Number of Products",
                 backgroundColor: barColors,
                 data: xValues,
                 borderColor: "#333",
@@ -378,20 +380,20 @@ function canvasData3() {
           },
           options: {
             responsive: true,
-            maintainAspectRatio: false, // Asegura que el gráfico se ajuste al contenedor
+            maintainAspectRatio: false,
             plugins: {
               title: {
                 display: true,
                 text: "Product Distribution by Category",
                 font: {
-                  size: 18,
+                  size: 20,
                   weight: "bold",
-                  family: "Arial",
+                  family: "Arial, sans-serif",
                 },
                 color: "#333",
                 padding: {
                   top: 20,
-                  bottom: 20,
+                  bottom: 30,
                 },
               },
               legend: {
@@ -401,16 +403,17 @@ function canvasData3() {
                 enabled: true,
                 backgroundColor: "rgba(0, 0, 0, 0.8)",
                 titleFont: {
-                  size: 14,
-                  family: "Arial",
+                  size: 16,
+                  family: "Arial, sans-serif",
                   weight: "bold",
                 },
                 bodyFont: {
-                  size: 12,
-                  family: "Arial",
+                  size: 14,
+                  family: "Arial, sans-serif",
                 },
-                cornerRadius: 4,
+                cornerRadius: 6,
                 displayColors: false,
+                padding: 12,
               },
             },
             scales: {
@@ -422,42 +425,46 @@ function canvasData3() {
                   display: true,
                   text: "Categories",
                   font: {
-                    size: 14,
-                    family: "Arial",
+                    size: 16,
+                    family: "Arial, sans-serif",
+                    weight: "bold",
                   },
                   color: "#333",
                 },
                 ticks: {
                   font: {
-                    size: 12,
-                    family: "Arial",
+                    size: 14,
+                    family: "Arial, sans-serif",
                   },
                   color: "#333",
                 },
               },
               y: {
-                beginAtZero: true, // Asegura que el eje Y comience en 0
+                beginAtZero: true,
                 grid: {
-                  color: "rgba(200, 200, 200, 0.2)", // Colores más suaves para la cuadrícula
+                  color: "rgba(200, 200, 200, 0.3)",
+                  borderDash: [5, 5], // Estilo de línea de la cuadrícula
                 },
                 title: {
                   display: true,
                   text: "Number of Products",
                   font: {
-                    size: 14,
-                    family: "Arial",
+                    size: 16,
+                    family: "Arial, sans-serif",
+                    weight: "bold",
                   },
                   color: "#333",
                 },
                 ticks: {
                   font: {
-                    size: 12,
-                    family: "Arial",
+                    size: 14,
+                    family: "Arial, sans-serif",
                   },
                   color: "#333",
+                  stepSize: 1, // Ajuste la cantidad de divisiones en el eje Y
                 },
                 suggestedMin: 0,
-                suggestedMax: 5,
+                suggestedMax: Math.max(...xValues) + 1,
               },
             },
           },
