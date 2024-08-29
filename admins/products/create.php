@@ -46,19 +46,19 @@ if (isset($_POST["create"])) {
     $availability = cleanInput($_POST["availability"]);
 
 
-     // Stripe 
-     $stripe = new \Stripe\StripeClient($stripeSecretKey);
+    // Stripe 
+    $stripe = new \Stripe\StripeClient($stripeSecretKey);
 
-     $product = $stripe->products->create([
-         "name" => $name,
-         "description" => $description
-     ]);
- 
-     $priceStripe = $stripe->prices->create([
-         'unit_amount' => $price * 100,
-         'currency' => 'usd',
-         'product' => $product["id"]
-     ]);
+    $product = $stripe->products->create([
+        "name" => $name,
+        "description" => $description
+    ]);
+
+    $priceStripe = $stripe->prices->create([
+        'unit_amount' => $price * 100,
+        'currency' => 'usd',
+        'product' => $product["id"]
+    ]);
 
 
     // validation:
@@ -88,7 +88,7 @@ if (isset($_POST["create"])) {
             /div";
         }
         // redirect
-        header("refresh: 3; url=../dashboard.html");
+        header("refresh: 3; url=../dashboard.php");
     }
 }
 ?>

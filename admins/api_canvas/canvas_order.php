@@ -15,14 +15,15 @@ header("Access-Control-Allow-Method: GET");
 header("Access-Control-Allow-Origin: *");
 
 $sql = "SELECT 
-    c.category_name, 
-    COUNT(p.product_id) AS product
+    DATE(created_at) AS order_date,
+    SUM(total_amount) AS daily_total
 FROM 
-    products p
-JOIN 
-    product_categories	 c ON p.category_id = c.category_id
+    orders
 GROUP BY 
-    c.category_name;";
+    DATE(created_at)
+ORDER BY 
+    order_date ASC;
+";
 
 if ($result = mysqli_query($connect, $sql)) {
     if (mysqli_num_rows($result) > 0) {

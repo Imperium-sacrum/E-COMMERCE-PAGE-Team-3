@@ -10,7 +10,7 @@ require_once "../db_components/db_connect.php";
 // }
 
 
-$id = $_GET["id"]; // Product ID from the URL
+$id = $_GET["id"]; // Product id from URL 
 
 
 // Fetch reviews for the product

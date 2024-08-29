@@ -4,13 +4,18 @@
   --laurel-green: #A9B388;
   --cornsilk: #FEFAE0;
   --lemon-meringue: #F9EBC7;
-  --camel: #B99470;
+  --camel: rgb(233, 173, 113);
   --russet: #783D19;
   --highlight-green: var(--dark-olive-green);
 }
 *{
 color: #333;
     font-family: "Raleway";
+}
+.logo {
+  border: solid 0.5px black;
+  border-radius: 100%;
+  padding: 15px 2px ;
 }
 
 
@@ -89,10 +94,14 @@ p{
   margin: 0 auto; 
   padding: 0;
 
-  justify-content: center; /
+  justify-content: center; }
+
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 0;
+  align-items: center;
 }
-
-
 
 
 /* Buttons */
@@ -474,6 +483,25 @@ a.btn-signup {
   font-weight: 500;
 }
 .btn:hover {
+  border: 1px solid #aedaa6;
+  color: #aedaa6;
+  cursor: pointer;
+}
+.btn-rew {
+  background-color: transparent !important;
+  color: #717070;
+  border: 1px solid #d9d9d9;
+  padding: 15px 0;  
+  width: 100%; 
+  border-radius: 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.btn-rew:hover {
   border: 1px solid #aedaa6;
   color: #aedaa6;
   cursor: pointer;

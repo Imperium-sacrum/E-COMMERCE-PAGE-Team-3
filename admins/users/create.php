@@ -114,7 +114,7 @@ if (isset($_POST["submit"])) {
         <p class='mb-0'>$pic[1]</p>
       </div>";
             $fname = $lname = $email = $role = $uname = $status = "";
-            header("refresh: 3; url=../dashboard.html");
+            header("refresh: 3; url=../dashboard.php");
         } else {
             #show errors not insert
             echo "<div class='alert alert-danger' role='alert'>
@@ -171,8 +171,8 @@ if (isset($_POST["submit"])) {
             <div class="mb-3 ">
                 <select class='form-select' name="status">
                     <option value="">---Select the Status---</option>
-                    <option value="active" selected>Active</option>
-                    <option value="banned">banned</option>
+                    <option value="1" selected>Active</option>
+                    <option value="0">banned</option>
                 </select>
             </div>
             <div class="mb-3">
