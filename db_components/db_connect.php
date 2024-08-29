@@ -7,6 +7,11 @@ $username = "root";
 $password = "";
 $dbname = "e_commerce_team3";
 
+// $hostname = "173.212.235.205";
+// $username = "joshuacodefactor_projectTeam3";
+// $password = "joshuacodefactor_e_commerce_team3";
+// $dbname = "9hB(~SW}SuJ^";
+
 // the host name is : 173.212.235.205
 // user:joshuacodefactor_projectTeam3
 // Database:joshuacodefactor_e_commerce_team3
