@@ -8,7 +8,7 @@ if (isset($_SESSION['username'])) {
 }
 
 if (isset($_SESSION["admin"])) {
-    header("Location: ../admins/dashboard.html");
+    header("Location: ../admins/dashboard.php");
     exit();
 }
 
@@ -52,7 +52,7 @@ if (isset($_POST["login-btn"])) {
                 $error = "Your account is banned. Please contact support.";
             } elseif ($rowU["role"] == "admin") {
                 $_SESSION["admin"] = $rowU["user_id"];
-                header("Location: ../admins/dashboard.html");
+                header("Location: ../admins/dashboard.php");
                 exit();
             } else {
                 $_SESSION["username"] = $rowU["user_id"];

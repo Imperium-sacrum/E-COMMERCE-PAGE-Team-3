@@ -12,6 +12,11 @@
 color: #333;
     font-family: "Raleway";
 }
+.logo {
+  border: solid 0.5px black;
+  border-radius: 100%;
+  padding: 15px 2px ;
+}
 
 
 body {

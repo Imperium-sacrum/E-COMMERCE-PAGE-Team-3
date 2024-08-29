@@ -114,7 +114,7 @@ if (isset($_POST["submit"])) {
         <p class='mb-0'>$pic[1]</p>
       </div>";
             $fname = $lname = $email = $role = $uname = $status = "";
-            header("refresh: 3; url=../dashboard.html");
+            header("refresh: 3; url=../dashboard.php");
         } else {
             #show errors not insert
             echo "<div class='alert alert-danger' role='alert'>

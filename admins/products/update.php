@@ -80,25 +80,25 @@ if (isset($_POST["update"])) {
         ]);
 
 
-    // to deactivate a price
-    $deactivated_price = $stripe->prices->update($oldPriceId, [
-        'active' => false,
-    ]);
+        // to deactivate a price
+        $deactivated_price = $stripe->prices->update($oldPriceId, [
+            'active' => false,
+        ]);
 
-    # checking if a picture has been selected in the input for the image 
-    if ($_FILES["image"]["error"] == 4) {
-        $update_sql = "UPDATE `products` SET `product_name`='{$name}',`description`='{$description}',`price`='{$price}',`category_id`='{$category}', priceId = '{$priceId->id}',`discount_id`='{$discount}',`availability`='{$availability}' WHERE product_id = {$id}";
-    } else {
-        //  delete the old picture
+        # checking if a picture has been selected in the input for the image 
+        if ($_FILES["image"]["error"] == 4) {
+            $update_sql = "UPDATE `products` SET `product_name`='{$name}',`description`='{$description}',`price`='{$price}',`category_id`='{$category}', priceId = '{$priceId->id}',`discount_id`='{$discount}',`availability`='{$availability}' WHERE product_id = {$id}";
+        } else {
+            //  delete the old picture
 
-        if ($row["image"] != "product.jpg") {
-            unlink("../images/{$row["image"]}");
+            if ($row["image"] != "product.jpg") {
+                unlink("../images/{$row["image"]}");
+            }
+            $update_sql = "UPDATE `products` SET `product_name`='{$name}',`description`='{$description}',`price`='{$price}',`category_id`='{$category}', priceId = '{$priceId->id}',`discount_id`='{$discount}',`image`='$image[0]',`availability`='{$availability}' WHERE product_id = {$id}";
         }
-        $update_sql = "UPDATE `products` SET `product_name`='{$name}',`description`='{$description}',`price`='{$price}',`category_id`='{$category}', priceId = '{$priceId->id}',`discount_id`='{$discount}',`image`='$image[0]',`availability`='{$availability}' WHERE product_id = {$id}";
+        // run the query
+        $update_result = mysqli_query($connect, $update_sql);
     }
-    // run the query
-    $update_result = mysqli_query($connect, $update_sql);
-}
 }
 ?>
 <!DOCTYPE html>
@@ -126,7 +126,7 @@ if (isset($_POST["update"])) {
     </div";
         }
         // redirect 
-        header("refresh: 3; url=../dashboard.html");
+        header("refresh: 3; url=../dashboard.php");
     } ?>
 
 

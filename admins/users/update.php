@@ -54,7 +54,7 @@ if (isset($_POST["update"])) {
     </div>";
     }
     // Redirect after update
-    // header("refresh: 3; url=../dashboard.html");
+    // header("refresh: 3; url=../dashboard.php");
 }
 ?>
 
