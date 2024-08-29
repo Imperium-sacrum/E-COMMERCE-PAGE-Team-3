@@ -141,45 +141,31 @@ $row = mysqli_fetch_assoc($result);
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Left: Logo -->
+        <a>
+          <img src="../images/shin2.png" alt="Logo" style="width: 50px; height: 48px;">
+        </a>
 
-
+        <!-- Right: Dropdown -->
+        <div class="d-flex align-items-center">
+          <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../images/<?= $row['image'] ?>" alt="<?= $row['first_name'] ?>" width="40" height="38" class="d-inline-block align-text-center rounded-circle border border-dark border-3 m-3  "> Hi <?= $row["username"] ?>
+                <img src="../images/<?= $row['image'] ?>" alt="<?= $row['first_name'] ?>" width="40" height="38" class="d-inline-block align-text-center rounded-circle border border-dark border-3 m-3"> Hey, <?= $row["username"] ?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="../session/logout.php?logout">Logout</a></li>
               </ul>
             </li>
-
           </ul>
-          <a>
-            <img src="../images/shin2.png" alt="" style="width: 80px;">
-
-          </a>
-          <!-- <form class="d-flex">
-            <a class="navbar-brand">
-              <span class="logo" style="font-family: 'Caveat'; font-size: 30px">SHIN
-
-            </a>
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
-            <nav class="navbar navbar-expand-lg">
-          </form> -->
         </div>
       </div>
     </nav>
-
   </header>
+
 
   <div class="container-fluid">
     <div class="row">
