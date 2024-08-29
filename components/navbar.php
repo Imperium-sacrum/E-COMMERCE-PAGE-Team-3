@@ -23,20 +23,28 @@ if (!$resultCategories) {
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
-                <?php
-                if (mysqli_num_rows($resultCategories) > 0) {
-                    // Loop through each category and create a list item
-                    while ($category = mysqli_fetch_assoc($resultCategories)) {
-                        echo "<li class='nav-item'>";
-                        echo "<a class='nav-link' href='../cards.php?search=" . $category['category_name'] . "'>" . $category['category_name'] . "</a>";
-                        echo "</li>";
-                    }
-                } else {
-                    echo "<li class='nav-item'><a class='nav-link' href='#'>No Categories</a></li>";
-                }
-                ?>
+
+                <!-- Dropdown menu for categories -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                        <?php
+                        if (mysqli_num_rows($resultCategories) > 0) {
+
+                            while ($category = mysqli_fetch_assoc($resultCategories)) {
+                                echo "<li><a class='dropdown-item' href='../cards.php?search=" . $category['category_name'] . "'>" . $category['category_name'] . "</a></li>";
+                            }
+                        } else {
+                            echo "<li><a class='dropdown-item' href='#'>No Categories</a></li>";
+                        }
+                        ?>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.php">About</a>
                 </li>

@@ -7,6 +7,10 @@ $username = "root";
 $password = "";
 $dbname = "e_commerce_team3";
 
+// the host name is : 173.212.235.205
+// user:joshuacodefactor_projectTeam3
+// Database:joshuacodefactor_e_commerce_team3
+// password:jEFEmAESTRO_"!!/
 
 
 $connect = new mysqli($hostname, $username, $password, $dbname);

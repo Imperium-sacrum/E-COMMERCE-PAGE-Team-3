@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/hero.css">
-    <title>hero</title>
+    <title>Our Website</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://cdn.pixabay.com/photo/2015/03/28/17/14/fruit-696169_1280.jpg" class="d-block w-100" alt="Product 1">
+                    <img style="object-fit: cover; filter:brightness(0.7)" src="images/slide.jpg" class="d-block w-100" alt="Product 1">
 
 
                     <div class="carousel-caption d-none d-md-block">
@@ -26,8 +26,8 @@
                         <a href="cards.php" class="btn" type="button">Explore now</a>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://cdn.pixabay.com/photo/2017/06/05/17/27/meat-2374652_1280.jpg" class="d-block w-100" alt="Product 2">
+                <div class="carousel-item ">
+                    <img src="images/meat.jpg" style="object-fit: cover; filter:brightness(0.7)" class="d-block w-100" alt="Product 2">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Cold cuts</h5>
                         <p class="text-white">No Artificial Additives | 100% Satisfaction Guaranteed</p>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://cdn.pixabay.com/photo/2023/07/15/10/52/bread-8128550_1280.jpg" class="d-block w-100" alt="Product 3">
+                    <img src="https://cdn.pixabay.com/photo/2023/07/15/10/52/bread-8128550_1280.jpg" style="object-fit: cover; filter:brightness(0.7)" class="d-block w-100" alt="Product 3">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Whole Grains</h5>
                         <p class="text-white">100% Whole grains goodness for a healthier more nutrious choice</p>
@@ -55,60 +55,134 @@
     </div>
 
     <section class="favorites-section">
-        <h1>Best Sellers</h1>
-        <div class="categories">
-            <ul class="categ-li d-flex flex-row text-dark justify-content-start">
-            </ul>
-        </div>
+        <h1 style="font-weight: 600;" class="py-5">Shop<span style="color: #783D19; font-size: 80px"> . </span> Eat<span style="color: #B99470; font-size: 80px"> . </span>Repeat <span style="color: #A9B388; font-size: 80px"> . </span></h1>
+        <div class="container mt-5">
+            <div class="row">
 
-        <div class="container-cards section-card mt-5">
-            <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-1 row-cols-xs-1">
-                <div class="col">
-                    <div class="product-item card">
-                        <img src="images/bokbok3.jpg" alt="bobr">
-                        <h3>Bobr</h3>
-                        <p>€</p>
+                <div class="col-md-3">
+                    <div class="card-hero position-relative overflow-hidden">
+                        <img src="images/hero2.jpg" style="height: 300px; object-fit: cover;" class="card-img-top" alt="Image 1">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white">
+                            <p class="card-title-hero text-white text-center">Fresh Flavors,</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="product-item card">
-                        <img src="images/bokbok3.jpg" alt="bobr">
-                        <h3>Bobr</h3>
-                        <p>€</p>
+
+                <div class="col-md-3">
+                    <div class="card-hero position-relative overflow-hidden">
+                        <img src="images/hero3.jpg" style="height: 300px; object-fit: cover;" class="card-img-top" alt="Image 2">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white">
+                            <p class="card-title-hero text-white text-center">Delivered Fast.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="product-item card">
-                        <img src="images/bokbok3.jpg" alt="bobr">
-                        <h3>Bobr</h3>
-                        <p>€</p>
+
+                <div class="col-md-3">
+                    <div class="card-hero position-relative overflow-hidden">
+                        <img src="images/hero1.png" style="height: 300px; object-fit: cover;" class="card-img-top" alt="Image 3">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white">
+                            <p class="card-title-hero text-white text-center">Your Plate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card-hero position-relative overflow-hidden">
+                        <img src="images/hero5.jpg" style="height: 300px; object-fit: cover;" class="card-img-top" alt="Image 4">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center p-4 bg-dark bg-opacity-50 text-white">
+                            <p class="card-title-hero text-white text-center">Our Priority.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
-    <!-- whatever you wanna name it section -->
-    <div class="container py-4 content-section">
-        <div class="row align-items-md-stretch">
+
+
+    <div class="container-fluid content-section">
+        <div class="d-flex">
             <div class="col-md-6">
-                <div class="h-100 p-5 text-bg-dark">
-                    <img src="images/bokbok3.jpg" alt="bobr">
-                    <h2>Bobr</h2>
-                    <p>Explore our unique selection of Bobr</p>
-                    <button class="btn" type="button">Discover More</button>
+                <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
+                    <img src="images/hero6.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
+                        <h2 style="font-size: 2rem; color:#2C5021;">ALKOHOLS</h2>
+                        <p style=" color:black;font-size: 1rem;">Explore our unique selection of Alkohols from different countries.</p>
+                        <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Discover more</a>
+                    </div>
                 </div>
             </div>
+
             <div class="col-md-6">
-                <div class="h-100 p-5 bg-body-tertiary border">
-                    <img src="images/bokbok3.jpg" alt="bobr">
-                    <h2>Bobr</h2>
-                    <p>Check out our most loved products by our loyal customers.</p>
-                    <button class="btn" type="button">Shop Now</button>
+                <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
+                    <img src="images/gre.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
+                        <h2 style="font-size: 2rem; color:#2C5021">FRUITS</h2>
+                        <p style="color:black ;font-size: 1rem;">Check out our most loved fruits by our loyal customers.</p>
+                        <!-- <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Shop Now</a> -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!-- last section  -->
+
+
+    <div class="container-fluid content-section">
+        <div class="d-flex">
+
+
+            <div class="col-md-6 ">
+                <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
+                    <img src="images/cake.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
+                        <h2 style="font-size: 2rem; color:#D962A2;">SWEETNEES</h2>
+                        <p style="color:antiquewhite ;font-size:1rem;">Explore our unique selection of Alkohols from different countries.</p>
+                        <!-- <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Discover more</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
+                    <img src="images/tort.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
+                        <h2 style="font-size: 2rem; color:#D962A2">CAKES</h2>
+                        <p style="color:antiquewhite; font-size: 1rem;">Check out our most loved fruits by our loyal customers.</p>
+                        <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TEST -->
+    <div class="container-fluid content-section">
+        <div class="d-flex">
+            <div class="col-md-6">
+                <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
+                    <img src="images/herbs.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
+                        <h2 style="font-size: 2rem; color:#E25822;">HERBS</h2>
+                        <p style="color:antiquewhite; font-size: 1rem;">Explore our unique selection of Alkohols from different countries.</p>
+                        <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Discover more</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="h-100 position-relative overflow-hidden text-white" style="max-height: 300px;">
+                    <img src="images/spices.jpg" alt="bobr" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-start p-3 bg-dark bg-opacity-50">
+                        <h2 style="font-size: 2rem; color:#E25822">SPICES</h2>
+                        <p style="color:antiquewhite; font-size: 1rem;">Check out our most loved fruits by our loyal customers.</p>
+                        <!-- <a class="btn btn-sm" href="cards.php" style="font-size: 0.85rem;">Shop Now</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 

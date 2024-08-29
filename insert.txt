@@ -1,0 +1,16 @@
+INSERT INTO `products`(`product_name`, `description`, `price`, `category_id`, `discount_id`, `image`, `availability`) VALUES 
+('Moisturizing Face Cream', 'Luxurious face cream enriched with natural extracts to deeply hydrate and rejuvenate your skin, leaving it soft and glowing.', 29.99, 9, 2, 'product1.jpg', 1),
+('Long-Lasting Lipstick', 'High-impact lipstick with a vibrant color that lasts all day without fading or smudging.', 19.99, 9, 2, 'product2.jpg', 1),
+('Vital Energy Shot', 'Revitalize your day with this energy shot packed with essential vitamins and nutrients to boost your stamina.', 3.99, 6, 2, 'product3.jpg', 1),
+('Chanel No. 5 Perfume', 'An iconic fragrance from Chanel with a sophisticated blend of floral and citrus notes, perfect for any occasion.', 129.99, 9, 2, 'product4.jpg', 1),
+('Velvet Matte Lipstick', 'A velvety matte lipstick that delivers rich color with a smooth, creamy finish, ideal for an elegant look.', 22.99, 9, 2, 'product5.jpg', 1),
+('Stylish Sneakers', 'Trendy sneakers designed for comfort and style, perfect for casual outings and everyday wear.', 79.99, 4, 2, 'product6.jpg', 1),
+('Elegant Men’s Dress Shoes', 'Classic and sophisticated dress shoes that add a touch of refinement to any formal attire.', 119.99, 4, 2, 'product7.jpg', 1),
+('Versatile Backpack', 'Durable and spacious backpack suitable for work, school, or travel, with multiple compartments for organization.', 49.99, 2, 2, 'product8.jpg', 1),
+('Elegant Women’s High Heels', 'Sophisticated high heels designed to enhance your style and add a glamorous touch to any outfit.', 89.99, 4, 2, 'product9.jpg', 1),
+('Home Freshener Spray', 'Aromatic spray that infuses your home with a pleasant fragrance, creating a welcoming and refreshing atmosphere.', 14.99, 2, 2, 'product10.jpg', 1),
+('Plumen Light Bulb', 'Stylish and energy-efficient light bulb that combines modern design with functionality, enhancing the ambiance of any room.', 29.99, 2, 2, 'product11.jpg', 1),
+('Organic Herb Collection', 'A curated selection of organic herbs for cooking or herbal remedies, providing fresh and natural flavors.', 12.99, 6, 2, 'product12.jpg', 1),
+('Fresh Carrot Juice', 'Nutritious and refreshing carrot juice made from 100% fresh carrots, perfect for a healthy boost.', 4.99, 6, 2, 'product13.jpg', 1),
+('Stylish Sunglasses', 'Trendy sunglasses that offer UV protection and a fashionable look, ideal for sunny days.', 39.99, 4, 2, 'product14.jpg', 1),
+('Exclusive Mineral Water', 'Premium quality mineral water with a crisp, refreshing taste, perfect for staying hydrated throughout the day.', 2.99, 6, 2, 'product15.jpg', 1);

@@ -4,7 +4,7 @@
   --laurel-green: #A9B388;
   --cornsilk: #FEFAE0;
   --lemon-meringue: #F9EBC7;
-  --camel: #B99470;
+  --camel: rgb(233, 173, 113);
   --russet: #783D19;
   --highlight-green: var(--dark-olive-green);
 }
@@ -28,13 +28,13 @@ p{
   font-size: 12px;
 }
 /* Carousel */
-.carousel-caption {
+/* .carousel-caption {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-}
+} */
 
 .carousel-caption h5, .carousel-caption{
   margin: 0;
@@ -89,10 +89,14 @@ p{
   margin: 0 auto; 
   padding: 0;
 
-  justify-content: center; /
+  justify-content: center; }
+
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 0;
+  align-items: center;
 }
-
-
 
 
 /* Buttons */
@@ -174,12 +178,14 @@ p{
 }
 
 /* Content Sections */
-.favorites-section {
+/* .favorites-section {
   text-align: center;
   padding: 50px 0;
+  padding-top: 100px;
+  padding-bottom: 150px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .favorites-section h1 {
   font-size: 36px;
@@ -229,16 +235,24 @@ p{
 }
 
 .content-section {
+
   padding: 2rem 1rem;
 }
 
 .content-section h2 {
-  color: darkolivegreen;
+  color: rgb(98, 118, 63);
+  font-size: 50px;
 }
 
 .content-section p {
-  color: sienna;
+  color: rgb(213, 85, 25);
+  font-size: 20px;
 }
+.bg-opacity-50 {
+  --bs-bg-opacity: 0.2;
+}
+
+
 
 .container {
   max-width: 1200px;
@@ -468,6 +482,25 @@ a.btn-signup {
   color: #aedaa6;
   cursor: pointer;
 }
+.btn-rew {
+  background-color: transparent !important;
+  color: #717070;
+  border: 1px solid #d9d9d9;
+  padding: 15px 0;  
+  width: 100%; 
+  border-radius: 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.btn-rew:hover {
+  border: 1px solid #aedaa6;
+  color: #aedaa6;
+  cursor: pointer;
+}
   
 /* DONT TOUCH :D BUTTONS */
 .btn-signup-a {
@@ -526,4 +559,36 @@ a.btn-signup-a {
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+
+/* HERO PHOTOS */
+
+
+.favorites-section h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+.card-img-overlay-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.card-title-hero {
+  font-size: 1.25rem;
+}
+.card-hero {
+  border: none;
+  border-radius: 0.5rem;
+}
+.carousel-caption {
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }

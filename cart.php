@@ -169,7 +169,7 @@ $finalTotal = $discountedTotalPrice + $totalTax + 20;
                             <p>Shipping: €20.00</p>
                             <h3>Total (Incl. taxes): €<?= number_format($finalTotal, 2) ?></h3>
                         </div>
-                        <button onclick="window.location.href='/stripe/checkout.php'" class="checkout-btn">€<?= number_format($finalTotal, 2) ?> CHECKOUT →</button>
+                        <button onclick="window.location.href='/stripe/checkout.php?checkout'" class="checkout-btn">€<?= number_format($finalTotal, 2) ?> CHECKOUT →</button>
                     </form>
                 </div>
             </aside>

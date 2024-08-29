@@ -71,7 +71,7 @@ foreach ($productsInfo as  $value_orders) {
   
 
   <div class='d-flex '> 
-  <a href='users/leave-reviews.php?id={$value_orders["product_id"]}' class='btn btn-outline-secondary d-flex justify-content-center m-3 w-25'>Leave a review</a>
+  <a style='text-decoration:none;' href='users/leave-reviews.php?id={$value_orders["product_id"]}' class='btn-custom d-flex justify-content-center m-3 w-25'>Leave a review</a>
 
   
   </div>

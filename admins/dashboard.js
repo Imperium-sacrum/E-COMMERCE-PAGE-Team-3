@@ -99,7 +99,7 @@ function fetch(source = "products", category = "") {
                   </td>
                   <td class="text-center">
                     <a href='./products/update.php?id=${val.product_id}' class='btn btn-outline-dark btn-sm'>Update</a>
-                    <a href='./products/delete.php?id=${val.product_id}' class='btn btn-outline-danger btn-sm'>Delete</a>
+                    <button class='btn btn-outline-danger btn-sm' onclick='deleteElement()'><a href='./products/delete.php?id=${val.product_id}' >Delete</a></button>
                   </td>
                 </tr>
               `;
@@ -188,6 +188,8 @@ function fetch(source = "products", category = "") {
               tableElement.innerHTML = tableContent;
             } else if (source == "user") {
               createdBtn.innerHTML = `<a class="btn btn-success" href="./users/create.php">Create New User</a>`;
+              for (const val of elements) {
+              }
               let tableContent = `
               <table class='table table-striped table-hover'>
                 <thead class='table-dark'>
@@ -200,6 +202,7 @@ function fetch(source = "products", category = "") {
                     <th class="text-center" scope='col'>Image</th>
                     <th class="text-center" scope='col'>Role</th>
                     <th class="text-center" scope='col'>Status</th>
+                    <th class="text-center" scope='col'>Ban Time</th>                    
                     <th class="text-center" scope='col'>Actions</th>
                   </tr>
                 </thead>
@@ -207,18 +210,24 @@ function fetch(source = "products", category = "") {
             `;
 
               for (const val of elements) {
+                let dateBan = "";
                 let status =
                   val.status == 1
                     ? `<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>`
                     : `<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">`;
                 if (val.status == 1) {
                   tr = `bg-danger`;
+                  dateBan = `
+                             <td class="banTd ${tr}"><input type="datetime-local" class="banTime" id="banTime" value="${val.timeBan}" name="banTime"></td>
+                            `;
                 } else {
                   tr = ` text-black`;
+                  dateBan = `<td><input type="datetime-local" class="banTime" id="banTime" name="banTime" disabled></td>`;
                 }
+
                 tableContent += `
                 <tr>
-                  <td class="text-center prodClass ${tr}">${val.user_id}</td>
+                  <td class="text-center  ${tr} prodClass">${val.user_id}</td>
                   <td class="text-center ${tr}">${val.username}</td>
                   <td class="text-center ${tr}">${val.email}</td>
                   <td class="text-center ${tr}">${val.first_name}</td>
@@ -230,8 +239,8 @@ function fetch(source = "products", category = "") {
                   <td class="text-center ${tr}">
                     <div class="form-check form-switch">
                       ${status}
-                    </div>
                   </td>
+                  ${dateBan}
                   <td class="text-center">
                     <a href='./users/update.php?id=${val.user_id}' class='btn btn-outline-dark btn-sm'>Update</a>
                     <a href='./users/delete.php?id=${val.user_id}' class='btn btn-outline-danger btn-sm'>Delete</a>
@@ -250,6 +259,22 @@ function fetch(source = "products", category = "") {
               checkClass.forEach((element, index) => {
                 element.addEventListener("change", function () {
                   checkAction2(prodClass[index].innerHTML, element);
+                  if (checkClass[index].checked) {
+                    checkClass[index].classList.add("bg-warning");
+                  } else {
+                    checkClass[index].classList.remove("bg-warning");
+                  }
+                });
+              });
+
+              let checkClass1 = document.querySelectorAll(".banTime");
+
+              let prodClass1 = document.querySelectorAll(".prodClass");
+
+              checkClass1.forEach((element, index) => {
+                element.addEventListener("change", function () {
+                  checkAction3(prodClass1[index].innerHTML, element.value);
+                  prodClass1[index].classList.add("bg-danger");
                 });
               });
             } else if (source == "discount") {
@@ -430,4 +455,37 @@ function checkAction2(index) {
   xml.open("GET", "./api/api_user_status.php?id=" + index);
 
   xml.send();
+}
+function checkAction3(index, element) {
+  let xml = new XMLHttpRequest();
+
+  xml.onload = function () {
+    if (this.status == 200) {
+    }
+  };
+
+  xml.open("GET", "./api/api_ban_time.php?id=" + index + "&val=" + element);
+  console.log(element);
+
+  xml.send();
+}
+
+function deleteElement() {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success",
+      });
+    }
+  });
 }

@@ -10,6 +10,8 @@ if (isset($_SESSION["username"])) {
 }
 require_once "../../db_components/db_connect.php";
 require_once "../../db_components/file_upload.php";
+require_once '../../vendor/autoload.php';
+require_once '../../stripe/secrets.php';
 
 
 // category table
@@ -44,7 +46,19 @@ if (isset($_POST["create"])) {
     $availability = cleanInput($_POST["availability"]);
 
 
+    // Stripe 
+    $stripe = new \Stripe\StripeClient($stripeSecretKey);
 
+    $product = $stripe->products->create([
+        "name" => $name,
+        "description" => $description
+    ]);
+
+    $priceStripe = $stripe->prices->create([
+        'unit_amount' => $price * 100,
+        'currency' => 'usd',
+        'product' => $product["id"]
+    ]);
 
 
     // validation:
@@ -58,7 +72,7 @@ if (isset($_POST["create"])) {
 
 
         // query
-        $sql = "INSERT INTO `products`( `product_name`, `description`, `price`, `category_id`, `discount_id`, `image`,`availability`) VALUES ('{$name}','{$description}','{$price}','{$category}','{$discount}','{$image[0]}','{$availability}')";
+        $sql = "INSERT INTO `products`( `product_name`, `description`, `price`, `category_id`,`priceId`, `discount_id`, `image`,`availability`) VALUES ('{$name}','{$description}','{$price}','{$category}','{$priceStripe->id}','{$discount}','{$image[0]}','{$availability}')";
 
         // run the query
         $result = mysqli_query($connect, $sql);
@@ -108,7 +122,7 @@ if (isset($_POST["create"])) {
                 </div>
 
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="price" aria-describedby="price" name="price" placeholder="Price">
+                    <input type="number" class="form-control" id="price" aria-describedby="price" name="price" placeholder="Price">
                 </div>
 
 
