@@ -44,7 +44,7 @@ if (isset($_POST["create"])) {
             /div";
         }
         // // redirect 
-        header("refresh: 3; url=../dashboard.html");
+        header("refresh: 3; url=../dashboard.php");
     }
 }
 ?>

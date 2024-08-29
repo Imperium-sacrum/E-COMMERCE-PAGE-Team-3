@@ -96,7 +96,7 @@ $row = mysqli_fetch_assoc($result);
         <h1>Welcome </h1>
         <p></p>
         <a href="profile-edit.php" class="btn btn-success">Edit profile</a>
-        <a href="./admins/dashboard.html" class="btn btn-success">Products dashboard</a>
+        <a href="./admins/dashboard.php" class="btn btn-success">Products dashboard</a>
         <a href="logout.php?logout" class="btn btn-success">Logout</a>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 </body>

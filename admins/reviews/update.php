@@ -39,7 +39,7 @@ if (isset($_POST["update_review"])) {
     }
 
     // Redirect after update
-    header("refresh: 3; url=../dashboard.html");
+    header("refresh: 3; url=../dashboard.php");
 }
 ?>
 <!DOCTYPE html>
