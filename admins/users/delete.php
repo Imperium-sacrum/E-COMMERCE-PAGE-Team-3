@@ -22,4 +22,4 @@ if ($row["image"] != "default.jpg") {
 }
 $delete_sql = "DELETE FROM `users` WHERE user_id = {$id}";
 mysqli_query($connect, $delete_sql);
-header("location:../dashboard.html");
+header("location:../dashboard.php");

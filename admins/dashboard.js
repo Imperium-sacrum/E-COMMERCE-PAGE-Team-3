@@ -99,7 +99,7 @@ function fetch(source = "products", category = "") {
                   </td>
                   <td class="text-center">
                     <a href='./products/update.php?id=${val.product_id}' class='btn btn-outline-dark btn-sm'>Update</a>
-                    <a href='./products/delete.php?id=${val.product_id}' class='btn btn-outline-danger btn-sm'>Delete</a>
+                    <a class='btn btn-outline-danger btn-sm' href='./products/delete.php?id=${val.product_id}' >Delete</a>
                   </td>
                 </tr>
               `;
@@ -468,4 +468,24 @@ function checkAction3(index, element) {
   console.log(element);
 
   xml.send();
+}
+
+function deleteElement() {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success",
+      });
+    }
+  });
 }

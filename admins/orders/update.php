@@ -45,7 +45,7 @@ if (isset($_POST["update"])) {
     }
 
     // Redirección
-    header("refresh: 3; url=../dashboard.html");
+    header("refresh: 3; url=../dashboard.php");
 }
 ?>
 
