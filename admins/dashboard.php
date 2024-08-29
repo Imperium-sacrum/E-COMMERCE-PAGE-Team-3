@@ -141,20 +141,20 @@ $row = mysqli_fetch_assoc($result);
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid d-flex justify-content-between align-items-center">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+      <div class="container-fluid d-flex justify-content-between align-items-center" style="height: 50px;">
 
-        <!-- Left: Logo -->
+
         <a>
-          <img src="../images/shin2.png" alt="Logo" style="width: 50px; height: 48px;">
+          <img src="../images/shin2.png" alt="Logo" style="width: 40px; height: 38px;">
         </a>
 
-        <!-- Right: Dropdown -->
+
         <div class="d-flex align-items-center">
           <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../images/<?= $row['image'] ?>" alt="<?= $row['first_name'] ?>" width="40" height="38" class="d-inline-block align-text-center rounded-circle border border-dark border-3 m-3"> Hey, <?= $row["username"] ?>
+              <a class="nav-link dropdown-toggle p-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../images/<?= $row['image'] ?>" alt="<?= $row['first_name'] ?>" width="40" height="38" class="d-inline-block align-text-center rounded-circle border border-dark border-3 m-2"> Hi <?= $row["username"] ?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="../session/logout.php?logout">Logout</a></li>
