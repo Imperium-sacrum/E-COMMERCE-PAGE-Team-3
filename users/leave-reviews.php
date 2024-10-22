@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "<div class='alert alert-danger' role='alert'>Something went wrong, please try again!</div>";
     }
+    // header("refresh: 3; url= view-reviews.php");
     exit();
 }
 ?>
